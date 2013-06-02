@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# space.py
+# extents.py
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -23,21 +23,21 @@
 import pyatspi
 
 def print_extents(obj, offset):
-    try:
+	try:
 		caret = obj.queryComponent()
-    except:
-        return
-    else:	
+	except:
+		return
+	else:	
 		print('Extents  0:       %s' % (caret.getExtents(0)))
 		print('Position 0, Size: %s  %s '% (caret.getPosition(0),caret.getSize()))
 		print('\nExtents  1:       %s' % (caret.getExtents(1)))
 		print('Position 1, Size: %s %s \n'% (caret.getPosition(1),caret.getSize()))
 
 def on_caret_move(event):
-    if event.source and event.source.getRole() == pyatspi.ROLE_TERMINAL:
-        return
- 
-    print_extents(event.source, event.detail1)
+	if event.source and event.source.getRole() == pyatspi.ROLE_TERMINAL:
+		return
+
+	print_extents(event.source, event.detail1)
 
 pyatspi.Registry.registerEventListener(on_caret_move, "object:text-caret-moved")
 pyatspi.Registry.start()
