@@ -20,21 +20,18 @@
 # A pyatspi2 example to demonstrate use of the Component interface
 # In order to get the dimensions of a window
 
-from gi.repository import Atspi
 import pyatspi
 
 def print_extents(obj, offset):
     try:
-	caret = obj.queryComponent()
+		caret = obj.queryComponent()
     except:
         return
     else:	
-	print('Extents  0:       %s' % (caret.getExtents(0)))
-
-	print('Position 0, Size: %s  %s '% (caret.getPosition(0),caret.getSize()))
-
-	print('\nExtents  1:       %s' % (caret.getExtents(1)))
-	print('Position 1, Size: %s %s \n'% (caret.getPosition(1),caret.getSize()))
+		print('Extents  0:       %s' % (caret.getExtents(0)))
+		print('Position 0, Size: %s  %s '% (caret.getPosition(0),caret.getSize()))
+		print('\nExtents  1:       %s' % (caret.getExtents(1)))
+		print('Position 1, Size: %s %s \n'% (caret.getPosition(1),caret.getSize()))
 
 def on_caret_move(event):
     if event.source and event.source.getRole() == pyatspi.ROLE_TERMINAL:
