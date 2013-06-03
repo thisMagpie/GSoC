@@ -16,6 +16,9 @@
 # License along with this library; if not, write to the
 # Free Software Foundation, Inc., Franklin Street, Fifth Floor,
 # Boston MA  02110-1301 USA.
+# 
+# An pyatspi2 example to demonstate a client listener for 
+# Keypresses and releases in pyatspi2
 
 import pyatspi
 
@@ -39,7 +42,7 @@ def active_window():
 			if window.getState().contains(pyatspi.STATE_ACTIVE):
 				return window
 
-# Print heirarchy tree.
+# Print hierarchy tree.
 def print_tree(level,root):
 	print ('%s-> %s' % (' ' * level, root))
 	for tree in root:	
