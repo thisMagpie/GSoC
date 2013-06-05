@@ -16,6 +16,9 @@
 # License along with this library; if not, write to the
 # Free Software Foundation, Inc., Franklin Street, Fifth Floor,
 # Boston MA  02110-1301 USA.
+#
+# A pyatspi2 example to demonstrate how to count the number of running 
+# Accessible applications on the desktop.
 
 import pyatspi
 
