@@ -16,6 +16,7 @@ const EndSessionDialog = imports.ui.endSessionDialog;
 const Environment = imports.ui.environment;
 const ExtensionSystem = imports.ui.extensionSystem;
 const ExtensionDownloader = imports.ui.extensionDownloader;
+const FocusCaretTracker = imports.ui.focusCaretTracker;
 const Keyboard = imports.ui.keyboard;
 const MessageTray = imports.ui.messageTray;
 const OsdWindow = imports.ui.osdWindow;
@@ -37,7 +38,6 @@ const WindowManager = imports.ui.windowManager;
 const Magnifier = imports.ui.magnifier;
 const XdndHandler = imports.ui.xdndHandler;
 const Util = imports.misc.util;
-const FocusCaretTracker = imports.ui.focusCaretTracker;
 
 const DEFAULT_BACKGROUND_COLOR = Clutter.Color.from_pixel(0x2e3436ff);
 
@@ -72,6 +72,7 @@ let _startDate;
 let _defaultCssStylesheet = null;
 let _cssStylesheet = null;
 let _a11ySettings = null;
+let dynamicWorkspacesSchema = null;
 let focusCaretTracker = null;
 
 function _sessionUpdated() {
@@ -110,12 +111,24 @@ function start() {
 
 function _sessionsLoaded() {
     sessionMode.connect('updated', _sessionUpdated);
+    _initializePrefs();
     _initializeUI();
 
     shellDBusService = new ShellDBus.GnomeShell();
     shellMountOpDBusService = new ShellMountOperation.GnomeShellMountOpHandler();
 
     _sessionUpdated();
+}
+
+function _initializePrefs() {
+    let keys = new Gio.Settings({ schema: sessionMode.overridesSchema }).list_keys();
+    for (let i = 0; i < keys.length; i++)
+        Meta.prefs_override_preference_schema(keys[i], sessionMode.overridesSchema);
+
+    if (keys.indexOf('dynamic-workspaces') > -1)
+        dynamicWorkspacesSchema = sessionMode.overridesSchema;
+    else
+        dynamicWorkspacesSchema = 'org.gnome.mutter';
 }
 
 function _initializeUI() {
@@ -144,12 +157,11 @@ function _initializeUI() {
     ctrlAltTabManager = new CtrlAltTab.CtrlAltTabManager();
     osdWindow = new OsdWindow.OsdWindow();
     overview = new Overview.Overview();
-    focusCaretTracker = new FocusCaretTracker.FocusCaretTracker();
     wm = new WindowManager.WindowManager();
     magnifier = new Magnifier.Magnifier();
     if (LoginManager.canLock())
         screenShield = new ScreenShield.ScreenShield();
-
+	focusCaretTracker = new FocusCaretTracker.FocusCaretTracker();
     panel = new Panel.Panel();
     messageTray = new MessageTray.MessageTray();
     keyboard = new Keyboard.Keyboard();
