@@ -1,6 +1,6 @@
 /* -*- mode: js2; js2-basic-offset: 4; indent-tabs-mode: nil -*- */
 /*
- * Copyright 2012 Inclusive Design Research Centre, OCAD University.
+ * Copyright 2013 Inclusive Design Research Centre, OCAD University.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -29,16 +29,15 @@ const TRACKING_MODES = ['none', 'centered', 'proportional', 'push'];
 const FOCUS_TRACKING_DEFAULT = 'centered';
 const CARET_TRACKING_DEFAULT = 'centered';
 
-let _atspiCB = null;
+let _atspiCallback = null;
 
 const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
 
     _init: function() {
         Atspi.init();
-
-        _atspiCB = Lang.bind(this, this._focusCaretChanged);
-        this._atspiListener = Atspi.EventListener.new(_atspiCB);
+        _atspiCallback = Lang.bind(this, this._changed);
+        this._atspiListener = Atspi.EventListener.new(_atspiCallback);
         this._trackingFocus = false;
         this._trackingCaret = false;
     },
@@ -60,11 +59,14 @@ const FocusCaretTracker = new Lang.Class({
      * @return: Whether tracking was successfully established (boolean).
      */
     startTrackingFocus: function() {
-        if (this._trackingFocus)
+		
+        if (this._trackingFocus) {
             return true;
+		}
 
         let focusRegistered = false;
         let selectRegistered = false;
+        
         try {
             focusRegistered = this._atspiListener.register(
                 'object:state-changed:focused'
@@ -89,11 +91,13 @@ const FocusCaretTracker = new Lang.Class({
      * @return: Whether tracking was successfully disabled (boolean).
      */
     stopTrackingFocus: function() {
-        if (!this._trackingFocus)
+		
+        if (!this._trackingFocus) {
             return true;
-
+		}
         let focusDeregistered = false;
         let selectDeregistered = false;
+        
         try {
             focusDeregistered = this._atspiListener.deregister(
                 'object:state-changed:focused'
@@ -125,10 +129,12 @@ const FocusCaretTracker = new Lang.Class({
      * @return: Whether tracking was successfully established (boolean).
      */
     startTrackingCaret: function() {
-        if (this._trackingCaret)
+		
+        if (this._trackingCaret) {
             return true;
-
+		}
         let registered = false;
+        
         try {
             registered = this._atspiListener.register(
                 'object:text-caret-moved'
@@ -148,10 +154,12 @@ const FocusCaretTracker = new Lang.Class({
      * @return: Whether tracking was successfully disabled (boolean).
      */
     stopTrackingCaret: function() {
-        if (!this._trackingCaret)
+		
+        if (!this._trackingCaret){
             return true;
-
+		}
         let deregistered = false;
+        
         if (this._atspiListener) {
             try {
                 deregistered = this._atspiListener.deregister(
@@ -175,27 +183,36 @@ const FocusCaretTracker = new Lang.Class({
         return this._trackingCaret;
     },
 
-    _focusCaretChanged: function(event) {
-        log('FocusCaretTracker._focusCaretChanged(' + event.type + ',' + event.detail1 + ')');
-        if (event.type == 'object:text-caret-moved')
+    _changed: function(event) {
+        log('FocusCaretTracker._changed(' + event.type + ',' + event.detail1 + ')');
+        
+        if (event.type == 'object:text-caret-moved') {
             this.emit('caret-changed', event);
+		}
 
         else if (event.type == 'object:state-changed:focused' ||
-                 event.type == 'object:state-changed:selected')
+                 event.type == 'object:state-changed:selected'){
             this.emit('focus-changed', event);
+		}
     }
 });
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-// For debugging.
-// Given a FocusCaretTracker instance, 'ft', then, e.g.,
-// ft.connect('focus-changed', onFocus);
+// For debugging. Can call with:
+// Main.focusCaretTracker.connect('focus-changed', Main.focusCaretTracker.onFocus);
 function onFocus(caller, event) {
+	
     log ('<caller> ' + caller);
     log ('<event> ' + event.type);
     let acc = event.source;
+    
     if (acc) {
 		log ('accessible: <' + acc.get_name() + '>');
+		let comp = acc.get_component_iface();
+		if (comp) {
+			extents = comp.get_extents(Atspi.CoordType.SCREEN);
+			log ('extents: <' + extents.x + ',' + extents.y + ',' + extents.width + ',' + extents.height + '>');
+		}
     }
     else {
 		log ('no accessible');
