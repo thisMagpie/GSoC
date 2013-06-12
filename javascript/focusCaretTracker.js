@@ -18,7 +18,7 @@
  * Author:
  *   Joseph Scheuhammer <clown@alum.mit.edu>
  */
-
+ 
 const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
 const Signals = imports.signals;
@@ -177,7 +177,7 @@ const FocusCaretTracker = new Lang.Class({
     /**
      * isCaretTracking
      * Report whether caret tracking is enabled.
-     * @return:     Boolean.
+     * @return: Boolean.
      */
     isTrackingCaret: function() {
         return this._trackingCaret;
@@ -219,29 +219,18 @@ function onFocus(caller, event) {
 		else{
 			log('Some other mystery \n');
 		}
-
-		// Check the accessible has a role.	
-		try{						
-			log ('<role> ' + acc.get_role_name());
+		try{
+			let comp = acc.get_component_iface();			
+			if (comp) {
+				let extents = comp.get_extents(Atspi.CoordType.SCREEN);
+				log ('<extents> (x='+extents.x+',y='+extents.y+') [' + extents.width + ',' + extents.height + ']');
+				log ('<parent>  = ' + acc.get_parent().get_name());
+			}
 		}
 		catch(err){
-			log ('The exception is caused by get_role_name() ')
+			log ('This exception is caused by get_component_iface() ');
 			log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
-		}
-		// Query the accessible Component interface 
-		let comp = acc.get_component_iface();			
-		if (comp) {
-			if (comp!='') {
-				let extents = comp.get_extents(Atspi.CoordType.SCREEN);
-				log ('Box: [' + extents.width + ',' + extents.height + ']');
-				log ('Accessible at (x='+extents.x+',y='+extents.y+') = ' + comp.get_accessible_at_point(extents.x,extents.y,Atspi.CoordType.SCREEN));
-			}
-			else{
-				log ('component is empty string');
-			}
-		}
-		else{
-			log ('no component ');		
+			
 		}
 	}			
     else {
