@@ -56,7 +56,7 @@ const FocusCaretTracker = new Lang.Class({
     /**
      * startTrackingFocus:
      * Enable focus tracking.
-     * @return: Whether tracking was successfully established (boolean).
+     * @return: Boolean.
      */
     startTrackingFocus: function() {
 		
@@ -88,7 +88,7 @@ const FocusCaretTracker = new Lang.Class({
     /**
      * stopTrackingFocus:
      * Disable focus tracking
-     * @return: Whether tracking was successfully disabled (boolean).
+     * @return: Boolean.
      */
     stopTrackingFocus: function() {
 		
@@ -117,7 +117,7 @@ const FocusCaretTracker = new Lang.Class({
     /**
      * isTrackingFocus
      * Report whether focus tracking is enabled.
-     * @return:     Boolean.
+     * @return: Boolean.
      */
     isTrackingFocus: function() {
         return this._trackingFocus;
@@ -126,7 +126,7 @@ const FocusCaretTracker = new Lang.Class({
     /**
      * startCaretTracking:
      * Enable caret tracking
-     * @return: Whether tracking was successfully established (boolean).
+     * @return: Boolean.
      */
     startTrackingCaret: function() {
 		
@@ -151,7 +151,7 @@ const FocusCaretTracker = new Lang.Class({
     /**
      * stopCaretTracking:
      * Disable caret tracking
-     * @return: Whether tracking was successfully disabled (boolean).
+     * @return: Boolean.
      */
     stopTrackingCaret: function() {
 		
@@ -207,25 +207,19 @@ function onFocus(caller, event) {
     
     // Check there is an accessible object
     if (acc) {
+		log ('<contructor>' + new acc.constructor());
+		let name = acc.get_name();
 		
-		try {
-			log ('<contructor>' + new acc.constructor());
-			let name = acc.get_name();
+		if (name!='') {
+			log ('<accessible> : ' + name);
+		}
+		else if(name=='') {
+			log('<accessible> ' +'is empty string ' + name);	
+		}
+		else{
+			log('Some other mystery \n');
+		}
 
-			if (name!='') {
-				log ('<accessible> : ' + name);
-			}
-			else if(name=='') {
-				log('<accessible> ' +'is empty string ' + name);	
-			}
-			else{
-				log('Some other mystery is afoot \n');
-			}
-		}
-		catch(err){
-			log ('The exception is caused by get_name() ')
-			log ('Log 1: ' + err.name + ' ' + err.message +'\nGjs-Message: JS LOG: ' + err);
-		}
 		// Check the accessible has a role.	
 		try{						
 			log ('<role> ' + acc.get_role_name());
@@ -234,19 +228,20 @@ function onFocus(caller, event) {
 			log ('The exception is caused by get_role_name() ')
 			log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
 		}
-		// Query the accessible component interface 
+		// Query the accessible Component interface 
 		let comp = acc.get_component_iface();			
 		if (comp) {
 			if (comp!='') {
 				let extents = comp.get_extents(Atspi.CoordType.SCREEN);
-				log ('extents: <' + extents.x + ',' + extents.y + ',' + extents.width + ',' + extents.height + '>');
+				log ('Box: [' + extents.width + ',' + extents.height + ']');
+				log ('Accessible at (x='+extents.x+',y='+extents.y+') = ' + acc.get_accessible_at_point(extents.x,extents.y,Atspi.CoordType.SCREEN));
 			}
 			else{
 				log ('component is empty string');
 			}
 		}
 		else{
-			log ('no component ')		
+			log ('no component ');		
 		}
 	}			
     else {
