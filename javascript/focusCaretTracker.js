@@ -205,7 +205,9 @@ function onFocus(caller, event) {
     log ('<event> ' + event.type);
     let acc = event.source;  
     
+    // Check there is an accessible object
     if (acc) {
+		
 		try {
 			log ('<contructor>' + new acc.constructor());
 			let name = acc.get_name();
@@ -223,28 +225,31 @@ function onFocus(caller, event) {
 		catch(err){
 			log ('The exception is caused by get_name() ')
 			log ('Log 1: ' + err.name + ' ' + err.message +'\nGjs-Message: JS LOG: ' + err);
-		}	
-		try{				
+		}
+		// Check the accessible has a role.	
+		try{						
 			log ('<role> ' + acc.get_role_name());
 		}
 		catch(err){
 			log ('The exception is caused by get_role_name() ')
-			log ('Log 2:'+ ' ' + err.name + ' ' + err.message +'\nGjs-Message: JS LOG: ' + err);
+			log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
 		}
-		try{
-			let comp = acc.get_component_iface();			
-			if (comp) {
+		// Query the accessible component interface 
+		let comp = acc.get_component_iface();			
+		if (comp) {
+			if (comp!='') {
 				let extents = comp.get_extents(Atspi.CoordType.SCREEN);
 				log ('extents: <' + extents.x + ',' + extents.y + ',' + extents.width + ',' + extents.height + '>');
 			}
+			else{
+				log ('component is empty string');
+			}
 		}
-		catch(err){
-			log ('The exception is caused by get_component_iface() ');
-			log ('Log 3:'+ ' ' + err.name + ' ' + err.message +'\nGjs-Message: JS LOG: ' + err);		
-		}	
-    }
+		else{
+			log ('no component ')		
+		}
+	}			
     else {
 		log ('no accessible');
     }
 }
-
