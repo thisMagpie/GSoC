@@ -234,7 +234,7 @@ function onFocus(caller, event) {
 			if (comp!='') {
 				let extents = comp.get_extents(Atspi.CoordType.SCREEN);
 				log ('Box: [' + extents.width + ',' + extents.height + ']');
-				log ('Accessible at (x='+extents.x+',y='+extents.y+') = ' + acc.get_accessible_at_point(extents.x,extents.y,Atspi.CoordType.SCREEN));
+				log ('Accessible at (x='+extents.x+',y='+extents.y+') = ' + comp.get_accessible_at_point(extents.x,extents.y,Atspi.CoordType.SCREEN));
 			}
 			else{
 				log ('component is empty string');
