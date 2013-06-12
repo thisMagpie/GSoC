@@ -200,21 +200,51 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 
 // For debugging. Can call with:
 // Main.focusCaretTracker.connect('focus-changed', Main.focusCaretTracker.onFocus);
-function onFocus(caller, event) {
-	
+function onFocus(caller, event) {	
     log ('<caller> ' + caller);
     log ('<event> ' + event.type);
-    let acc = event.source;
+    let acc = event.source;  
     
     if (acc) {
-		log ('accessible: <' + acc.get_name() + '>');
-		let comp = acc.get_component_iface();
-		if (comp) {
-			extents = comp.get_extents(Atspi.CoordType.SCREEN);
-			log ('extents: <' + extents.x + ',' + extents.y + ',' + extents.width + ',' + extents.height + '>');
+		try {
+			log ('<contructor>' + new acc.constructor());
+			let name = acc.get_name();
+
+			if (name!='') {
+				log ('<accessible> : ' + name);
+			}
+			else if(name=='') {
+				log('<accessible> ' +'is empty string ' + name);	
+			}
+			else{
+				log('Some other mystery is afoot \n');
+			}
 		}
+		catch(err){
+			log ('The exception is caused by get_name() ')
+			log ('Log 1: ' + err.name + ' ' + err.message +'\nGjs-Message: JS LOG: ' + err);
+		}	
+		try{				
+			log ('<role> ' + acc.get_role_name());
+		}
+		catch(err){
+			log ('The exception is caused by get_role_name() ')
+			log ('Log 2:'+ ' ' + err.name + ' ' + err.message +'\nGjs-Message: JS LOG: ' + err);
+		}
+		try{
+			let comp = acc.get_component_iface();			
+			if (comp) {
+				let extents = comp.get_extents(Atspi.CoordType.SCREEN);
+				log ('extents: <' + extents.x + ',' + extents.y + ',' + extents.width + ',' + extents.height + '>');
+			}
+		}
+		catch(err){
+			log ('The exception is caused by get_component_iface() ');
+			log ('Log 3:'+ ' ' + err.name + ' ' + err.message +'\nGjs-Message: JS LOG: ' + err);		
+		}	
     }
     else {
 		log ('no accessible');
     }
 }
+
