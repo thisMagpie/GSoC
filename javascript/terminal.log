@@ -1,198 +1,204 @@
-Gjs-Message: JS LOG: Ignoring search provider /usr/share/gnome-shell/search-providers/org.fedoraproject.fedorapackages.search.ini: missing DesktopId
 Window manager warning: Log level 16: AT-SPI: Error in GetItems, sender=org.freedesktop.DBus, error=The name :1.0 was not provided by any .service files
 Gjs-Message: JS LOG: startTrackingFocus(): [true,true]
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f421f70 native@0x69ec980]
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: This exception is caused by get_role_name() 
-Gjs-Message: JS LOG: Exception name: undefined
-Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f425040 native@0x60f27b0]
-Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f4250d0 native@0x69ec910]
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: This exception is caused by get_role_name() 
-Gjs-Message: JS LOG: Exception name: undefined
-Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f425100 native@0x5a35eb0]
-Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f425160 native@0x69ec8a0]
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: This exception is caused by get_role_name() 
-Gjs-Message: JS LOG: Exception name: undefined
-Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f425190 native@0x5e66450]
-Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f4251f0 native@0x69ec830]
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: This exception is caused by get_role_name() 
-Gjs-Message: JS LOG: Exception name: undefined
-Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f425220 native@0x5bc0720]
-Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f4252e0 native@0x69e4340]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d4c825520 native@0x6285d10]
 Gjs-Message: JS LOG: <accessible> is empty string 
 Gjs-Message: JS LOG: This exception is caused by get_role_name() 
 Gjs-Message: JS LOG: Exception name: undefined
 Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f425310 native@0x7f24ac0012a0]
+Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f1d4c8255b0 native@0x6059760]
 Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
+Gjs-Message: JS LOG: END
 Window manager warning: Log level 16: AT-SPI: Error in GetItems, sender=(null), error=Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d4c846880 native@0x62f6320]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d4c8469d0 native@0x62f6490]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f42e1c0 native@0x69ecad0]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2da47af0 native@0x61b1a00]
 Gjs-Message: JS LOG: <accessible> is empty string 
 Gjs-Message: JS LOG: This exception is caused by get_role_name() 
 Gjs-Message: JS LOG: Exception name: undefined
 Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f42e1f0 native@0x502aa10]
+Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f1d2da47b20 native@0x6356c10]
 Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
+Gjs-Message: JS LOG: END
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f42e2b0 native@0x69eca60]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2da4b0d0 native@0x6d12a40]
 Gjs-Message: JS LOG: <accessible> is empty string 
 Gjs-Message: JS LOG: This exception is caused by get_role_name() 
 Gjs-Message: JS LOG: Exception name: undefined
 Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f42e2e0 native@0x5d6e090]
+Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f1d2da4b100 native@0x625b000]
 Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
+Gjs-Message: JS LOG: END
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2da4b160 native@0x6d12ab0]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2da4b1f0 native@0x6d12b20]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f42e3a0 native@0x69ec9f0]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2dacd6d0 native@0x6c8a480]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2dacd760 native@0x6d89dc0]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2daebbb0 native@0x5fe1660]
+Gjs-Message: JS LOG: <accessible> : GSoC/javascript/terminal.log at master · thisMagpie/GSoC · GitHub
+Gjs-Message: JS LOG: <role name> document frame
+Gjs-Message: JS LOG: <extents> (x=50,y=146) [1543,880]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2d918af0 native@0x6d91c30]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2d918b80 native@0x6d91ca0]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2d92ff70 native@0x6d90cf0]
+Gjs-Message: JS LOG: <accessible> : GSoC/javascript/terminal.log at master · thisMagpie/GSoC · GitHub
+Gjs-Message: JS LOG: <role name> document frame
+Gjs-Message: JS LOG: <extents> (x=50,y=146) [1543,880]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2d956d30 native@0x7153830]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2d956dc0 native@0x7159710]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2d9c7df0 native@0x705a350]
+Gjs-Message: JS LOG: <accessible> : GSoC/javascript/terminal.log at master · thisMagpie/GSoC · GitHub
+Gjs-Message: JS LOG: <role name> document frame
+Gjs-Message: JS LOG: <extents> (x=50,y=146) [1543,880]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2d9f1c70 native@0x5c79080]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d2d9f1d00 native@0x5c79160]
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d4c1144f0 native@0x724b8e0]
 Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: This exception is caused by get_role_name() 
-Gjs-Message: JS LOG: Exception name: undefined
-Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f42e3d0 native@0x5d6df40]
-Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f42e460 native@0x69ecb40]
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <role name> terminal
-Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
-END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f42e5b0 native@0x69eb4b0]
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <role name> terminal
-Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
-END OF MESSAGE
+Gjs-Message: JS LOG: <role name> panel
+Gjs-Message: JS LOG: <extents> (x=300,y=293) [1608,551]
+Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f45c220 native@0x6bafcf0]
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: This exception is caused by get_role_name() 
-Gjs-Message: JS LOG: Exception name: undefined
-Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f45c250 native@0x6bfa260]
-Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f45c790 native@0x6bc0e30]
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: This exception is caused by get_role_name() 
-Gjs-Message: JS LOG: Exception name: undefined
-Gjs-Message: JS LOG: Exception message: timeout from dbind
-Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f248f45c7c0 native@0x6bcfb10]
-Gjs-Message: JS LOG: no component 
-                 END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f45c820 native@0x6bc0ea0]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d4c114640 native@0x72a5c00]
 Gjs-Message: JS LOG: <accessible> : Terminal
 Gjs-Message: JS LOG: <role name> terminal
-Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
-END OF MESSAGE
+Gjs-Message: JS LOG: <extents> (x=301,y=856) [1591,190]
+Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f45c8b0 native@0x6bc0f10]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d4c1146d0 native@0x72a5c70]
 Gjs-Message: JS LOG: <accessible> : Terminal
 Gjs-Message: JS LOG: <role name> terminal
-Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
-END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: <extents> (x=301,y=856) [1591,190]
+Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f4d4970 native@0x6edc040]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f1d4c114760 native@0x72a5ce0]
 Gjs-Message: JS LOG: <accessible> : Terminal
 Gjs-Message: JS LOG: <role name> terminal
-Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
-END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f4d4a00 native@0x6ebf340]
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <role name> terminal
-Gjs-Message: JS LOG: <extents> (x=1,y=103) [882,506]
-END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f4efe50 native@0x5e3d4a0]
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <role name> terminal
-Gjs-Message: JS LOG: <extents> (x=763,y=712) [964,162]
-END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f4efee0 native@0x6ed2e00]
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <role name> terminal
-Gjs-Message: JS LOG: <extents> (x=763,y=712) [964,162]
-END OF MESSAGE
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused
-Gjs-Message: JS LOG: <contructor>[object instance proxy GIName:Atspi.Accessible jsobj@0x7f248f4effd0 native@0x6ed2e70]
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <role name> terminal
-Gjs-Message: JS LOG: <extents> (x=763,y=712) [964,162]
-END OF MESSAGE
+Gjs-Message: JS LOG: <extents> (x=301,y=856) [1591,190]
+Gjs-Message: JS LOG: END 
