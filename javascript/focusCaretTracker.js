@@ -58,8 +58,8 @@ const FocusCaretTracker = new Lang.Class({
      * Enable focus tracking.
      * @return: Boolean.
      */
-    startTrackingFocus: function() {
-		
+    startTrackingFocus: function() {	
+    	
         if (this._trackingFocus) {
             return true;
 		}
@@ -91,7 +91,7 @@ const FocusCaretTracker = new Lang.Class({
      * @return: Boolean.
      */
     stopTrackingFocus: function() {
-		
+    	
         if (!this._trackingFocus) {
             return true;
 		}
@@ -129,7 +129,7 @@ const FocusCaretTracker = new Lang.Class({
      * @return: Boolean.
      */
     startTrackingCaret: function() {
-		
+    	
         if (this._trackingCaret) {
             return true;
 		}
@@ -154,7 +154,7 @@ const FocusCaretTracker = new Lang.Class({
      * @return: Boolean.
      */
     stopTrackingCaret: function() {
-		
+    	
         if (!this._trackingCaret){
             return true;
 		}
@@ -189,9 +189,8 @@ const FocusCaretTracker = new Lang.Class({
         if (event.type == 'object:text-caret-moved') {
             this.emit('caret-changed', event);
 		}
-
-        else if (event.type == 'object:state-changed:focused' ||
-                 event.type == 'object:state-changed:selected'){
+        else if (event.type == 'object:state-changed:focused' && event.detail1==1 ||
+                 event.type == 'object:state-changed:selected' && event.detail1==1 ){
             this.emit('focus-changed', event);
 		}
     }
@@ -203,37 +202,46 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 function onFocus(caller, event) {	
     log ('<caller> ' + caller);
     log ('<event> ' + event.type);
-    let acc = event.source;  
     
-    // Check there is an accessible object
-    if (acc) {
-		log ('<contructor>' + new acc.constructor());
-		let name = acc.get_name();
+    if(event.type!='object:state-change:defunct') {
 		
-		if (name!='') {
-			log ('<accessible> : ' + name);
-		}
-		else if(name=='') {
-			log('<accessible> ' +'is empty string ' + name);	
-		}
-		else{
-			log('Some other mystery \n');
-		}
-		try{
-			let comp = acc.get_component_iface();			
+		let acc = event.source;  	
+		// Check there is an accessible object
+		if (acc) {
+			log ('<contructor>' + new acc.constructor());
+			let name = acc.get_name();
+			
+			if (name!='') {
+				log ('<accessible> : ' + name);
+			}
+			else if(name=='') {
+				log('<accessible> ' +'is empty string ' + name);	
+			}
+			else{
+				log('Some other mystery \n');
+			}
+			try{
+				log ('<role name> ' + acc.get_role_name());					
+			}
+			catch(err){
+				log ('This exception is caused by get_role_name() ');
+				log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
+			}
+			let comp = acc.get_component_iface();	
+					
 			if (comp) {
 				let extents = comp.get_extents(Atspi.CoordType.SCREEN);
-				log ('<extents> (x='+extents.x+',y='+extents.y+') [' + extents.width + ',' + extents.height + ']');
-				log ('<parent>  = ' + acc.get_parent().get_name());
+				log ('<extents> (x='+extents.x+',y='+extents.y+') [' + extents.width + ',' + extents.height + ']\nEND OF MESSAGE');
 			}
+			else{
+				log ('no component \n                 END OF MESSAGE');
+			}
+		}			
+		else {
+			log ('no accessible \n                END OF MESSAGE');
 		}
-		catch(err){
-			log ('This exception is caused by get_component_iface() ');
-			log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
-			
-		}
-	}			
-    else {
-		log ('no accessible');
-    }
+	}
+	else{
+		log ('accessible defunct \n         END OF MESSAGE\n');
+	}
 }
