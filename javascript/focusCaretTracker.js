@@ -186,11 +186,11 @@ const FocusCaretTracker = new Lang.Class({
     _changed: function(event) {
         log('FocusCaretTracker._changed(' + event.type + ',' + event.detail1 + ')');
         
-        if (event.type == 'object:text-caret-moved') {
+      /*  if (event.type == 'object:text-caret-moved') {
             this.emit('caret-changed', event);
-		}
-        else if (event.type == 'object:state-changed:focused' && event.detail1==1 ||
-                 event.type == 'object:state-changed:selected' && event.detail1==1 ){
+		}*/
+        if ( (event.type == 'object:state-changed:focused' ||
+                 event.type == 'object:state-changed:selected') && event.detail1==1 ){
             this.emit('focus-changed', event);
 		}
     }
@@ -201,47 +201,49 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 // Main.focusCaretTracker.connect('focus-changed', Main.focusCaretTracker.onFocus);
 function onFocus(caller, event) {	
     log ('<caller> ' + caller);
-    log ('<event> ' + event.type);
+    log ('<event> ' + event.type + ',' + event.detail1);
     
     if(event.type!='object:state-change:defunct') {
+		if(event.detail1==1) {
 		
-		let acc = event.source;  	
-		// Check there is an accessible object
-		if (acc) {
-			log ('<contructor>' + new acc.constructor());
-			let name = acc.get_name();
-			
-			if (name!='') {
-				log ('<accessible> : ' + name);
+			let acc = event.source;  	
+			// Check there is an accessible object
+			if (acc) {
+				log ('<contructor>' + new acc.constructor());
+				let name = acc.get_name();
+				
+				if (name!='') {
+					log ('<accessible> : ' + name);
+				}
+				else if(name=='') {
+					log('<accessible> ' +'is empty string ' + name);	
+				}
+				else{
+					log('Some other mystery \n');
+				}
+				try{
+					log ('<role name> ' + acc.get_role_name());					
+				}
+				catch(err){
+					log ('This exception is caused by get_role_name() ');
+					log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
+				}
+				let comp = acc.get_component_iface();	
+						
+				if (comp) {
+					let extents = comp.get_extents(Atspi.CoordType.SCREEN);
+					log ('<extents> (x='+extents.x+',y='+extents.y+') [' + extents.width + ',' + extents.height + ']\nEND OF MESSAGE');
+				}
+				else{
+					log ('no component \n                 END OF MESSAGE');
+				}
+			}			
+			else {
+				log ('no accessible \n                END OF MESSAGE');
 			}
-			else if(name=='') {
-				log('<accessible> ' +'is empty string ' + name);	
-			}
-			else{
-				log('Some other mystery \n');
-			}
-			try{
-				log ('<role name> ' + acc.get_role_name());					
-			}
-			catch(err){
-				log ('This exception is caused by get_role_name() ');
-				log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
-			}
-			let comp = acc.get_component_iface();	
-					
-			if (comp) {
-				let extents = comp.get_extents(Atspi.CoordType.SCREEN);
-				log ('<extents> (x='+extents.x+',y='+extents.y+') [' + extents.width + ',' + extents.height + ']\nEND OF MESSAGE');
-			}
-			else{
-				log ('no component \n                 END OF MESSAGE');
-			}
-		}			
-		else {
-			log ('no accessible \n                END OF MESSAGE');
 		}
-	}
-	else{
-		log ('accessible defunct \n         END OF MESSAGE\n');
+		else{
+			log ('accessible defunct \n         END OF MESSAGE\n');
+		}
 	}
 }
