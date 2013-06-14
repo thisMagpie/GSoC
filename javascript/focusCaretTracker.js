@@ -22,7 +22,6 @@
 const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
 const Signals = imports.signals;
-
 // Move these to GS-Mag/GSettings
 // Note: TRACKING_MODES are the same values as for mouse tracking modes,
 const TRACKING_MODES = ['none', 'centered', 'proportional', 'push'];
@@ -36,10 +35,11 @@ const FocusCaretTracker = new Lang.Class({
 
     _init: function() {
         Atspi.init();
+           
         _atspiCallback = Lang.bind(this, this._changed);
         this._atspiListener = Atspi.EventListener.new(_atspiCallback);
         this._trackingFocus = false;
-        this._trackingCaret = false;
+        this._trackingCaret = false;  
     },
 
     /**
@@ -52,13 +52,19 @@ const FocusCaretTracker = new Lang.Class({
         this.stopTrackingCaret();
         this.disconnectAll();
     },
+ 
+
+    _update: function() {
+        this._showFrame(this._frame + 1);
+        return true;
+    },
 
     /**
      * startTrackingFocus:
      * Enable focus tracking.
      * @return: Boolean.
      */
-    startTrackingFocus: function() {	
+    registerAtspiFocusEvents: function() {	
     	
         if (this._trackingFocus) {
             return true;
@@ -69,7 +75,7 @@ const FocusCaretTracker = new Lang.Class({
         
         try {
             focusRegistered = this._atspiListener.register(
-                'object:state-changed:focused'
+                'object:state-changed:focused'            
             );
             selectRegistered = this._atspiListener.register(
                 'object:state-changed:selected'
@@ -77,9 +83,10 @@ const FocusCaretTracker = new Lang.Class({
             log('startTrackingFocus(): [' + focusRegistered + ',' + selectRegistered + ']');
         }
         catch (err) {
+			log(err);
             focusRegistered = false;
             selectRegistered = false;
-            log(err);
+
         }
         this._trackingFocus = focusRegistered;
         return this._trackingFocus;
@@ -90,7 +97,7 @@ const FocusCaretTracker = new Lang.Class({
      * Disable focus tracking
      * @return: Boolean.
      */
-    stopTrackingFocus: function() {
+    deregisterAtspiFocusEvents: function() {
     	
         if (!this._trackingFocus) {
             return true;
@@ -110,7 +117,7 @@ const FocusCaretTracker = new Lang.Class({
         catch (err) {
             log(err);
         }
-        this._trackingFocus = !(focusDeregistered && selectDeregistered);
+        this._trackingFocus = !(focusDeregistered || selectDeregistered);
         return this._trackingFocus;
     },
 
@@ -119,7 +126,7 @@ const FocusCaretTracker = new Lang.Class({
      * Report whether focus tracking is enabled.
      * @return: Boolean.
      */
-    isTrackingFocus: function() {
+    isRegisteringAtspiFocus: function() {
         return this._trackingFocus;
     },
 
@@ -128,7 +135,7 @@ const FocusCaretTracker = new Lang.Class({
      * Enable caret tracking
      * @return: Boolean.
      */
-    startTrackingCaret: function() {
+    registerAtspiCaretEvents: function() {
     	
         if (this._trackingCaret) {
             return true;
@@ -153,7 +160,7 @@ const FocusCaretTracker = new Lang.Class({
      * Disable caret tracking
      * @return: Boolean.
      */
-    stopTrackingCaret: function() {
+    deregisterAtspiCaretEvents: function() {
     	
         if (!this._trackingCaret){
             return true;
@@ -179,65 +186,63 @@ const FocusCaretTracker = new Lang.Class({
      * Report whether caret tracking is enabled.
      * @return: Boolean.
      */
-    isTrackingCaret: function() {
+    isRegisteringAtspiCaret: function() {
         return this._trackingCaret;
     },
 
     _changed: function(event) {
-        log('FocusCaretTracker._changed(' + event.type + ',' + event.detail1 + ')');
         
-        if (event.type == 'object:text-caret-moved') {
-            this.emit('caret-changed', event);
+        
+        if (event.type == 'object:state-changed:focused' && event.detail1){//TODO put selected in later
+            this.emit('focused', event);
+            log('FocusCaretTracker._changed(' + event.type + ',' + event.detail1 + ')');
 		}
-        if (event.type == 'object:state-changed:focused' && event.detail1==1 ){//TODO change later
-            this.emit('object:state-changed:focused', event);
+		if (event.type == 'object:text-caret-moved') {
+            this.emit('caret-changed', event);
 		}
     }
 });
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-// For debugging. Can call with:
-// Main.focusCaretTracker.connect('focus-changed', Main.focusCaretTracker.onFocus);
+// For debugging. 
 function onFocus(caller, event) {	
     log ('<caller> ' + caller);
     log ('<event> ' + event.type + ',' + event.detail1);
   
-	if(event.detail1==1) {
+	if(event.type=="object:state-changed:focused" && !event.detail1){
+		return;
+	}
+	
+	let acc = event.source;  	
+	// Check there is an accessible object
+	if (acc) {
+		log ('<contructor>' + new acc.constructor());
+		let name = acc.get_name();
 		
-		let acc = event.source;  	
-		// Check there is an accessible object
-		if (acc) {
-			log ('<contructor>' + new acc.constructor());
-			let name = acc.get_name();
-			
-			if (name!='') {
-				log ('<accessible> : ' + name);
-			}
-			else if(name=='') {
-				log('<accessible> ' +'is empty string ' + name);	
-			}
-			try{
-				log ('<role name> ' + acc.get_role_name());					
-			}
-			catch(err){
-				log ('This exception is caused by get_role_name() ');
-				log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
-			}
-			let comp = acc.get_component_iface();	
-					
-			if (comp) {
-				let extents = comp.get_extents(Atspi.CoordType.SCREEN);
-				log ('<extents> (x='+extents.x+',y='+extents.y+') [' + extents.width + ',' + extents.height + ']\nGjs-Message: JS LOG: END ');
-			}
-			else{
-				log ('no component \nGjs-Message: JS LOG: END');
-			}
-		}			
-		else {
-			log ('no accessible \nGjs-Message: JS LOG:  END: no accessible\n');
-		}		
-	}
-	else{
-		log (event.detail1 + '\n');
-	}
+		if (name!='') {
+			log ('<accessible> : ' + name);
+		}
+		else if(name=='') {
+			log('<accessible> ' +'is empty string ' + name);	
+		}
+/*		try{
+			log ('<role name> ' + acc.get_role_get_name());					
+		}
+		catch(err){
+			log ('This exception is caused by get_role_name() ');
+			log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
+		}*/ //TODO put back
+		let comp = acc.get_component_iface();	
+				
+		if (comp) {
+			let extents = comp.get_extents(Atspi.CoordType.SCREEN);
+			log ('<extents> (x='+extents.x+',y='+extents.y+') [' + extents.width + ',' + extents.height + ']\nGjs-Message: JS LOG: END ');
+		}
+		else{
+			log ('no component \nGjs-Message: JS LOG: END');
+		}
+	}			
+	else {
+		log ('no accessible \nGjs-Message: JS LOG:  END: no accessible\n');
+	}		
 }
