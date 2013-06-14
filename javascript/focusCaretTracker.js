@@ -204,7 +204,7 @@ const FocusCaretTracker = new Lang.Class({
 });
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-// For debugging. 
+/// For debugging. 
 function onFocus(caller, event) {
 	
 	if (event.type.indexOf("object:state-changed:") == 0 && !event.detail1) {
