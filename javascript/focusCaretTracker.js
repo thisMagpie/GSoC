@@ -207,8 +207,9 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 // For debugging. 
 function onFocus(caller, event) {
 	
-	if (event.type.indexOf("object:state-changed:") == 0 && !event.detail1) {
-		log ('Useless focus event ');
+	if (event.type.indexOf("object:state-changed:") == 0 && event.detail1!=1) {
+		log ('\nGjs-Message: JS LOG: This focus event is of no interest to us ');
+		log ('\nGjs-Message: JS LOG: END ');
 		return;
 	}
 		
