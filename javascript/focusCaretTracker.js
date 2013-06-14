@@ -193,7 +193,7 @@ const FocusCaretTracker = new Lang.Class({
     _changed: function(event) {
         
         
-        if (event.type == 'object:state-changed:focused' && event.detail1){//TODO put selected in later
+        if (event.type == 'object:state-changed:focused'){//TODO put selected in later
             this.emit('focused', event);
             log('FocusCaretTracker._changed(' + event.type + ',' + event.detail1 + ')');
 		}
@@ -205,16 +205,16 @@ const FocusCaretTracker = new Lang.Class({
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
 // For debugging. 
-function onFocus(caller, event) {	
-    log ('<caller> ' + caller);
-    log ('<event> ' + event.type + ',' + event.detail1);
-
-	if (event.type.indexOf("object:state-changed:") == 0) {
+function onFocus(caller, event) {
+	
+	if (event.type.indexOf("object:state-changed:") == 0 && !event.detail1) {
 		return;
 	}
-	
+		
+    log ('<caller> ' + caller);
+    log ('<event> ' + event.type + ',' + event.detail1);	
 	let acc = event.source;  	
-	// Check there is an accessible object
+
 	if (acc) {
 		log ('<contructor>' + acc.constructor);
 		let name = acc.get_name();
@@ -225,7 +225,7 @@ function onFocus(caller, event) {
 		else if(name=='') {
 			log('<accessible> ' +'is empty string ' + name);	
 		}
-	/*		try{
+/*		try{
 			log ('<role name> ' + acc.get_role_get_name());					
 		}
 		catch(err){
