@@ -1,9 +1,6 @@
 Gjs-Message: JS LOG: Ignoring search provider /usr/share/gnome-shell/search-providers/org.fedoraproject.fedorapackages.search.ini: missing DesktopId
-Window manager warning: Log level 16: AT-SPI: Error in GetItems, sender=org.freedesktop.DBus, error=The name :1.0 was not provided by any .service files
 Gjs-Message: JS LOG: startTrackingFocus(): [true,true]
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -12,17 +9,23 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> is empty string 
+Gjs-Message: JS LOG: This exception is caused by get_role_name() 
+Gjs-Message: JS LOG: Exception name: undefined
+Gjs-Message: JS LOG: Exception message: timeout from dbind
+Gjs-Message: JS LOG: [boxed instance proxy GIName:GLib.Error jsobj@0x7f68c42265b0 native@0x4f82540]
 Gjs-Message: JS LOG: no component 
 Gjs-Message: JS LOG: END
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Window manager warning: Log level 16: AT-SPI: Error in GetItems, sender=(null), error=Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+Gjs-Message: JS LOG: pushModal: invocation of begin_modal failed
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
 Gjs-Message: JS LOG: <event> object:state-changed:focused,1
 Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=12,y=86) [722,434]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -31,22 +34,92 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=12,y=86) [722,434]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=12,y=86) [722,434]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=12,y=86) [722,434]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: Focus lost 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: Focus lost 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=12,y=86) [722,434]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=12,y=86) [722,434]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: Focus lost 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: Focus lost 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=12,y=86) [722,434]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <accessible> : Terminal
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=12,y=86) [722,434]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: Focus lost 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -55,12 +128,24 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
+Gjs-Message: JS LOG: <role name> panel
+Gjs-Message: JS LOG: <extents> (x=265,y=163) [1608,556]
+Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: Focus lost 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <accessible> : Compiler
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> (x=176,y=765) [64,21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -69,35 +154,11 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <extents> (x=248,y=730) [1623,204]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -106,7 +167,8 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=249,y=731) [1608,202]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -115,40 +177,8 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: <extents> (x=703,y=646) [760,32]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=249,y=731) [1608,202]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -157,22 +187,17 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=249,y=731) [1608,202]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -180,64 +205,12 @@ Gjs-Message: JS LOG: <event> object:state-changed:focused,1
 Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <accessible> : Compiler
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> (x=176,y=765) [64,21]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: <extents> (x=703,y=646) [760,32]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
+Gjs-Message: JS LOG: Focus lost 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -246,7 +219,8 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=249,y=731) [1608,202]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -255,54 +229,8 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=249,y=731) [1608,202]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -311,335 +239,7 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
+Gjs-Message: JS LOG: <role name> terminal
+Gjs-Message: JS LOG: <extents> (x=249,y=731) [1608,202]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : GSoC/javascript/focusCaretTracker.js at master · thisMagpie/GSoC · GitHub
-Gjs-Message: JS LOG: <extents> (x=283,y=146) [1274,881]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Pink Floyd - Comfortably Numb [HD] - YouTube
-Gjs-Message: JS LOG: <extents> (x=283,y=146) [1274,881]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : GSoC/javascript/focusCaretTracker.js at master · thisMagpie/GSoC · GitHub
-Gjs-Message: JS LOG: <extents> (x=283,y=146) [1274,881]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=235,y=750) [1588,190]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=235,y=750) [1588,190]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=235,y=750) [1588,190]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=235,y=750) [1588,190]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=235,y=750) [1588,190]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=235,y=750) [1588,190]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> is empty string 
-Gjs-Message: JS LOG: no component 
-Gjs-Message: JS LOG: END
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=205,y=103) [1520,443]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=235,y=750) [1588,190]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=235,y=750) [1588,190]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
-Gjs-Message: JS LOG: <event> object:state-changed:focused,1
-Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
-    [native code]
-}
-Gjs-Message: JS LOG: <accessible> : Terminal
-Gjs-Message: JS LOG: <extents> (x=235,y=750) [1588,190]
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,1)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
-Gjs-Message: JS LOG: FocusCaretTracker._changed(object:state-changed:focused,0)
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: This focus event is of no interest to us 
-Gjs-Message: JS LOG: 
-Gjs-Message: JS LOG: END 
