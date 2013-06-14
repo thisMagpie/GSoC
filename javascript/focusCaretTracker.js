@@ -1,6 +1,6 @@
 /* -*- mode: js2; js2-basic-offset: 4; indent-tabs-mode: nil -*- */
 /*
- * Copyright 2013 Inclusive Design Research Centre, OCAD University.
+ * Copyright 2012-2013 Inclusive Design Research Centre, OCAD University.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,6 +17,8 @@
  *
  * Author:
  *   Joseph Scheuhammer <clown@alum.mit.edu>
+ * Contributor: 
+ *   Magdalen Berns <thismagpie@live.com>
  */
  
 const Atspi = imports.gi.Atspi;
@@ -207,9 +209,9 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 // For debugging. 
 function onFocus(caller, event) {
 	
-	if (event.type.indexOf("object:state-changed:") == 0 && event.detail1!=1) {
-		log ('\nGjs-Message: JS LOG: This focus event is of no interest to us ');
-		log ('\nGjs-Message: JS LOG: END ');
+	if (event.type.startsWith("object:state-changed:") && event.detail1!=1) {
+		log ('Focus lost ');
+		log ('END ');
 		return;
 	}
 		
@@ -225,15 +227,15 @@ function onFocus(caller, event) {
 			log ('<accessible> : ' + name);
 		}
 		else if(name=='') {
-			log('<accessible> ' +'is empty string ' + name);	
+			log('<accessible> ' + 'is empty string ' + name);	
 		}
-/*		try{
-			log ('<role name> ' + acc.get_role_get_name());					
+		try{
+			log ('<role name> ' + acc.get_role_name());					
 		}
 		catch(err){
 			log ('This exception is caused by get_role_name() ');
 			log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
-		}*/ //TODO put back
+		} //TODO put back
 		let comp = acc.get_component_iface();	
 				
 		if (comp) {
