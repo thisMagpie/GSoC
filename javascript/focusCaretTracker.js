@@ -208,15 +208,15 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 function onFocus(caller, event) {	
     log ('<caller> ' + caller);
     log ('<event> ' + event.type + ',' + event.detail1);
-  
-	if(event.type=="object:state-changed:focused" && !event.detail1){
+
+	if (event.type.indexOf("object:state-changed:") == 0) {
 		return;
 	}
 	
 	let acc = event.source;  	
 	// Check there is an accessible object
 	if (acc) {
-		log ('<contructor>' + new acc.constructor());
+		log ('<contructor>' + acc.constructor);
 		let name = acc.get_name();
 		
 		if (name!='') {
@@ -225,7 +225,7 @@ function onFocus(caller, event) {
 		else if(name=='') {
 			log('<accessible> ' +'is empty string ' + name);	
 		}
-/*		try{
+	/*		try{
 			log ('<role name> ' + acc.get_role_get_name());					
 		}
 		catch(err){
