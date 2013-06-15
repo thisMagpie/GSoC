@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  *
- * Author:
+ * Author:\
  *   Joseph Scheuhammer <clown@alum.mit.edu>
  * Contributor: 
  *   Magdalen Berns <thismagpie@live.com>
@@ -108,9 +108,7 @@ const FocusCaretTracker = new Lang.Class({
         let selectDeregistered = false;
         
         try {
-            focusDeregistered = this._atspiListener.deregister(
-                'object:state-changed:focused'
-            );
+            focusDeregistered = this._atspiListener.deregister('object:state-changed:focused');
             selectDeregistered = this._atspiListener.deregister(
                 'object:state-changed:selected'
             );
@@ -128,7 +126,7 @@ const FocusCaretTracker = new Lang.Class({
      * Report whether focus tracking is enabled.
      * @return: Boolean.
      */
-    isRegisteringAtspiFocus: function() {
+    isRegisteringAtspiFocusEvents: function() {
         return this._trackingFocus;
     },
 
@@ -145,9 +143,7 @@ const FocusCaretTracker = new Lang.Class({
         let registered = false;
         
         try {
-            registered = this._atspiListener.register(
-                'object:text-caret-moved'
-            );
+            registered = this._atspiListener.register('object:text-caret-moved');
             log('startTrackingCaret(): ' + registered);
         }
          catch (err) {
@@ -188,14 +184,13 @@ const FocusCaretTracker = new Lang.Class({
      * Report whether caret tracking is enabled.
      * @return: Boolean.
      */
-    isRegisteringAtspiCaret: function() {
+    isRegisteringAtspiCaretEvents: function() {
         return this._trackingCaret;
     },
 
     _changed: function(event) {
-        
-        
-        if (event.type == 'object:state-changed:focused'){//TODO put selected in later
+            
+        if (event.type == 'object:state-changed:focused'&& event.detail1==1){//TODO put selected in later
             this.emit('focused', event);
             log('FocusCaretTracker._changed(' + event.type + ',' + event.detail1 + ')');
 		}
@@ -209,33 +204,31 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 // For debugging. 
 function onFocus(caller, event) {
 	
-	if (event.type.startsWith("object:state-changed:") && event.detail1!=1) {
+	if (event.type.startsWith("object:state-changed") && event.detail1!=1) {
 		log ('Focus lost ');
 		log ('END ');
 		return;
 	}
-		
-    log ('<caller> ' + caller);
-    log ('<event> ' + event.type + ',' + event.detail1);	
-	let acc = event.source;  	
-
+	let acc = event.source;  
+	try{
+	log ('<role name> ' + acc.get_role_name());					
+	}	
+	catch(err){
+		log ('<exception cause> get_role_name() ');
+		log ('<exception name> '+ ' ' + err.name + '\nGjs-Message: JS LOG: <exception message> ' + err.message +'\nGjs-Message: JS LOG: <exception>' + err);
+	}	 	
+	log ('<caller> ' + caller);
+	//log ('<event> ' + event.type + ',' + event.detail1);	
 	if (acc) {
 		log ('<contructor>' + acc.constructor);
 		let name = acc.get_name();
-		
+
 		if (name!='') {
 			log ('<accessible> : ' + name);
 		}
 		else if(name=='') {
 			log('<accessible> ' + 'is empty string ' + name);	
 		}
-		try{
-			log ('<role name> ' + acc.get_role_name());					
-		}
-		catch(err){
-			log ('This exception is caused by get_role_name() ');
-			log ('Exception name:'+ ' ' + err.name + '\nGjs-Message: JS LOG: Exception message: ' + err.message +'\nGjs-Message: JS LOG: ' + err);
-		} //TODO put back
 		let comp = acc.get_component_iface();	
 				
 		if (comp) {
