@@ -82,7 +82,7 @@ const FocusCaretTracker = new Lang.Class({
             selectRegistered = this._atspiListener.register(
                 'object:state-changed:selected'
             );
-            log('startTrackingFocus(): [' + focusRegistered + ',' + selectRegistered + ']');
+            log('registerAtspiFocusEvents: [' + focusRegistered + ',' + selectRegistered + ']');
         }
         catch (err) {
 			log(err);
@@ -112,7 +112,7 @@ const FocusCaretTracker = new Lang.Class({
             selectDeregistered = this._atspiListener.deregister(
                 'object:state-changed:selected'
             );
-            log('stopTrackingFocus(): [' + focusDeregistered + ',' + selectDeregistered + ']');
+            log('deregisterAtspiFocusEvents: [' + focusDeregistered + ',' + selectDeregistered + ']');
         }
         catch (err) {
             log(err);
@@ -144,7 +144,7 @@ const FocusCaretTracker = new Lang.Class({
         
         try {
             registered = this._atspiListener.register('object:text-caret-moved');
-            log('startTrackingCaret(): ' + registered);
+            log('registerAtspiCaretEvents: ' + registered);
         }
          catch (err) {
             log(err);
