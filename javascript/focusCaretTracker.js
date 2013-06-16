@@ -54,7 +54,6 @@ const FocusCaretTracker = new Lang.Class({
         this.stopTrackingCaret();
         this.disconnectAll();
     },
- 
 
     _update: function() {
         this._showFrame(this._frame + 1);
@@ -190,7 +189,7 @@ const FocusCaretTracker = new Lang.Class({
 
     _changed: function(event) {
             
-        if (event.type == 'object:state-changed:focused'&& event.detail1==1){//TODO put selected in later
+        if ((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') && event.detail1==1){//TODO put selected in later
             this.emit('focused', event);
             log('FocusCaretTracker._changed(' + event.type + ',' + event.detail1 + ')');
 		}
@@ -209,16 +208,18 @@ function onFocus(caller, event) {
 		log ('END ');
 		return;
 	}
-	let acc = event.source;  
+	let acc = event.source;
+
 	try{
-	log ('<role name> ' + acc.get_role_name());					
+	    log ('<role name> ' + acc.get_role_name());
 	}	
 	catch(err){
 		log ('<exception cause> get_role_name() ');
 		log ('<exception name> '+ ' ' + err.name + '\nGjs-Message: JS LOG: <exception message> ' + err.message +'\nGjs-Message: JS LOG: <exception>' + err);
 	}	 	
 	log ('<caller> ' + caller);
-	//log ('<event> ' + event.type + ',' + event.detail1);	
+	log ('<event> ' + event.type + ',' + event.detail1);
+
 	if (acc) {
 		log ('<contructor>' + acc.constructor);
 		let name = acc.get_name();
