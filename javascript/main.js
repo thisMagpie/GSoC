@@ -10,13 +10,13 @@ const Meta = imports.gi.Meta;
 const Shell = imports.gi.Shell;
 const St = imports.gi.St;
 
+const AtspiRegistry = imports.ui.atspiRegistry;
 const Components = imports.ui.components;
 const CtrlAltTab = imports.ui.ctrlAltTab;
 const EndSessionDialog = imports.ui.endSessionDialog;
 const Environment = imports.ui.environment;
 const ExtensionSystem = imports.ui.extensionSystem;
 const ExtensionDownloader = imports.ui.extensionDownloader;
-const FocusCaretTracker = imports.ui.focusCaretTracker;
 const Keyboard = imports.ui.keyboard;
 const MessageTray = imports.ui.messageTray;
 const OsdWindow = imports.ui.osdWindow;
@@ -44,6 +44,7 @@ const DEFAULT_BACKGROUND_COLOR = Clutter.Color.from_pixel(0x2e3436ff);
 const A11Y_SCHEMA = 'org.gnome.desktop.a11y.keyboard';
 const STICKY_KEYS_ENABLE = 'stickykeys-enable';
 
+let atspiRegistry = null;
 let componentManager = null;
 let panel = null;
 let overview = null;
@@ -73,7 +74,6 @@ let _defaultCssStylesheet = null;
 let _cssStylesheet = null;
 let _a11ySettings = null;
 let dynamicWorkspacesSchema = null;
-let focusCaretTracker = null;
 
 function _sessionUpdated() {
     _loadDefaultStylesheet();
@@ -161,7 +161,7 @@ function _initializeUI() {
     magnifier = new Magnifier.Magnifier();
     if (LoginManager.canLock())
         screenShield = new ScreenShield.ScreenShield();
-	focusCaretTracker = new FocusCaretTracker.FocusCaretTracker();
+	atspiRegistry = new AtspiRegistry.AtspiRegistry();
     panel = new Panel.Panel();
     messageTray = new MessageTray.MessageTray();
     keyboard = new Keyboard.Keyboard();
