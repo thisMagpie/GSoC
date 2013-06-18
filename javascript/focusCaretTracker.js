@@ -24,16 +24,11 @@
 const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
 const Signals = imports.signals;
-// Move these to GS-Mag/GSettings
-// Note: TRACKING_MODES are the same values as for mouse tracking modes,
-const TRACKING_MODES = ['none', 'centered', 'proportional', 'push'];
-const FOCUS_TRACKING_DEFAULT = 'centered';
-const CARET_TRACKING_DEFAULT = 'centered';
 
 let _atspiCallback = null;
 
-const FocusCaretTracker = new Lang.Class({
-    Name: 'FocusCaretTracker',
+const AtspiRegistry = new Lang.Class({
+    Name: 'AtspiRegistry',
 
     _init: function() {
         Atspi.init();
@@ -44,28 +39,20 @@ const FocusCaretTracker = new Lang.Class({
         this._trackingCaret = false;  
     },
 
-    /**
-     * shutDown
-     * Stop tracking the focus and/or caret, and remove all attached signal
-     * handlers.
+    /**  
+     * shutDown.
      */
     shutDown: function() {
-        this.stopTrackingFocus();
-        this.stopTrackingCaret();
+        this.deregisterFocusEvents();
+        this.deregisterCaretEvents();
         this.disconnectAll();
     },
 
-    _update: function() {
-        this._showFrame(this._frame + 1);
-        return true;
-    },
-
     /**
-     * startTrackingFocus:
-     * Enable focus tracking.
+     * registerFocusEvents:
      * @return: Boolean.
      */
-    registerAtspiFocusEvents: function() {	
+    registerFocusEvents: function() {	
     	
         if (this._trackingFocus) {
             return true;
@@ -81,7 +68,7 @@ const FocusCaretTracker = new Lang.Class({
             selectRegistered = this._atspiListener.register(
                 'object:state-changed:selected'
             );
-            log('registerAtspiFocusEvents: [' + focusRegistered + ',' + selectRegistered + ']');
+            log('registerFocusEvents: [' + focusRegistered + ',' + selectRegistered + ']');
         }
         catch (err) {
 			log(err);
@@ -94,11 +81,10 @@ const FocusCaretTracker = new Lang.Class({
     },
 
     /**
-     * stopTrackingFocus:
-     * Disable focus tracking
+     * deregisterFocusEvents:
      * @return: Boolean.
      */
-    deregisterAtspiFocusEvents: function() {
+    deregisterFocusEvents: function() {
     	
         if (!this._trackingFocus) {
             return true;
@@ -108,10 +94,8 @@ const FocusCaretTracker = new Lang.Class({
         
         try {
             focusDeregistered = this._atspiListener.deregister('object:state-changed:focused');
-            selectDeregistered = this._atspiListener.deregister(
-                'object:state-changed:selected'
-            );
-            log('deregisterAtspiFocusEvents: [' + focusDeregistered + ',' + selectDeregistered + ']');
+            selectDeregistered = this._atspiListener.deregister('object:state-changed:selected');
+            log('deregisterFocusEvents: [' + focusDeregistered + ',' + selectDeregistered + ']');
         }
         catch (err) {
             log(err);
@@ -121,20 +105,18 @@ const FocusCaretTracker = new Lang.Class({
     },
 
     /**
-     * isTrackingFocus
-     * Report whether focus tracking is enabled.
+     * isRegisteringFocusEvent
      * @return: Boolean.
      */
-    isRegisteringAtspiFocusEvents: function() {
+    isRegisteringFocusEvents: function() {
         return this._trackingFocus;
     },
 
     /**
-     * startCaretTracking:
-     * Enable caret tracking
+     * registerCaretEvents
      * @return: Boolean.
      */
-    registerAtspiCaretEvents: function() {
+    registerCaretEvents: function() {
     	
         if (this._trackingCaret) {
             return true;
@@ -143,7 +125,7 @@ const FocusCaretTracker = new Lang.Class({
         
         try {
             registered = this._atspiListener.register('object:text-caret-moved');
-            log('registerAtspiCaretEvents: ' + registered);
+            log('registerCaretEvents: ' + registered);
         }
          catch (err) {
             log(err);
@@ -153,11 +135,10 @@ const FocusCaretTracker = new Lang.Class({
     },
 
     /**
-     * stopCaretTracking:
-     * Disable caret tracking
+     * deregisterCaretEvents
      * @return: Boolean.
      */
-    deregisterAtspiCaretEvents: function() {
+    deregisterCaretEvents: function() {
     	
         if (!this._trackingCaret){
             return true;
@@ -179,26 +160,26 @@ const FocusCaretTracker = new Lang.Class({
     },
 
     /**
-     * isCaretTracking
-     * Report whether caret tracking is enabled.
+     * isRegisteringCaretEvents
      * @return: Boolean.
      */
-    isRegisteringAtspiCaretEvents: function() {
+    isRegisteringCaretEvents: function() {
         return this._trackingCaret;
     },
 
     _changed: function(event) {
             
-        if ((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') && event.detail1==1){//TODO put selected in later
+        if ((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') && event.detail1==1){
             this.emit('focused', event);
-            log('FocusCaretTracker._changed(' + event.type + ',' + event.detail1 + ')');
+            log('atspiTracker._changed(' + event.type + ',' + event.detail1 + ')');
 		}
 		if (event.type == 'object:text-caret-moved') {
             this.emit('caret-changed', event);
 		}
     }
 });
-Signals.addSignalMethods(FocusCaretTracker.prototype);
+
+Signals.addSignalMethods(AtspiRegistry.prototype);
 
 // For debugging. 
 function onFocus(caller, event) {
@@ -230,8 +211,49 @@ function onFocus(caller, event) {
 		else if(name=='') {
 			log('<accessible> ' + 'is empty string ' + name);	
 		}
-		let comp = acc.get_component_iface();	
-				
+		let comp = acc.get_component_iface();					
+		if (comp) {
+			let extents = comp.get_extents(Atspi.CoordType.SCREEN);
+			log ('<extents> (x='+extents.x+',y='+extents.y+') [' + extents.width + ',' + extents.height + ']\nGjs-Message: JS LOG: END ');
+		}
+		else{
+			log ('no component \nGjs-Message: JS LOG: END');
+		}
+	}			
+	else {
+		log ('no accessible \nGjs-Message: JS LOG:  END: no accessible\n');
+	}		
+}
+function onCaret(caller, event) {
+	
+	if (!event.type.startsWith("object:text-caret-moved")) {
+		log ('no caret ');
+		log ('END ');     
+		return;
+	}
+	let acc = event.source;
+
+	try{
+	    log ('<role name> ' + acc.get_role_name());
+	}	
+	catch(err){
+		log ('<exception cause> get_role_name() ');
+		log ('<exception name> '+ ' ' + err.name + '\nGjs-Message: JS LOG: <exception message> ' + err.message +'\nGjs-Message: JS LOG: <exception>' + err);
+	}	 	
+	log ('<caller> ' + caller);      
+	log ('<event> ' + event.type + ', position: ' + event.detail1);
+
+	if (acc) {
+		log ('<contructor>' + acc.constructor);  
+		let name = acc.get_name();
+
+		if (name!='') {
+			log ('<accessible> : ' + name);
+		}
+		else if(name=='') {
+			log('<accessible> ' + 'is empty string ' + name);	
+		}
+		let comp = acc.get_component_iface();					
 		if (comp) {
 			let extents = comp.get_extents(Atspi.CoordType.SCREEN);
 			log ('<extents> (x='+extents.x+',y='+extents.y+') [' + extents.width + ',' + extents.height + ']\nGjs-Message: JS LOG: END ');
