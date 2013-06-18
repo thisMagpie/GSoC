@@ -24,11 +24,6 @@
 const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
 const Signals = imports.signals;
-// Move these to GS-Mag/GSettings
-// Note: TRACKING_MODES are the same values as for mouse tracking modes,
-const TRACKING_MODES = ['none', 'centered', 'proportional', 'push'];
-const FOCUS_TRACKING_DEFAULT = 'centered';
-const CARET_TRACKING_DEFAULT = 'centered';
 
 let _atspiCallback = null;
 
@@ -45,21 +40,19 @@ const AtspiRegistry = new Lang.Class({
     },
 
     /**  
-     * shutDown
-     * Stop tracking and remove all attached signal handlers.
-     * @Return void
+     * shutDown.
      */
     shutDown: function() {
         this.deregisterFocusEvents();
         this.deregisterCaretEvents();
         this.disconnectAll();
     },
+
     /**
      * registerFocusEvents:
-     * Enable focus tracking.
      * @return: Boolean.
      */
-    registerFocusEvents: function() {  
+    registerFocusEvents: function() {	
     	
         if (this._trackingFocus) {
             return true;
@@ -89,7 +82,6 @@ const AtspiRegistry = new Lang.Class({
 
     /**
      * deregisterFocusEvents:
-     * Disable focus tracking
      * @return: Boolean.
      */
     deregisterFocusEvents: function() {
@@ -103,7 +95,7 @@ const AtspiRegistry = new Lang.Class({
         try {
             focusDeregistered = this._atspiListener.deregister('object:state-changed:focused');
             selectDeregistered = this._atspiListener.deregister('object:state-changed:selected');
-            log('deregisterAtspiFocusEvents: [' + focusDeregistered + ',' + selectDeregistered + ']');
+            log('deregisterFocusEvents: [' + focusDeregistered + ',' + selectDeregistered + ']');
         }
         catch (err) {
             log(err);
@@ -113,8 +105,7 @@ const AtspiRegistry = new Lang.Class({
     },
 
     /**
-     * isRegisteringFocusEvents
-     * Report whether focus tracking is enabled.
+     * isRegisteringFocusEvent
      * @return: Boolean.
      */
     isRegisteringFocusEvents: function() {
@@ -123,7 +114,6 @@ const AtspiRegistry = new Lang.Class({
 
     /**
      * registerCaretEvents
-     * Enable caret tracking
      * @return: Boolean.
      */
     registerCaretEvents: function() {
@@ -145,8 +135,7 @@ const AtspiRegistry = new Lang.Class({
     },
 
     /**
-     * deregisterCaretEvents:
-     * Disable caret tracking
+     * deregisterCaretEvents
      * @return: Boolean.
      */
     deregisterCaretEvents: function() {
@@ -158,7 +147,9 @@ const AtspiRegistry = new Lang.Class({
         
         if (this._atspiListener) {
             try {
-                deregistered = this._atspiListener.deregister('object:text-caret-moved');
+                deregistered = this._atspiListener.deregister(
+                    'object:text-caret-moved'
+                );
             }
             catch (err) {
                 log(err);
@@ -170,7 +161,6 @@ const AtspiRegistry = new Lang.Class({
 
     /**
      * isRegisteringCaretEvents
-     * Report whether caret tracking is enabled.
      * @return: Boolean.
      */
     isRegisteringCaretEvents: function() {
@@ -179,9 +169,9 @@ const AtspiRegistry = new Lang.Class({
 
     _changed: function(event) {
             
-        if ((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') && event.detail1==1){//TODO put selected in later
+        if ((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') && event.detail1==1){
             this.emit('focused', event);
-            log('atspiRegister._changed(' + event.type + ',' + event.detail1 + ')');
+            log('atspiTracker._changed(' + event.type + ',' + event.detail1 + ')');
 		}
 		if (event.type == 'object:text-caret-moved') {
             this.emit('caret-changed', event);
@@ -189,7 +179,7 @@ const AtspiRegistry = new Lang.Class({
     }
 });
 
-Signals.addSignalMethods(AtspiRegister.prototype);
+Signals.addSignalMethods(AtspiRegistry.prototype);
 
 // For debugging. 
 function onFocus(caller, event) {
@@ -238,7 +228,7 @@ function onCaret(caller, event) {
 	
 	if (!event.type.startsWith("object:text-caret-moved")) {
 		log ('no caret ');
-		log ('END ');
+		log ('END ');     
 		return;
 	}
 	let acc = event.source;
@@ -250,11 +240,11 @@ function onCaret(caller, event) {
 		log ('<exception cause> get_role_name() ');
 		log ('<exception name> '+ ' ' + err.name + '\nGjs-Message: JS LOG: <exception message> ' + err.message +'\nGjs-Message: JS LOG: <exception>' + err);
 	}	 	
-	log ('<caller> ' + caller);
-	log ('<event> ' + event.type + ',' + event.detail1);
+	log ('<caller> ' + caller);      
+	log ('<event> ' + event.type + ', position: ' + event.detail1);
 
 	if (acc) {
-		log ('<contructor>' + acc.constructor);
+		log ('<contructor>' + acc.constructor);  
 		let name = acc.get_name();
 
 		if (name!='') {
