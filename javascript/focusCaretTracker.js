@@ -170,7 +170,7 @@ const FocusCaretTracker = new Lang.Class({
 	_changed: function(event) {
 
 		if ((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') && event.detail1==1){
-			this.emit('focused', event);
+			this.emit('focus-changed', event);
 			log('atspiTracker._changed(' + event.type + ',' + event.detail1 + ')');
 		}
 		if (event.type == 'object:text-caret-moved') {
@@ -181,8 +181,9 @@ const FocusCaretTracker = new Lang.Class({
 
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-// For debugging. Call in looking glass 
+// For debugging. Call in looking glass
 // with Main.focusCaretTracker.connect('caret-changed', Main.FocusCaretTracker.onFocusCaret); Main.focusCaretTracker.registerCaretEvents();
+// with Main.focusCaretTracker.connect('focus-changed', Main.FocusCaretTracker.onFocusCaret); Main.focusCaretTracker.registerCaretEvents();
 function onFocusCaret(caller, event) {
 
 	if (event.type.startsWith("object:state-changed") && event.detail1!=1) {
@@ -190,27 +191,29 @@ function onFocusCaret(caller, event) {
 		log ('END ');
 		return;
 	}
-
 	let acc = event.source;
 
 	if (acc) {
 		let name = acc.get_name();
 		let comp = acc.get_component;
-		let text = acc.get_text;
+		let text = acc.get_text(event.detail1,Atspi.CoordType.SCREEN);
 		log ('<accessible> : ' + name);
 		log ('<contructor>' + acc.constructor);
 		log ('<role name> ' + acc.get_role_name());
 		log ('<caller> ' + caller);
 		log ('<event> ' + event.type + ',' + event.detail1);
 
-		if (comp) {
-			let extents = comp.get_extents(Atspi.CoordType.SCREEN);
-			log ('<extents> (x='+extents.x+',y='+extents.y+')\n [' + extents.width + ',' + extents.height + ']\nGjs-Message: JS LOG: END ');
-		}
-
 		if(event.type.startsWith('object:text-caret-moved')) {
 			log ('<caret property>');
-
+			
+			try {
+				log ('Yay! I did not get caught!');
+			//	let extents = text.get_character_extents();?? TODO 
+		//		log ('<extents> (x='+extents.x+',y='+extents.y+')\n [' + extents.width + ',' + extents.height + ']\nGjs-Message: JS LOG: END ');
+			}
+			catch(err) {
+				log ('exception ' + err.name + err.message + '\n '+ err);
+			}
 		}
 	}
 }
