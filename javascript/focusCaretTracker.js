@@ -180,27 +180,30 @@ const FocusCaretTracker = new Lang.Class({
 
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-// For debugging. Call in looking glass with param as either 'caret-changed' or 'focus-changed'
-// with Main.focusCaretTracker.connect(param, Main.FocusCaretTracker.onFocusCaret);
-// Then register the events by calling: Main.focusCaretTracker.registerCaretEvents();
+// For debugging. Call Main.focusCaretTracker.connect('object:foo', Main.FocusCaretTracker.onFocusCaret);
+// Register the events by calling: Main.focusCaretTracker.registerCaretEvents();
 function onFocusCaret(caller, event) {
 
 	//TODO double check startsWith is a member of atspi type
-	if (event.type.startsWith("object:state-changed") && event.detail1!=1) {
+	/*if (event.type.startsWith("object:state-changed") && event.detail1!=1) {
 		log ('Focus lost ');
 		log ('END ');
 		return;
-	}
+	}*/
 	let acc = event.source;
 	if (acc) {
 		let name = acc.get_name();
+		let roleName = acc.get_role_name();
 		log ('<caller> ' + caller);
 		log ('<event> ' + event.type + ',' + event.detail1);
 		log ('<accessible> : ' + name);
 		log ('<contructor>' + acc.constructor);
-		log ('<role name> ' + acc.get_role_name());
+		log ('<role name> ' + roleName);
 
 		if(event.type.startsWith("object:text-caret-moved")) {
+			if(name =='Terminal' || roleName=='terminal') {
+				return;
+			}
 			let text = acc.get_text_iface();
 
 			if (text && text.get_caret_offset() >= 0) {
@@ -234,7 +237,6 @@ function onFocusCaret(caller, event) {
 			catch(err){
 				log(err);
 			}
-
 		}
 		else {
 			log ('no focus or caret events ');
