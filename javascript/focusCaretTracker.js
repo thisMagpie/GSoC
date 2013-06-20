@@ -169,9 +169,8 @@ const FocusCaretTracker = new Lang.Class({
 
 	_changed: function(event) {
 
-		if ((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') && event.detail1==1){
+		if (event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected'){
 			this.emit('focus-changed', event);
-			log('atspiTracker._changed(' + event.type + ',' + event.detail1 + ')');
 		}
 		if (event.type == 'object:text-caret-moved') {
 			this.emit('caret-changed', event);
@@ -181,39 +180,68 @@ const FocusCaretTracker = new Lang.Class({
 
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-// For debugging. Call in looking glass
-// with Main.focusCaretTracker.connect('caret-changed', Main.FocusCaretTracker.onFocusCaret); Main.focusCaretTracker.registerCaretEvents();
-// with Main.focusCaretTracker.connect('focus-changed', Main.FocusCaretTracker.onFocusCaret); Main.focusCaretTracker.registerCaretEvents();
+// For debugging. Call in looking glass with param as either 'caret-changed' or 'focus-changed'
+// with Main.focusCaretTracker.connect(param, Main.FocusCaretTracker.onFocusCaret);
+// Then register the events by calling: Main.focusCaretTracker.registerCaretEvents();
 function onFocusCaret(caller, event) {
 
+	//TODO double check startsWith is a member of atspi type
 	if (event.type.startsWith("object:state-changed") && event.detail1!=1) {
 		log ('Focus lost ');
 		log ('END ');
 		return;
 	}
 	let acc = event.source;
-
 	if (acc) {
 		let name = acc.get_name();
-		let comp = acc.get_component;
-		let text = acc.get_text(event.detail1,Atspi.CoordType.SCREEN);
+		log ('<caller> ' + caller);
+		log ('<event> ' + event.type + ',' + event.detail1);
 		log ('<accessible> : ' + name);
 		log ('<contructor>' + acc.constructor);
 		log ('<role name> ' + acc.get_role_name());
-		log ('<caller> ' + caller);
-		log ('<event> ' + event.type + ',' + event.detail1);
 
-		if(event.type.startsWith('object:text-caret-moved')) {
-			log ('<caret property>');
-			
-			try {
-				log ('Yay! I did not get caught!');
-			//	let extents = text.get_character_extents();?? TODO 
-		//		log ('<extents> (x='+extents.x+',y='+extents.y+')\n [' + extents.width + ',' + extents.height + ']\nGjs-Message: JS LOG: END ');
-			}
-			catch(err) {
-				log ('exception ' + err.name + err.message + '\n '+ err);
+		if(event.type.startsWith("object:text-caret-moved")) {
+			let text = acc.get_text_iface();
+
+			if (text && text.get_caret_offset() >= 0) {
+
+				try{
+					let offset = text.get_caret_offset();
+					text_extents = text.get_character_extents(offset, 0);
+
+					if (text_extents) {
+						log ('<text_extents> '+text_extents.x + ' ' + text_extents.y + ' ' + text_extents.width + ' ' + text_extents.height + ']\nGjs-Message: JS LOG: END ');
+					}
+				}
+				catch(err) {
+					log(err);
+				}
 			}
 		}
+		else if (event.type.startsWith("object:state-changed") && event.detail1==1) {
+
+			try{
+				let comp = acc.get_component_iface();
+
+				if (comp) {
+					let extents = comp.get_extents(Atspi.CoordType.SCREEN);
+
+					if (extents) {
+						log ('<extents> ['+ extents.x + ' ' + extents.y + ' ' + extents.width + ' ' + extents.height + ']\nGjs-Message: JS LOG: END ');
+					}
+				}
+			}
+			catch(err){
+				log(err);
+			}
+
+		}
+		else {
+			log ('no focus or caret events ');
+		}
+	}
+	else {
+		log ('no accessible ');
+
 	}
 }
