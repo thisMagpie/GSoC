@@ -169,7 +169,7 @@ const FocusCaretTracker = new Lang.Class({
 
 	_changed: function(event) {
 
-		if (event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected'){
+		if (event.type.startsWith('object:state-changed') {
 			this.emit('focus-changed', event);
 		}
 		if (event.type == 'object:text-caret-moved') {
@@ -180,16 +180,10 @@ const FocusCaretTracker = new Lang.Class({
 
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-// For debugging. Call Main.focusCaretTracker.connect('object:foo', Main.FocusCaretTracker.onFocusCaret);
+// For debugging. Call Main.focusCaretTracker.connect('foo', Main.FocusCaretTracker.onFocusCaret);
 // Register the events by calling: Main.focusCaretTracker.registerCaretEvents();
 function onFocusCaret(caller, event) {
 
-	//TODO double check startsWith is a member of atspi type
-	/*if (event.type.startsWith("object:state-changed") && event.detail1!=1) {
-		log ('Focus lost ');
-		log ('END ');
-		return;
-	}*/
 	let acc = event.source;
 	if (acc) {
 		let name = acc.get_name();
