@@ -40,7 +40,7 @@ const FocusCaretTracker = new Lang.Class({
 	},
 
 	/**
-	 * shutDown.
+	 * shutDown. 
 	 */
 	shutDown: function() {
 		this.deregisterFocusEvents();
@@ -52,7 +52,7 @@ const FocusCaretTracker = new Lang.Class({
 	 * registerFocusEvents:
 	 * @return: Boolean.
 	 */
-	registerFocusEvents: function() {
+	_registerFocusEvents: function() {
 
 		if (this._trackingFocus) {
 			return true;
@@ -84,7 +84,7 @@ const FocusCaretTracker = new Lang.Class({
 	 * deregisterFocusEvents:
 	 * @return: Boolean.
 	 */
-	deregisterFocusEvents: function() {
+	_deregisterFocusEvents: function() {
 
 		if (!this._trackingFocus) {
 			return true;
@@ -116,7 +116,7 @@ const FocusCaretTracker = new Lang.Class({
 	 * registerCaretEvents
 	 * @return: Boolean.
 	 */
-	registerCaretEvents: function() {
+	_registerCaretEvents: function() {
 
 		if (this._trackingCaret) {
 			return true;
@@ -138,7 +138,7 @@ const FocusCaretTracker = new Lang.Class({
 	 * deregisterCaretEvents
 	 * @return: Boolean.
 	 */
-	deregisterCaretEvents: function() {
+	_deregisterCaretEvents: function() {
 
 		if (!this._trackingCaret){
 			return true;
@@ -180,8 +180,23 @@ const FocusCaretTracker = new Lang.Class({
 
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-// For debugging. Call Main.focusCaretTracker.connect('foo', Main.FocusCaretTracker.onFocusCaret);
-// Register the events by calling: Main.focusCaretTracker.registerCaretEvents();
+//Override connect() from Signals manage Atpsi event registry internally.
+FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect;
+FocusCaretTracker.prototype.connect = function(label, callback) {
+
+	if (label != 'focus-changed' && label != 'caret-changed') { 
+		return -1;
+	}	
+
+	if (label.startsWith('focus')) {
+		this._registerFocusEvents();
+	}
+	else if (label.startsWith('caret')) {
+		this._registerCaretEvents();
+	}
+	return this._connect(name, callback);
+}
+
 function onFocusCaret(caller, event) {
 
 	let acc = event.source;
