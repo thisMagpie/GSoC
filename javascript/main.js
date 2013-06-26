@@ -1,6 +1,5 @@
 // -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 
-const Atspi = imports.gi.Atspi;
 const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
@@ -11,7 +10,6 @@ const Meta = imports.gi.Meta;
 const Shell = imports.gi.Shell;
 const St = imports.gi.St;
 
-const AtspiRegistry = imports.ui.atspiRegistry;
 const Components = imports.ui.components;
 const CtrlAltTab = imports.ui.ctrlAltTab;
 const EndSessionDialog = imports.ui.endSessionDialog;
@@ -45,7 +43,6 @@ const DEFAULT_BACKGROUND_COLOR = Clutter.Color.from_pixel(0x2e3436ff);
 const A11Y_SCHEMA = 'org.gnome.desktop.a11y.keyboard';
 const STICKY_KEYS_ENABLE = 'stickykeys-enable';
 
-let atspiRegistry = null;
 let componentManager = null;
 let panel = null;
 let overview = null;
@@ -162,7 +159,7 @@ function _initializeUI() {
     magnifier = new Magnifier.Magnifier();
     if (LoginManager.canLock())
         screenShield = new ScreenShield.ScreenShield();
-	atspiRegistry = new AtspiRegistry.AtspiRegistry();
+
     panel = new Panel.Panel();
     messageTray = new MessageTray.MessageTray();
     keyboard = new Keyboard.Keyboard();
