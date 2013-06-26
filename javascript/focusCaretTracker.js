@@ -40,7 +40,7 @@ const FocusCaretTracker = new Lang.Class({
 	},
 
 	/**
-	 * shutDown. 
+	 * shutDown.
 	 */
 	shutDown: function() {
 		this.deregisterFocusEvents();
@@ -172,7 +172,7 @@ const FocusCaretTracker = new Lang.Class({
 		if (event.type.startsWith('object:state-changed')) {
 			this.emit('focus-changed', event);
 		}
-		else if (event.type == 'object:text-caret-moved') {
+		else if (event.type.startsWith('object:text-caret-moved')) {
 			this.emit('caret-changed', event);
 		}
 	}
@@ -182,37 +182,39 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 
 //Override connect() from Signals manage Atpsi event registry internally.
 FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect;
-FocusCaretTracker.prototype.connect = function(label, callback) {
+FocusCaretTracker.prototype.connect = function(name, callback) {
 
-	if (label != 'focus-changed' && label != 'caret-changed') { 
+	if (name != 'focus-changed' && name != 'caret-changed') {
 		return -1;
-	}	
+	}
 
-	if (label.startsWith('focus')) {
+	if (name.startsWith('focus')) {
 		this._registerFocusEvents();
 	}
-	else if (label.startsWith('caret')) {
+	else if (name.startsWith('caret')) {
 		this._registerCaretEvents();
 	}
 	return this._connect(name, callback);
 }
 
 function onFocusCaret(caller, event) {
-
 	let acc = event.source;
+
 	if (acc) {
 		let name = acc.get_name();
 		let roleName = acc.get_role_name();
-		log ('<caller> ' + caller);
-		log ('<event> ' + event.type + ',' + event.detail1);
-		log ('<accessible> : ' + name);
-		log ('<contructor>' + acc.constructor);
-		log ('<role name> ' + roleName);
+
+		if(name =='Terminal' || roleName=='terminal') {
+			return;
+		}
 
 		if(event.type.startsWith("object:text-caret-moved")) {
-			if(name =='Terminal' || roleName=='terminal') {
-				return;
-			}
+
+			log ('<accessible> : ' + name);
+			log ('<caller> ' + caller);
+			log ('<event> ' + event.type + ',' + event.detail1);
+			log ('<contructor>' + acc.constructor);
+			log ('<role name> ' + roleName);
 			let text = acc.get_text_iface();
 
 			if (text && text.get_caret_offset() >= 0) {
