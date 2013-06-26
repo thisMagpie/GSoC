@@ -9,6 +9,8 @@ const Mainloop = imports.mainloop;
 const Meta = imports.gi.Meta;
 const Shell = imports.gi.Shell;
 const St = imports.gi.St;
+const Atspi = imports.gi.Atspi;
+const Signals = imports.signals;
 
 const Components = imports.ui.components;
 const CtrlAltTab = imports.ui.ctrlAltTab;
@@ -16,6 +18,7 @@ const EndSessionDialog = imports.ui.endSessionDialog;
 const Environment = imports.ui.environment;
 const ExtensionSystem = imports.ui.extensionSystem;
 const ExtensionDownloader = imports.ui.extensionDownloader;
+const FocusCaretTracker = imports.ui.focusCaretTracker; 
 const Keyboard = imports.ui.keyboard;
 const MessageTray = imports.ui.messageTray;
 const OsdWindow = imports.ui.osdWindow;
@@ -72,6 +75,7 @@ let _defaultCssStylesheet = null;
 let _cssStylesheet = null;
 let _a11ySettings = null;
 let dynamicWorkspacesSchema = null;
+let focusCaretTracker = null; 
 
 function _sessionUpdated() {
     _loadDefaultStylesheet();
@@ -157,9 +161,9 @@ function _initializeUI() {
     overview = new Overview.Overview();
     wm = new WindowManager.WindowManager();
     magnifier = new Magnifier.Magnifier();
+    focusCaretTracker = new FocusCaretTracker.FocusCaretTracker();
     if (LoginManager.canLock())
-        screenShield = new ScreenShield.ScreenShield();
-
+        screenShield = new ScreenShield.ScreenShield();   
     panel = new Panel.Panel();
     messageTray = new MessageTray.MessageTray();
     keyboard = new Keyboard.Keyboard();
