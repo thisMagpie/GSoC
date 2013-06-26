@@ -169,10 +169,10 @@ const FocusCaretTracker = new Lang.Class({
 
 	_changed: function(event) {
 
-		if (event.type.startsWith('object:state-changed') {
+		if (event.type.startsWith('object:state-changed')) {
 			this.emit('focus-changed', event);
 		}
-		if (event.type == 'object:text-caret-moved') {
+		else if (event.type == 'object:text-caret-moved') {
 			this.emit('caret-changed', event);
 		}
 	}
