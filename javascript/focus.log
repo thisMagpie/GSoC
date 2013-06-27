@@ -19,12 +19,39 @@ Gjs-Message: JS LOG: <extents> [293 -696 1333 714]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: <accessible> : 
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> panel
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> dialog
+Gjs-Message: JS LOG: <extents> [0 0 1921 1080]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> dialog
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
 Gjs-Message: JS LOG: <event> object:state-changed:focused,1
 Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <role name> text
-Gjs-Message: JS LOG: <extents> [4 176 644 343]
+Gjs-Message: JS LOG: <extents> [800 501 321 22]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: <accessible> : 
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -41,16 +68,215 @@ Gjs-Message: JS LOG: <event> object:state-changed:focused,1
 Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
-Gjs-Message: JS LOG: <role name> text
-Gjs-Message: JS LOG: <extents> [4 176 644 343]
+Gjs-Message: JS LOG: <role name> window
+Gjs-Message: JS LOG: <extents> [0 0 1921 1080]
+Gjs-Message: JS LOG: END 
+Window manager warning: Log level 16: AT-SPI: Error in GetItems, sender=org.freedesktop.DBus, error=The name :1.34 was not provided by any .service files
+Gjs-Message: JS LOG: <accessible> : Makefile.am
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Unsaved Document 1
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [1112 353 138 21]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> table cell
+Gjs-Message: JS LOG: <extents> [-2147483648 -2147483648 -185661585 51]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : File
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu
+Gjs-Message: JS LOG: <extents> [958 59 40 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Open Terminal
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: <extents> [958 86 244 29]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Open Terminal
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : File
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Edit
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu
+Gjs-Message: JS LOG: <extents> [998 59 41 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Paste
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: <extents> [998 115 272 29]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Paste
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Select All
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: <extents> [998 153 272 29]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Select All
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Preferences
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: <extents> [998 191 272 29]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Preferences
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Preferences
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: <extents> [998 191 272 29]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Preferences
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Profile Preferences
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: <extents> [998 220 272 29]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Profile Preferences
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu item
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Edit
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> menu
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab list
+Gjs-Message: JS LOG: <extents> [1014 95 622 413]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
 Gjs-Message: JS LOG: <event> object:state-changed:focused,0
 Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
-Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : b1dcc9dd-5262-4d8d-a863-c897e6d979b9
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> label
+Gjs-Message: JS LOG: <extents> [1129 147 489 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : b1dcc9dd-5262-4d8d-a863-c897e6d979b9
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> label
 Gjs-Message: JS LOG: no focus or caret events 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: <accessible> : 
@@ -60,7 +286,7 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <role name> text
-Gjs-Message: JS LOG: <extents> [4 176 644 343]
+Gjs-Message: JS LOG: <extents> [1129 174 489 32]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: <accessible> : 
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -69,6 +295,69 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use the system fixed width font
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [1032 212 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use the system fixed width font
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Allow bold text
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [1032 283 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Allow bold text
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Terminal bell
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [1032 316 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Terminal bell
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Block
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> combo box
 Gjs-Message: JS LOG: no focus or caret events 
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: <accessible> : 
@@ -78,7 +367,7 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
     [native code]
 }
 Gjs-Message: JS LOG: <role name> text
-Gjs-Message: JS LOG: <extents> [4 176 644 343]
+Gjs-Message: JS LOG: <extents> [1225 387 393 32]
 Gjs-Message: JS LOG: END 
 Gjs-Message: JS LOG: <accessible> : 
 Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
@@ -88,4 +377,1201 @@ Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
 }
 Gjs-Message: JS LOG: <role name> text
 Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use custom default terminal size
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [1032 425 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use custom default terminal size
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [1019 515 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [1546 515 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [1019 515 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use custom default terminal size
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [1032 425 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use custom default terminal size
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <extents> [1225 387 393 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Block
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> combo box
+Gjs-Message: JS LOG: <extents> [1135 349 95 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Block
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> combo box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Terminal bell
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [1032 316 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Terminal bell
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Allow bold text
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [1032 283 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Allow bold text
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use the system fixed width font
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [1032 212 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use the system fixed width font
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <extents> [1129 174 489 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : b1dcc9dd-5262-4d8d-a863-c897e6d979b9
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> label
+Gjs-Message: JS LOG: <extents> [1129 147 489 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : b1dcc9dd-5262-4d8d-a863-c897e6d979b9
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> label
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [1038 110 53 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [1105 110 124 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [1243 110 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use colours from system theme
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [189 233 574 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Use colours from system theme
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Green on black
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> combo box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [327 304 51 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [327 342 51 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [164 574 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [691 574 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [454 169 59 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [691 574 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [164 574 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scroll on keystroke
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [177 348 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scroll on keystroke
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scroll on output
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [177 315 586 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scroll on output
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Unlimited
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: <extents> [268 282 495 27]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Unlimited
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> check box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> spin button
+Gjs-Message: JS LOG: <extents> [268 244 156 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> spin button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Always visible
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> combo box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [454 169 59 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [527 169 85 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [691 574 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [164 574 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Reset Compatibility Options to Defaults
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [177 300 284 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Reset Compatibility Options to Defaults
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Escape sequence
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> combo box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : ASCII DEL
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> combo box
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [527 169 85 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [454 169 59 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [250 169 124 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [183 169 53 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [250 169 124 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [454 169 59 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [527 169 85 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [183 169 53 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [250 169 124 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [183 169 53 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [527 169 85 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [454 169 59 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [250 169 124 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [454 169 59 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [250 169 124 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [454 169 59 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Scrolling
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [250 169 124 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [388 169 52 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Colours
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [250 169 124 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Title and Command
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [183 169 53 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : General
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:selected,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: <extents> [527 169 85 21]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Compatibility
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> page tab
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [691 574 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [164 574 85 32]
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Help
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: no focus or caret events 
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : Close
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:state-changed:focused,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> push button
+Gjs-Message: JS LOG: <extents> [691 574 85 32]
 Gjs-Message: JS LOG: END 
