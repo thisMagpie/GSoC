@@ -250,7 +250,7 @@ function onFocusCaret(caller, event) {
             }
         }
         else {
-            log ('no focus or caret events \nGjs-Message: JS LOG: END ');
+            log ('focus lost \nGjs-Message: JS LOG: END ');
         }
 
     }
