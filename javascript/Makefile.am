@@ -37,6 +37,7 @@ nobase_dist_js_DATA = 	\
 	misc/util.js		\
 	perf/core.js		\
 	ui/altTab.js		\
+	ui/animation.js		\
 	ui/appDisplay.js	\
 	ui/appFavorites.js	\
 	ui/backgroundMenu.js	\
@@ -69,6 +70,7 @@ nobase_dist_js_DATA = 	\
 	ui/sessionMode.js	\
 	ui/shellEntry.js	\
 	ui/shellMountOperation.js \
+	ui/slider.js		\
 	ui/notificationDaemon.js \
 	ui/osdWindow.js		\
 	ui/overview.js		\
@@ -82,7 +84,7 @@ nobase_dist_js_DATA = 	\
 	ui/runDialog.js		\
 	ui/screencast.js	\
 	ui/screenshot.js	\
-  	ui/screenShield.js	\
+        ui/screenShield.js	\
 	ui/scripting.js		\
 	ui/search.js		\
 	ui/searchDisplay.js	\
