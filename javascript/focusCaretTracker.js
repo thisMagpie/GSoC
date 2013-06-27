@@ -125,7 +125,7 @@ const FocusCaretTracker = new Lang.Class({
 
         try {
             registered = this._atspiListener.register('object:text-caret-moved');
-            log('registerCaretEvents: ' + registered);
+            log('registerCaretEvents: [' + registered + ']');
         }
          catch (err) {
             log(err);
@@ -204,7 +204,7 @@ function onFocusCaret(caller, event) {
         let name = acc.get_name();
         let roleName = acc.get_role_name();
 
-        if(name =='Terminal' || roleName=='terminal') {
+        if((name =='Terminal' || roleName=='terminal') || (event.type.startsWith(!'focus-changed') && event.type.startsWith(!'object:text-caret-moved'))) {
             return;
         }
         log ('<accessible> : ' + name);
@@ -252,10 +252,8 @@ function onFocusCaret(caller, event) {
         else {
             log ('focus lost \nGjs-Message: JS LOG: END ');
         }
-
     }
     else {
         log ('no accessible \nGjs-Message: JS LOG: END ');
-
     }
 }
