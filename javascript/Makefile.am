@@ -82,7 +82,7 @@ nobase_dist_js_DATA = 	\
 	ui/runDialog.js		\
 	ui/screencast.js	\
 	ui/screenshot.js	\
-        ui/screenShield.js	\
+    ui/screenShield.js	\
 	ui/scripting.js		\
 	ui/search.js		\
 	ui/searchDisplay.js	\
