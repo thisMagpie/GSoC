@@ -9,8 +9,6 @@ const Mainloop = imports.mainloop;
 const Meta = imports.gi.Meta;
 const Shell = imports.gi.Shell;
 const St = imports.gi.St;
-const Atspi = imports.gi.Atspi;
-const Signals = imports.signals;
 
 const Components = imports.ui.components;
 const CtrlAltTab = imports.ui.ctrlAltTab;
