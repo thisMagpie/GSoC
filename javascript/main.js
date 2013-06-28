@@ -16,7 +16,7 @@ const EndSessionDialog = imports.ui.endSessionDialog;
 const Environment = imports.ui.environment;
 const ExtensionSystem = imports.ui.extensionSystem;
 const ExtensionDownloader = imports.ui.extensionDownloader;
-const FocusCaretTracker = imports.ui.focusCaretTracker; 
+const FocusCaretTracker = imports.ui.focusCaretTracker;
 const Keyboard = imports.ui.keyboard;
 const MessageTray = imports.ui.messageTray;
 const OsdWindow = imports.ui.osdWindow;
@@ -73,7 +73,7 @@ let _defaultCssStylesheet = null;
 let _cssStylesheet = null;
 let _a11ySettings = null;
 let dynamicWorkspacesSchema = null;
-let focusCaretTracker = null; 
+let focusCaretTracker = null;
 
 function _sessionUpdated() {
     _loadDefaultStylesheet();
@@ -161,7 +161,7 @@ function _initializeUI() {
     magnifier = new Magnifier.Magnifier();
     focusCaretTracker = new FocusCaretTracker.FocusCaretTracker();
     if (LoginManager.canLock())
-        screenShield = new ScreenShield.ScreenShield();   
+        screenShield = new ScreenShield.ScreenShield();
     panel = new Panel.Panel();
     messageTray = new MessageTray.MessageTray();
     keyboard = new Keyboard.Keyboard();
@@ -618,3 +618,4 @@ function queueDeferredWork(workId) {
         });
     }
 }
+
