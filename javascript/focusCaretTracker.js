@@ -52,7 +52,7 @@ const FocusCaretTracker = new Lang.Class({
      * registerFocusEvents:
      * @return: Boolean.
      */
-    _registerFocusEvents: function() {     
+    _registerFocusEvents: function() {
 
         if (this._trackingFocus) {
             return true;
