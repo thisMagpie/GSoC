@@ -169,7 +169,7 @@ const FocusCaretTracker = new Lang.Class({
 
     _changed: function(event) {
 
-        if (event.type.startsWith('object:state-changed')) {
+        if (event.type.indexOf('object:state-changed') == 0) {
             this.emit('focus-changed', event);
         }
         else if (event.type == 'object:text-caret-moved') {
@@ -212,7 +212,7 @@ function onFocusCaret(caller, event) {
         let name = acc.get_name();
         let roleName = acc.get_role_name();
 
-        if((name =='Terminal' || roleName=='terminal') || (event.type.startsWith(!'focus-changed') && event.type.startsWith(!'object:text-caret-moved'))) {
+        if((name =='Terminal' || roleName=='terminal') || (event.type.indexOf('focus-changed') = 0 && event.type.indexOf('object:text-caret-moved') != 0)) {
             return;
         }
         log ('<accessible> : ' + name);
@@ -221,7 +221,7 @@ function onFocusCaret(caller, event) {
         log ('<contructor>' + acc.constructor);
         log ('<role name> ' + roleName);
 
-        if(event.type.startsWith("object:text-caret-moved")) {
+        if(event.type.indexOf('object:text-caret-moved') == 0) {
 
             let text = acc.get_text_iface();
 
@@ -240,7 +240,7 @@ function onFocusCaret(caller, event) {
                 }
             }
         }
-        else if (event.type.startsWith('object:state-changed') && event.detail1==1) {
+        else if (event.type.indexOf('object:state-changed') == 0 && event.detail1==1) {
 
             try{
                 let comp = acc.get_component_iface();
