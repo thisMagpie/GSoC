@@ -179,8 +179,15 @@ const FocusCaretTracker = new Lang.Class({
 });
 
 Signals.addSignalMethods(FocusCaretTracker.prototype);
-
-//Override connect() from Signals manage Atpsi event registry internally.
+/* 
+ * Override connect() from Signals to manage Atpsi registry internally.  If 
+ * the call to the Atspi registry fails, or the signal is unknown, no  connection 
+ * is made and this returns a negative value. 
+ * @name:     Name of the signal. 
+ * @callback: Function to call when signal is emitted. 
+ * @return:   Id of the connection.  If the call to Atspi registry fails, 
+ *            this returns a negative value (no connection made). 
+ */ 
 FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect; 
 FocusCaretTracker.prototype.connect = function(name, callback) { 
     let registered = false; 
