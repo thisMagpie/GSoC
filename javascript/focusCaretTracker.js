@@ -172,7 +172,7 @@ const FocusCaretTracker = new Lang.Class({
         if (event.type.startsWith('object:state-changed')) {
             this.emit('focus-changed', event);
         }
-        else if (event.type.startsWith('object:text-caret-moved')) {
+        else if (event.type == 'object:text-caret-moved') {
             this.emit('caret-changed', event);
         }
     }
@@ -181,22 +181,23 @@ const FocusCaretTracker = new Lang.Class({
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
 //Override connect() from Signals manage Atpsi event registry internally.
-FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect;
-FocusCaretTracker.prototype.connect = function(name, callback) {
-
-    if (name != 'focus-changed' && name != 'caret-changed') {
-        return -1;
-    }
-
-    if (name.startsWith('focus')) {
-        this._registerFocusEvents();
-    }
-    else if (name.startsWith('caret')) {
-        this._registerCaretEvents();
-    }
-    return this._connect(name, callback);
-}
-
+FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect; 
+FocusCaretTracker.prototype.connect = function(name, callback) { 
+    let registered = false; 
+    
+    if (name == 'focus-changed') { 
+        registered = this._registerFocusEvents(); 
+    } 
+    else if (name == 'caret-changed') { 
+        registered = this._registerCaretEvents(); 
+    } 
+    if (registered) { 
+      return this._connect(name, callback); 
+    } 
+    else { 
+      return -1; 
+   } 
+} 
 function onFocusCaret(caller, event) {
     let acc = event.source;
 
