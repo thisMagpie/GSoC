@@ -1,5 +1,5 @@
-/**-*- mode: js2; js2-basic-offset: 4; indent-tabs-mode: nil -*- */
-/*
+// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
+/**
  * Copyright 2012-2013 Inclusive Design Research Centre, OCAD University.
  *
  * This program is free software; you can redistribute it and/or
