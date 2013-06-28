@@ -212,7 +212,7 @@ function onFocusCaret(caller, event) {
         let name = acc.get_name();
         let roleName = acc.get_role_name();
 
-        if((name =='Terminal' || roleName=='terminal') || (event.type.indexOf('focus-changed') = 0 && event.type.indexOf('object:text-caret-moved') != 0)) {
+        if((name =='Terminal' || roleName=='terminal') || (event.type.indexOf('focus-changed') != 0 && event.type.indexOf('object:text-caret-moved') != 0)) {
             return;
         }
         log ('<accessible> : ' + name);
