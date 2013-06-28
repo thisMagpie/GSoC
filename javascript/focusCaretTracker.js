@@ -1,4 +1,4 @@
-/* -*- mode: js2; js2-basic-offset: 4; indent-tabs-mode: nil -*- */
+/**-*- mode: js2; js2-basic-offset: 4; indent-tabs-mode: nil -*- */
 /*
  * Copyright 2012-2013 Inclusive Design Research Centre, OCAD University.
  *
@@ -179,7 +179,7 @@ const FocusCaretTracker = new Lang.Class({
 });
 
 Signals.addSignalMethods(FocusCaretTracker.prototype);
-/* 
+/** 
  * Override connect() from Signals to manage Atpsi registry internally.  If 
  * the call to the Atspi registry fails, or the signal is unknown, no  connection 
  * is made and this returns a negative value. 
