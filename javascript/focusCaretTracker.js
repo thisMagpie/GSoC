@@ -52,7 +52,7 @@ const FocusCaretTracker = new Lang.Class({
      * registerFocusEvents:
      * @return: Boolean.
      */
-    _registerFocusEvents: function() {
+    _registerFocusEvents: function() {     
 
         if (this._trackingFocus) {
             return true;
@@ -169,42 +169,42 @@ const FocusCaretTracker = new Lang.Class({
 
     _changed: function(event) {
 
-        if (event.type.startsWith('object:state-changed')) {
+        if (event.type.indexOf('object:state-changed') == 0) {
             this.emit('focus-changed', event);
         }
-        else if (event.type == 'object:text-caret-moved') {
+        else if (event.type.indexOf('object:text-caret-moved') == 0){
             this.emit('caret-changed', event);
         }
     }
 });
 
 Signals.addSignalMethods(FocusCaretTracker.prototype);
-/** 
- * Override connect() from Signals to manage Atpsi registry internally.  If 
- * the call to the Atspi registry fails, or the signal is unknown, no  connection 
- * is made and this returns a negative value. 
- * @name:     Name of the signal. 
- * @callback: Function to call when signal is emitted. 
- * @return:   Id of the connection.  If the call to Atspi registry fails, 
- *            this returns a negative value (no connection made). 
- */ 
-FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect; 
-FocusCaretTracker.prototype.connect = function(name, callback) { 
-    let registered = false; 
-    
-    if (name == 'focus-changed') { 
-        registered = this._registerFocusEvents(); 
-    } 
-    else if (name == 'caret-changed') { 
-        registered = this._registerCaretEvents(); 
-    } 
-    if (registered) { 
-      return this._connect(name, callback); 
-    } 
-    else { 
-      return -1; 
-   } 
-} 
+/**
+ * Override connect() from Signals to manage Atpsi registry internally.  If
+ * the call to the Atspi registry fails, or the signal is unknown, no  connection
+ * is made and this returns a negative value.
+ * @name:     Name of the signal.
+ * @callback: Function to call when signal is emitted.
+ * @return:   Id of the connection.  If the call to Atspi registry fails,
+ *            this returns a negative value (no connection made).
+ */
+FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect;
+FocusCaretTracker.prototype.connect = function(name, callback) {
+    let registered = false;
+
+    if (name == 'focus-changed') {
+        registered = this._registerFocusEvents();
+    }
+    else if (name == 'caret-changed') {
+        registered = this._registerCaretEvents();
+    }
+    if (registered) {
+      return this._connect(name, callback);
+    }
+    else {
+      return -1;
+   }
+}
 function onFocusCaret(caller, event) {
     let acc = event.source;
 
@@ -212,7 +212,7 @@ function onFocusCaret(caller, event) {
         let name = acc.get_name();
         let roleName = acc.get_role_name();
 
-        if((name =='Terminal' || roleName=='terminal') || (event.type.startsWith(!'focus-changed') && event.type.startsWith(!'object:text-caret-moved'))) {
+        if((name =='Terminal' || roleName=='terminal') || (event.type.indexOf('focus-changed') != 0 && event.type.indexOf('object:text-caret-moved') != 0)) {
             return;
         }
         log ('<accessible> : ' + name);
@@ -221,7 +221,7 @@ function onFocusCaret(caller, event) {
         log ('<contructor>' + acc.constructor);
         log ('<role name> ' + roleName);
 
-        if(event.type.startsWith("object:text-caret-moved")) {
+        if(event.type.indexOf("object:text-caret-moved") == 0) {
 
             let text = acc.get_text_iface();
 
@@ -236,11 +236,11 @@ function onFocusCaret(caller, event) {
                     }
                 }
                 catch(err) {
-                    log(err);
+                    log(err.message);
                 }
             }
         }
-        else if (event.type.startsWith('object:state-changed') && event.detail1==1) {
+        else if (event.type.indexOf('object:state-changed') == 0 && event.detail1==1) {
 
             try{
                 let comp = acc.get_component_iface();
@@ -254,7 +254,7 @@ function onFocusCaret(caller, event) {
                 }
             }
             catch(err){
-                log(err);
+                log(err.message);
             }
         }
         else {
