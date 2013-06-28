@@ -1,3 +1,29 @@
+jhbuild run gnome-shell --replace
+Gtk-Message: Failed to load module "canberra-gtk-module"
+
+(gnome-shell:7980): Gjs-WARNING **: JS ERROR: Error: Function Atspi.new_simple has a GDestroyNotify but no user_data, not supported
+FocusCaretTracker<._init@/home/dev/gnome/install/share/gnome-shell/js/ui/focusCaretTracker.js:37
+wrapper@/home/dev/gnome/install/share/gjs-1.0/lang.js:213
+_Base._construct@/home/dev/gnome/install/share/gjs-1.0/lang.js:154
+Class._construct/newClass@/home/dev/gnome/install/share/gjs-1.0/lang.js:248
+_initializeUI@/home/dev/gnome/install/share/gnome-shell/js/ui/main.js:162
+_sessionsLoaded@/home/dev/gnome/install/share/gnome-shell/js/ui/main.js:115
+_emit@/home/dev/gnome/install/share/gjs-1.0/signals.js:124
+SessionMode<.init/<@/home/dev/gnome/install/share/gnome-shell/js/ui/sessionMode.js:161
+done@/home/dev/gnome/install/share/gnome-shell/js/misc/fileUtils.js:33
+@/home/dev/gnome/install/share/gnome-shell/js/misc/fileUtils.js:51
+onNextFileComplete@/home/dev/gnome/install/share/gnome-shell/js/misc/fileUtils.js:21
+
+Gjs-Message: JS LOG: GNOME Shell started at Fri Jun 28 2013 17:34:53 GMT+0100 (BST)
+Window manager warning: Log level 16: Could not create object for /org/freedesktop/NetworkManager/Settings/0: Method "GetAll" with signature "s" on interface "org.freedesktop.DBus.Properties" doesn't exist
+
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
 Gjs-Message: JS LOG: registerFocusEvents: [true,true]
 Gjs-Message: JS LOG: registerCaretEvents: [true]
 Gjs-Message: JS LOG: <accessible> : 
@@ -1121,3 +1147,239 @@ Gjs-Message: JS LOG: <extents> [590 547 85 32]
 Gjs-Message: JS LOG: END 
 
 (gnome-shell:7980): Gjs-WARNING **: JS ERROR: Exception in callback for signal: focus-changed: [boxed instance proxy GIName:GLib.Error jsobj@0x7fb6fcd47c10 native@0x42fc2b0]
+[dev@localhost ~]$ jhbuild run gnome-shell --replace
+Gtk-Message: Failed to load module "canberra-gtk-module"
+
+(gnome-shell:10437): Gjs-WARNING **: JS ERROR: Error: Function Atspi.new_simple has a GDestroyNotify but no user_data, not supported
+FocusCaretTracker<._init@/home/dev/gnome/install/share/gnome-shell/js/ui/focusCaretTracker.js:37
+wrapper@/home/dev/gnome/install/share/gjs-1.0/lang.js:213
+_Base._construct@/home/dev/gnome/install/share/gjs-1.0/lang.js:154
+Class._construct/newClass@/home/dev/gnome/install/share/gjs-1.0/lang.js:248
+_initializeUI@/home/dev/gnome/install/share/gnome-shell/js/ui/main.js:162
+_sessionsLoaded@/home/dev/gnome/install/share/gnome-shell/js/ui/main.js:115
+_emit@/home/dev/gnome/install/share/gjs-1.0/signals.js:124
+SessionMode<.init/<@/home/dev/gnome/install/share/gnome-shell/js/ui/sessionMode.js:161
+done@/home/dev/gnome/install/share/gnome-shell/js/misc/fileUtils.js:33
+@/home/dev/gnome/install/share/gnome-shell/js/misc/fileUtils.js:51
+onNextFileComplete@/home/dev/gnome/install/share/gnome-shell/js/misc/fileUtils.js:21
+
+Gjs-Message: JS LOG: GNOME Shell started at Fri Jun 28 2013 18:00:25 GMT+0100 (BST)
+Window manager warning: Log level 16: Could not create object for /org/freedesktop/NetworkManager/Settings/0: Method "GetAll" with signature "s" on interface "org.freedesktop.DBus.Properties" doesn't exist
+
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: Cannot find connection for active (or connection cannot be read)
+Gjs-Message: JS LOG: registerFocusEvents: [true,true]
+Gjs-Message: JS LOG: registerCaretEvents: [true]
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Window manager warning: Log level 32: JS WARNING: [/home/dev/gnome/install/share/gnome-shell/js/ui/focusCaretTracker.js 232]: assignment to undeclared variable text_extents
+Gjs-Message: JS LOG: <text_extents> 824 57 9 22
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 824 57 9 22
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,-1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+
+(gnome-shell:10437): Gjs-WARNING **: JS ERROR: Exception in callback for signal: focus-changed: [boxed instance proxy GIName:GLib.Error jsobj@0x7fe4220a7940 native@0x3fbe940]
+
+(gnome-shell:10437): Gjs-WARNING **: JS ERROR: Exception in callback for signal: focus-changed: [boxed instance proxy GIName:GLib.Error jsobj@0x7fe4220b6430 native@0x4018480]
+
+(gnome-shell:10437): Gjs-WARNING **: JS ERROR: Exception in callback for signal: focus-changed: [boxed instance proxy GIName:GLib.Error jsobj@0x7fe4220be310 native@0x3fed550]
+
+(gnome-shell:10437): Gjs-WARNING **: JS ERROR: Exception in callback for signal: focus-changed: [boxed instance proxy GIName:GLib.Error jsobj@0x7fe4220c9040 native@0x3fbceb0]
+Gtk-Message: Failed to load module "canberra-gtk-module"
+
+(gedit:10739): libpeas-WARNING **: Error initializing Python Plugin Loader: PyGObject initialization failed
+ImportError: could not import gobject (error was: ImportError('/home/dev/gnome/install/lib64/libpyglib-gi-2.0-python2.so.0: undefined symbol: _Py_ZeroStruct',))
+
+(gedit:10739): libpeas-WARNING **: Please check the installation of all the Python related packages required by libpeas and try again
+
+(gedit:10739): libpeas-WARNING **: Loader 'python3' is not a valid PeasPluginLoader instance
+
+(gedit:10739): libpeas-WARNING **: Could not find loader 'python3' for plugin 'externaltools'
+
+(gedit:10739): libpeas-WARNING **: Could not find loader 'python3' for plugin 'snippets'
+
+(gedit:10739): libpeas-WARNING **: Could not find loader 'python3' for plugin 'devhelp'
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 614 223 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,2
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 623 223 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,3
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 632 223 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,4
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 605 241 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,5
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 605 259 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,6
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 614 259 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,7
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 623 259 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,8
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 605 277 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,9
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 605 295 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,10
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 605 313 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,11
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 605 331 0 18
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,12
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 605 349 0 18
+Gjs-Message: JS LOG: END 
+
+(gnome-shell:10437): Gjs-WARNING **: JS ERROR: Exception in callback for signal: focus-changed: [boxed instance proxy GIName:GLib.Error jsobj@0x7fe421e49100 native@0x3cabb80]
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,-1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 824 57 9 22
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,-1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 824 57 9 22
+Gjs-Message: JS LOG: END 
+Gjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,0
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+Gjs-Message: JS LOG: <text_extents> 824 57 9 22
+Gjs-Message: JS LOG: END 
+^[[B^[[AGjs-Message: JS LOG: <accessible> : 
+Gjs-Message: JS LOG: <caller> [object FocusCaretTracker]
+Gjs-Message: JS LOG: <event> object:text-caret-moved,-1
+Gjs-Message: JS LOG: <contructor>function Atspi_Accessible() {
+    [native code]
+}
+Gjs-Message: JS LOG: <role name> text
+
+(gnome-shell:10437): Gjs-WARNING **: JS ERROR: Exception in callback for signal: focus-changed: [boxed instance proxy GIName:GLib.Error jsobj@0x7fe421b19d60 native@0x3f26420]
+
+(gnome-shell:10437): Gjs-WARNING **: JS ERROR: Exception in callback for signal: focus-changed: [boxed instance proxy GIName:GLib.Error jsobj@0x7fe421b64820 native@0x44fc740]
+
+(gnome-shell:10437): Gjs-WARNING **: JS ERROR: Exception in callback for signal: focus-changed: [boxed instance proxy GIName:GLib.Error jsobj@0x7fe421b72fa0 native@0x44fa950]
+
+(process:10900): GLib-CRITICAL **: g_slice_set_config: assertion 'sys_page_size == 0' failed
+Gtk-Message: Failed to load module "canberra-gtk-module"
