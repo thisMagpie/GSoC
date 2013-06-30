@@ -147,9 +147,7 @@ const FocusCaretTracker = new Lang.Class({
 
         if (this._atspiListener) {
             try {
-                deregistered = this._atspiListener.deregister(
-                    'object:text-caret-moved'
-                );
+                deregistered = this._atspiListener.deregister('object:text-caret-moved');
             }
             catch (err) {
                 log(err);
@@ -169,7 +167,7 @@ const FocusCaretTracker = new Lang.Class({
 
     _changed: function(event) {
 
-        if (event.type.indexOf('object:state-changed') == 0) {
+        if (event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') {
             this.emit('focus-changed', event);
         }
         else if (event.type == 'object:text-caret-moved') {
@@ -209,56 +207,58 @@ function onFocusCaret(caller, event) {
     let acc = event.source;
 
     if (acc) {
-        let name = acc.get_name();
         let roleName = acc.get_role_name();
-
-        if((name =='Terminal' || roleName=='terminal') || (event.type.indexOf('focus-changed') != 0 && event.type.indexOf('object:text-caret-moved') != 0)) {
+        if(roleName=='terminal') {
             return;
         }
-        log ('<accessible> : ' + name);
-        log ('<caller> ' + caller);
-        log ('<event> ' + event.type + ',' + event.detail1);
-        log ('<contructor>' + acc.constructor);
-        log ('<role name> ' + roleName);
 
-        if(event.type.indexOf('object:text-caret-moved') == 0) {
 
-            let text = acc.get_text_iface();
+        if ((event.type.startsWith('object:state-changed') && event.detail1 == 1) || event.type == 'object:text-caret-moved') {
+            log ('<accessible> : ' + acc.get_name());
+            log ('<caller> ' + caller);
+            log ('<event> ' + event.type + ',' + event.detail1);
+            log ('<contructor>' + acc.constructor);
+            log ('<role name> ' + roleName);
 
-            if (text && text.get_caret_offset() >= 0) {
+            if(event.type == 'object:text-caret-moved') {
 
-                try{
-                    let offset = text.get_caret_offset();
-                    text_extents = text.get_character_extents(offset, 0);
+                let text = acc.get_text_iface();
 
-                    if (text_extents) {
-                        log ('<text_extents> '+text_extents.x + ' ' + text_extents.y + ' ' + text_extents.width + ' ' + text_extents.height + '\nGjs-Message: JS LOG: END ');
+                if (text && text.get_caret_offset() >= 0) {
+
+                    try{
+                        let offset = text.get_caret_offset();
+                        text_extents = text.get_character_extents(offset, 0);
+
+                        if (text_extents) {
+                            log ('<text_extents> '+text_extents.x + ' ' + text_extents.y + ' ' + text_extents.width + ' ' + text_extents.height + '\nGjs-Message: JS LOG: END ');
+                        }
+                    }
+                    catch(err) {
+                        log(err);
                     }
                 }
-                catch(err) {
+            }
+            else if((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') && event.detail1==1) {
+
+                try{
+                    let comp = acc.get_component_iface();
+
+                    if (comp) {
+                        let extents = comp.get_extents(Atspi.CoordType.SCREEN);
+
+                        if (extents) {
+                            log ('<extents> ['+ extents.x + ' ' + extents.y + ' ' + extents.width + ' ' + extents.height + ']\nGjs-Message: JS LOG: END ');
+                        }
+                    }
+                }
+                catch(err){
                     log(err);
                 }
             }
-        }
-        else if (event.type.indexOf('object:state-changed') == 0 && event.detail1==1) {
-
-            try{
-                let comp = acc.get_component_iface();
-
-                if (comp) {
-                    let extents = comp.get_extents(Atspi.CoordType.SCREEN);
-
-                    if (extents) {
-                        log ('<extents> ['+ extents.x + ' ' + extents.y + ' ' + extents.width + ' ' + extents.height + ']\nGjs-Message: JS LOG: END ');
-                    }
-                }
+            else {
+                log ('focus lost \nGjs-Message: JS LOG: END ');
             }
-            catch(err){
-                log(err);
-            }
-        }
-        else {
-            log ('focus lost \nGjs-Message: JS LOG: END ');
         }
     }
     else {
