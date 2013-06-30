@@ -68,13 +68,11 @@ const FocusCaretTracker = new Lang.Class({
             selectRegistered = this._atspiListener.register(
                 'object:state-changed:selected'
             );
-            log('registerFocusEvents: [' + focusRegistered + ',' + selectRegistered + ']');
         }
         catch (err) {
             log(err);
             focusRegistered = false;
             selectRegistered = false;
-
         }
         this._trackingFocus = focusRegistered;
         return this._trackingFocus;
@@ -95,7 +93,6 @@ const FocusCaretTracker = new Lang.Class({
         try {
             focusDeregistered = this._atspiListener.deregister('object:state-changed:focused');
             selectDeregistered = this._atspiListener.deregister('object:state-changed:selected');
-            log('deregisterFocusEvents: [' + focusDeregistered + ',' + selectDeregistered + ']');
         }
         catch (err) {
             log(err);
@@ -125,7 +122,6 @@ const FocusCaretTracker = new Lang.Class({
 
         try {
             registered = this._atspiListener.register('object:text-caret-moved');
-            log('registerCaretEvents: [' + registered + ']');
         }
          catch (err) {
             log(err);
@@ -177,6 +173,7 @@ const FocusCaretTracker = new Lang.Class({
 });
 
 Signals.addSignalMethods(FocusCaretTracker.prototype);
+
 /**
  * Override connect() from Signals to manage Atpsi registry internally.  If
  * the call to the Atspi registry fails, or the signal is unknown, no  connection
@@ -186,6 +183,7 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
  * @return:   Id of the connection.  If the call to Atspi registry fails,
  *            this returns a negative value (no connection made).
  */
+
 FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect;
 FocusCaretTracker.prototype.connect = function(name, callback) {
     let registered = false;
@@ -202,66 +200,4 @@ FocusCaretTracker.prototype.connect = function(name, callback) {
     else {
       return -1;
    }
-}
-function onFocusCaret(caller, event) {
-    let acc = event.source;
-
-    if (acc) {
-        let roleName = acc.get_role_name();
-        if(roleName=='terminal') {
-            return;
-        }
-
-
-        if ((event.type.startsWith('object:state-changed') && event.detail1 == 1) || event.type == 'object:text-caret-moved') {
-            log ('<accessible> : ' + acc.get_name());
-            log ('<caller> ' + caller);
-            log ('<event> ' + event.type + ',' + event.detail1);
-            log ('<contructor>' + acc.constructor);
-            log ('<role name> ' + roleName);
-
-            if(event.type == 'object:text-caret-moved') {
-
-                let text = acc.get_text_iface();
-
-                if (text && text.get_caret_offset() >= 0) {
-
-                    try{
-                        let offset = text.get_caret_offset();
-                        text_extents = text.get_character_extents(offset, 0);
-
-                        if (text_extents) {
-                            log ('<text_extents> '+text_extents.x + ' ' + text_extents.y + ' ' + text_extents.width + ' ' + text_extents.height + '\nGjs-Message: JS LOG: END ');
-                        }
-                    }
-                    catch(err) {
-                        log(err);
-                    }
-                }
-            }
-            else if((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') && event.detail1==1) {
-
-                try{
-                    let comp = acc.get_component_iface();
-
-                    if (comp) {
-                        let extents = comp.get_extents(Atspi.CoordType.SCREEN);
-
-                        if (extents) {
-                            log ('<extents> ['+ extents.x + ' ' + extents.y + ' ' + extents.width + ' ' + extents.height + ']\nGjs-Message: JS LOG: END ');
-                        }
-                    }
-                }
-                catch(err){
-                    log(err);
-                }
-            }
-            else {
-                log ('focus lost \nGjs-Message: JS LOG: END ');
-            }
-        }
-    }
-    else {
-        log ('no accessible \nGjs-Message: JS LOG: END ');
-    }
 }
