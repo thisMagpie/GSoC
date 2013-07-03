@@ -54,7 +54,7 @@ const Magnifier = new Lang.Class({
     _init: function() {
         // Magnifier is a manager of ZoomRegions.
         this._zoomRegions = [];
-        
+
 
         // Create small clutter tree for the magnified mouse.
         let xfixesCursor = Shell.XFixesCursor.get_for_stage(global.stage);
@@ -603,9 +603,7 @@ const Magnifier = new Lang.Class({
     _updateCaretTrackingMode: function() {
         // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
-            this._zoomRegions[0].setCaretTrackingMode(
-                this._settings.get_enum(CARET_TRACKING_KEY)
-            );
+            this._zoomRegions[0].setCaretTrackingMode(this._settings.get_enum(CARET_TRACKING_KEY));
         }
     },
 
@@ -655,19 +653,9 @@ const Magnifier = new Lang.Class({
     // work is done in this_manageFocusTracking.
     // Ultimately make this sensitive to gsettings for focus and caret tracking.
     //
-    setFocusTrackingEnabled: function(enableFlag) {
-        if (enableFlag) {
-            if (!this._focusConnectId) {
-                this._focusConnectId = Main.focusCaretTracker.connect('focus-changed', Lang.bind (this, this._manageFocusCaretTracking));
-            }
-        }
-        else {
-            Main.focusCaretTracker.disconnect(this._focusConnectId);
-            this._focusConnectId = null;
-        }
-    },
 
     setCaretTrackingEnabled: function(enableFlag) {
+
         if (enableFlag) {
             if (!this._caretConnectId) {
                 this._caretConnectId = Main.focusCaretTracker.connect('caret-changed', Lang.bind(this, this._manageFocusCaretTracking));
@@ -693,7 +681,7 @@ const Magnifier = new Lang.Class({
                     return;
                 }
 
-                if ((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected')  
+                if ((event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected'
                 && event.detail1 == 1) || event.type == 'object:text-caret-moved') {
                     log ('<accessible> : ' + acc.get_name());
                     log ('<caller> ' + caller);
