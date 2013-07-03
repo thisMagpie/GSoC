@@ -1,194 +1,149 @@
-<schemalist>
+/*
+ * Copyright © 2010 Codethink Limited
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ *
+ * Authors:
+ *	Ryan Lortie <desrt@desrt.ca>
+ */
 
-  <schema id="org.gnome.desktop.a11y.magnifier"
-	  path="/org/gnome/desktop/a11y/magnifier/"
-          gettext-domain="@GETTEXT_PACKAGE@">
-    <key name="mouse-tracking" enum="org.gnome.desktop.GDesktopMagnifierMouseTrackingMode">
-      <default>'proportional'</default>
-      <_summary>Mouse Tracking Mode</_summary>
-      <_description>
-        Determines the position of the magnified mouse image within the
-        magnified view and how it reacts to system mouse movement. 
-      </_description>   
-      </key>   
-      <key name="focus-tracking" enum="org.gnome.desktop.GDesktopMagnifierFocusTrackingMode">
-      <default>'push'</default>
-      <_summary>Focus Tracking Mode</_summary>
-      <_description>
-		- none: no tracking;
-      </_description>
-     </key>
-      <key name="caret-tracking" enum="org.gnome.desktop.GDesktopMagnifierCaretTrackingMode">
-      <default>'centered'</default>
-      <_summary>Caret Tracking Mode</_summary>
-      <_description>
-		none: no tracking;
-      </_description>
-    </key>
-    <key name="screen-position" enum="org.gnome.desktop.GDesktopMagnifierScreenPosition">
-      <default>'full-screen'</default>
-      <_summary>Screen position</_summary>
-      <_description>
-        The magnified view either fills the entire screen, or occupies the
-        top-half, bottom-half, left-half, or right-half of the screen.
-      </_description>
-    </key>
-    <key name="mag-factor" type="d">
-      <default>2.0</default>
-      <range min="0.1" max="32.0"/>
-      <_summary>Magnification factor</_summary>
-      <_description>
-        The power of the magnification. A value of 1.0 means no magnification.
-        A value of 2.0 doubles the size.
-      </_description>
-    </key>
-    <key name="lens-mode" type="b">
-      <default>false</default>
-      <_summary>Enable lens mode</_summary>
-      <_description>
-        Whether the magnified view should be centered over the location of
-        the system mouse and move with it.
-      </_description>
-    </key>
-    <key name="scroll-at-edges" type="b">
-      <default>false</default>
-      <_summary>
-        Scroll magnified contents beyond the edges of the desktop
-      </_summary>
-      <_description>
-        For centered mouse tracking, when the system pointer is at or near the
-        edge of the screen, the magnified contents continue to scroll such that
-        the screen edge moves into the magnified view.
-      </_description>
-    </key>
+#ifndef __gdesktop_enums_h__
+#define __gdesktop_enums_h__
 
-    <!-- Cross-hairs -->
-    <key name="show-cross-hairs" type="b">
-      <default>false</default>
-      <_summary>Show or hide crosshairs</_summary>
-      <_description>
-        Enables/disables display of crosshairs centered on the magnified
-        mouse sprite.
-      </_description>
-    </key>
-    <key name="cross-hairs-thickness" type="i">
-      <default>8</default>
-      <_summary>Thickness of the crosshairs in pixels</_summary>
-      <_description>
-        Width in pixels of the vertical and horizontal lines that make up the crosshairs.
-      </_description>
-    </key>
-    <key name="cross-hairs-color" type="s">
-      <default>'#ff0000'</default>
-      <_summary>Color of the crosshairs</_summary>
-      <_description>
-        The color of the the vertical and horizontal lines that make up
-        the crosshairs.
-      </_description>
-    </key>
-    <key name="cross-hairs-opacity" type="d">
-      <default>0.66</default>
-      <range min="0.0" max="1.0"/>
-      <_summary>Opacity of the crosshairs</_summary>
-      <_description>
-        Determines the transparency of the crosshairs, from fully opaque
-        to fully transparent.
-      </_description>
-    </key>
-    <key name="cross-hairs-length" type="i">
-      <default>4096</default>
-      <range min="20" max="4096"/>
-      <_summary>Length of the crosshairs in pixels</_summary>
-      <_description>
-        Determines the length in pixels of the vertical and horizontal
-        lines that make up the crosshairs.
-      </_description>
-    </key>
-    <key name="cross-hairs-clip" type="b">
-      <default>false</default>
-      <_summary>Clip the crosshairs at the center</_summary>
-      <_description>
-        Determines whether the crosshairs intersect the magnified mouse sprite,
-        or are clipped such that the ends of the horizontal and vertical lines
-        surround the mouse image.
-      </_description>
-    </key>
-    <key name="invert-lightness" type="b">
-      <default>false</default>
-      <_summary>Inverse lightness</_summary>
-      <_description>
-        Determines whether the lightness values are inverted:  darker colors
-        become lighter and vice versa, and white and black are interchanged.
-      </_description>
-    </key>
-    <key name="color-saturation" type="d">
-      <default>1.0</default>
-      <range min="0.0" max="1.0"/>
-      <_summary>Color Saturation</_summary>
-      <_description>
-        Represents a change to the color saturation, from 0.0 (grayscale)
-        to 1.0 (full color).
-      </_description>
-    </key>
-    <key name="brightness-red" type="d">
-      <default>0.0</default>
-      <range min="-1.0" max="1.0"/>
-      <_summary>Change brightness of red</_summary>
-      <_description>
-        Represents a change to the default brightness of the red component. Zero
-        indicates no change, values less than zero indicate a decrease, and
-        values greater than zero indicate an increase.
-      </_description>
-    </key>
-    <key name="brightness-green" type="d">
-      <default>0.0</default>
-      <range min="-1.0" max="1.0"/>
-      <_summary>Change brightness of green</_summary>
-      <_description>
-        Represents a change to the default brightness for the green component.
-        Zero indicates no change, values less than zero indicate a decrease, and
-        values greater than zero indicate an increase.
-      </_description>
-    </key>
-    <key name="brightness-blue" type="d">
-      <default>0.0</default>
-      <range min="-1.0" max="1.0"/>
-      <_summary>Change brightness of blue</_summary>
-      <_description>
-        Represents a change to the default brightness for the blue component.
-        Zero indicates no change, values less than zero indicate a decrease, and
-        values greater than zero indicate an increase.
-      </_description>
-    </key>
-    <key name="contrast-red" type="d">
-      <default>0.0</default>
-      <range min="-1.0" max="1.0"/>
-      <_summary>Change contrast of red</_summary>
-      <_description>
-        Represents a change to the default contrast of the red component.  Zero
-        indicates no change in contrast, values less than zero indicate a
-        decrease, and values greater than zero indicate an increase.
-      </_description>
-    </key>
-    <key name="contrast-green" type="d">
-      <default>0.0</default>
-      <range min="-1.0" max="1.0"/>
-      <_summary>Change contrast of green</_summary>
-      <_description>
-        Represents a change to the default contrast of the green component.
-        Zero indicates no change in contrast, values less than zero indicate a
-        decrease, and values greater than zero indicate an increase.
-      </_description>
-    </key>
-    <key name="contrast-blue" type="d">
-      <default>0.0</default>
-      <range min="-1.0" max="1.0"/>
-      <_summary>Change contrast of blue</_summary>
-      <_description>
-        Represents a change to the default contrast of the blue component.  Zero
-        indicates no change in contrast, values less than zero indicate a
-        decrease, and values greater than zero indicate an increase.
-     </_description>
-    </key>
-  </schema>
-</schemalist>
+typedef enum
+{
+  G_DESKTOP_PROXY_MODE_NONE,
+  G_DESKTOP_PROXY_MODE_MANUAL,
+  G_DESKTOP_PROXY_MODE_AUTO
+} GDesktopProxyMode;
+
+typedef enum
+{
+  G_DESKTOP_TOOLBAR_STYLE_BOTH,
+  G_DESKTOP_TOOLBAR_STYLE_BOTH_HORIZ,
+  G_DESKTOP_TOOLBAR_STYLE_ICONS,
+  G_DESKTOP_TOOLBAR_STYLE_TEXT
+} GDesktopToolbarStyle;
+
+typedef enum
+{
+  G_DESKTOP_TOOLBAR_ICON_SIZE_SMALL,
+  G_DESKTOP_TOOLBAR_ICON_SIZE_LARGE
+} GDesktopToolbarIconSize;
+
+typedef enum
+{
+  G_DESKTOP_BACKGROUND_STYLE_NONE,
+  G_DESKTOP_BACKGROUND_STYLE_WALLPAPER,
+  G_DESKTOP_BACKGROUND_STYLE_CENTERED,
+  G_DESKTOP_BACKGROUND_STYLE_SCALED,
+  G_DESKTOP_BACKGROUND_STYLE_STRETCHED,
+  G_DESKTOP_BACKGROUND_STYLE_ZOOM,
+  G_DESKTOP_BACKGROUND_STYLE_SPANNED
+} GDesktopBackgroundStyle;
+
+typedef enum
+{
+  G_DESKTOP_BACKGROUND_SHADING_SOLID,
+  G_DESKTOP_BACKGROUND_SHADING_VERTICAL,
+  G_DESKTOP_BACKGROUND_SHADING_HORIZONTAL
+} GDesktopBackgroundShading;
+
+typedef enum
+{
+  G_DESKTOP_MOUSE_DWELL_MODE_WINDOW,
+  G_DESKTOP_MOUSE_DWELL_MODE_GESTURE
+} GDesktopMouseDwellMode;
+
+typedef enum
+{
+  G_DESKTOP_MOUSE_DWELL_DIRECTION_LEFT,
+  G_DESKTOP_MOUSE_DWELL_DIRECTION_RIGHT,
+  G_DESKTOP_MOUSE_DWELL_DIRECTION_UP,
+  G_DESKTOP_MOUSE_DWELL_DIRECTION_DOWN
+} GDesktopMouseDwellDirection;
+
+typedef enum
+{
+  G_DESKTOP_CLOCK_FORMAT_24H,
+  G_DESKTOP_CLOCK_FORMAT_12H
+} GDesktopClockFormat;
+
+typedef enum
+{
+  G_DESKTOP_SCREENSAVER_MODE_BLANK_ONLY,
+  G_DESKTOP_SCREENSAVER_MODE_RANDOM,
+  G_DESKTOP_SCREENSAVER_MODE_SINGLE
+} GDesktopScreensaverMode;
+
+typedef enum
+{
+  G_DESKTOP_MAGNIFIER_MOUSE_TRACKING_MODE_NONE,
+  G_DESKTOP_MAGNIFIER_MOUSE_TRACKING_MODE_CENTERED,
+  G_DESKTOP_MAGNIFIER_MOUSE_TRACKING_MODE_PROPORTIONAL,
+  G_DESKTOP_MAGNIFIER_MOUSE_TRACKING_MODE_PUSH
+  
+} GDesktopMagnifierMouseTrackingMode;
+
+typedef enum
+{
+  G_DESKTOP_MAGNIFIER_CARET_TRACKING_MODE_NONE,
+  G_DESKTOP_MAGNIFIER_CARET_TRACKING_MODE_CENTERED
+  
+} GDesktopMagnifierCaretTrackingMode;
+
+typedef enum
+{
+  G_DESKTOP_MAGNIFIER_SCREEN_POSITION_NONE,
+  G_DESKTOP_MAGNIFIER_SCREEN_POSITION_FULL_SCREEN,
+  G_DESKTOP_MAGNIFIER_SCREEN_POSITION_TOP_HALF,
+  G_DESKTOP_MAGNIFIER_SCREEN_POSITION_BOTTOM_HALF,
+  G_DESKTOP_MAGNIFIER_SCREEN_POSITION_LEFT_HALF,
+  G_DESKTOP_MAGNIFIER_SCREEN_POSITION_RIGHT_HALF,
+} GDesktopMagnifierScreenPosition;
+
+typedef enum
+{
+  G_DESKTOP_TITLEBAR_ACTION_TOGGLE_SHADE,
+  G_DESKTOP_TITLEBAR_ACTION_TOGGLE_MAXIMIZE,
+  G_DESKTOP_TITLEBAR_ACTION_TOGGLE_MAXIMIZE_HORIZONTALLY,
+  G_DESKTOP_TITLEBAR_ACTION_TOGGLE_MAXIMIZE_VERTICALLY,
+  G_DESKTOP_TITLEBAR_ACTION_MINIMIZE,
+  G_DESKTOP_TITLEBAR_ACTION_NONE,
+  G_DESKTOP_TITLEBAR_ACTION_LOWER,
+  G_DESKTOP_TITLEBAR_ACTION_MENU,
+} GDesktopTitlebarAction;
+
+typedef enum
+{
+  G_DESKTOP_FOCUS_MODE_CLICK,
+  G_DESKTOP_FOCUS_MODE_SLOPPY,
+  G_DESKTOP_FOCUS_MODE_MOUSE,
+} GDesktopFocusMode;
+
+typedef enum
+{
+  G_DESKTOP_FOCUS_NEW_WINDOWS_SMART,
+  G_DESKTOP_FOCUS_NEW_WINDOWS_STRICT,
+} GDesktopFocusNewWindows;
+
+typedef enum
+{
+  G_DESKTOP_VISUAL_BELL_FULLSCREEN_FLASH,
+  G_DESKTOP_VISUAL_BELL_FRAME_FLASH,
+} GDesktopVisualBellType;
+
+#endif /* __gdesktop_enums_h__ */
