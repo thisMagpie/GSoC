@@ -1,0 +1,15 @@
+#!/bin/sh
+
+GNOME=/home/magpie/gnome
+
+PATH=${GNOME}/bin:${GNOME}/sbin:${PATH}
+LD_LIBRARY_PATH=${GNOME}/lib64:${LD_LIBRARY_PATH}
+PYTHONPATH=${GNOME}/lib64/python/site-packages:/usr/lib64/python/site-packages
+PKG_CONFIG_PATH=${GNOME}/lib64/pkgconfig:${GNOME}/share/pkgconfig:/usr/lib64/pkgconfig
+XDG_DATA_DIRS=${GNOME}/share:/usr/share
+XDG_CONFIG_DIRS=${GNOME}/etc/xdg
+
+export PATH LD_LIBRARY_PATH PYTHONPATH PKG_CONFIG_PATH GDK_USE_XFT XDG_DATA_DIRS XDG_CONFIG_DIRS
+
+#exec valgrind --tool=memcheck --log-file=/tmp/session-grind.log ${GNOME}/bin/gnome-session
+exec ${GNOME}/bin/gnome-session --debug
