@@ -4,7 +4,7 @@ EXTRA_DIST = misc/config.js.in
 CLEANFILES = misc/config.js
 
 misc/config.js: misc/config.js.in Makefile
-    [ -d $(@D) ] || $(mkdir_p) $(@D) ; \
+	[ -d $(@D) ] || $(mkdir_p) $(@D) ; \
 	sed -e "s|[@]PACKAGE_NAME@|$(PACKAGE_NAME)|g" \
 	    -e "s|[@]PACKAGE_VERSION@|$(PACKAGE_VERSION)|g" \
 	    -e "s|[@]HAVE_BLUETOOTH@|$(HAVE_BLUETOOTH)|g" \
@@ -53,7 +53,7 @@ nobase_dist_js_DATA = 	\
 	ui/extensionSystem.js	\
 	ui/extensionDownloader.js \
 	ui/environment.js	\
-	ui/focusCaretTracker.js \
+	ui/focusCaretTracker.js    \
 	ui/ibusCandidatePopup.js\
 	ui/grabHelper.js	\
 	ui/iconGrid.js		\
@@ -84,7 +84,7 @@ nobase_dist_js_DATA = 	\
 	ui/runDialog.js		\
 	ui/screencast.js	\
 	ui/screenshot.js	\
-    ui/screenShield.js	\
+	ui/screenShield.js	\
 	ui/scripting.js		\
 	ui/search.js		\
 	ui/searchDisplay.js	\

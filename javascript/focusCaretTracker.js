@@ -25,27 +25,14 @@ const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
 const Signals = imports.signals;
 
-let _atspiCallback = null;
-
 const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
 
     _init: function() {
         Atspi.init();
-
-        _atspiCallback = Lang.bind(this, this._changed);
-        this._atspiListener = Atspi.EventListener.new(_atspiCallback);
+        this._atspiListener = Atspi.EventListener.new(Lang.bind(this, this._changed));
         this._trackingFocus = false;
         this._trackingCaret = false;
-    },
-
-    /**
-     * shutDown.
-     */
-    shutDown: function() {
-        this.deregisterFocusEvents();
-        this.deregisterCaretEvents();
-        this.disconnectAll();
     },
 
     /**
@@ -58,24 +45,18 @@ const FocusCaretTracker = new Lang.Class({
             return true;
         }
 
-        let focusRegistered = false;
-        let selectRegistered = false;
+        let registeredFocus = false;
+        let registeredSelect = false;
 
-        try {
-            focusRegistered = this._atspiListener.register(
-                'object:state-changed:focused'
-            );
-            selectRegistered = this._atspiListener.register(
-                'object:state-changed:selected'
-            );
+        try{
+            registeredFocus = this._atspiListener.register('object:state-changed:focused');
+            registeredSelect = this._atspiListener.register('object:state-changed:selected');
         }
-        catch (err) {
-            log(err);
-            focusRegistered = false;
-            selectRegistered = false;
+        catch{
+            log(err.message);
         }
-        this._trackingFocus = focusRegistered;
-        return this._trackingFocus;
+
+        return this._trackingFocus = registeredFocus || registeredSelect;
     },
 
     /**
@@ -84,28 +65,28 @@ const FocusCaretTracker = new Lang.Class({
      */
     _deregisterFocusEvents: function() {
 
-        if (!this._trackingFocus) {
+        if (!this._trackingFocus)
             return true;
-        }
-        let focusDeregistered = false;
-        let selectDeregistered = false;
 
-        try {
-            focusDeregistered = this._atspiListener.deregister('object:state-changed:focused');
-            selectDeregistered = this._atspiListener.deregister('object:state-changed:selected');
+        let deregisteredFocus = false;
+        let deregisteredSelect = false;
+
+        try{
+            deregisteredFocus = this._atspiListener.register('object:state-changed:focused');
+            deregisteredSelect = this._atspiListener.register('object:state-changed:selected')
         }
-        catch (err) {
-            log(err);
+        catch{
+            log(err.message)
         }
-        this._trackingFocus = !(focusDeregistered || selectDeregistered);
-        return this._trackingFocus;
+
+        return this._trackingFocus = !(deregisteredFocus && deregisteredSelect);
     },
 
     /**
      * registeredFocus
      * @return: Boolean.
      */
-    registeredFocus: function() {
+    registeredFocusEvents: function() {
         return this._trackingFocus;
     },
 
@@ -115,18 +96,15 @@ const FocusCaretTracker = new Lang.Class({
      */
     _registerCaretEvents: function() {
 
-        if (this._trackingCaret) {
+        if (this._trackingCaret)
             return true;
-        }
-        let registered = false;
 
-        try {
-            registered = this._atspiListener.register('object:text-caret-moved');
+        try{
+            this._trackingCaret = this._atspiListener.register('object:text-caret-moved');
         }
-         catch (err) {
-            log(err);
+        catch{
+            log(err.message);
         }
-        this._trackingCaret = registered;
         return this._trackingCaret;
     },
 
@@ -136,20 +114,16 @@ const FocusCaretTracker = new Lang.Class({
      */
     _deregisterCaretEvents: function() {
 
-        if (!this._trackingCaret){
+        if (!this._trackingCaret)
             return true;
-        }
-        let deregistered = false;
 
-        if (this._atspiListener) {
-            try {
-                deregistered = this._atspiListener.deregister('object:text-caret-moved');
-            }
-            catch (err) {
-                log(err);
-            }
+        try{
+            this._trackingCaret = !this._atspiListener.deregister('object:text-caret-moved');
         }
-        this._trackingCaret = !deregistered;
+        catch{
+            log(err.message)
+        }
+
         return this._trackingCaret;
     },
 
@@ -157,13 +131,19 @@ const FocusCaretTracker = new Lang.Class({
      * RegisteredCaret
      * @return: Boolean.
      */
-    registeredCaret: function() {
+    registeredCaretEvents: function() {
         return this._trackingCaret;
+    },
+
+    shutDown: function() {
+        this.deregisterFocusEvents();
+        this.deregisterCaretEvents();
+        this.disconnectAll();
     },
 
     _changed: function(event) {
 
-        if (event.type == 'object:state-changed:focused' || event.type == 'object:state-changed:selected') {
+        if (event.indexOf('object:state-changed') == 0) {
             this.emit('focus-changed', event);
         }
         else if (event.type == 'object:text-caret-moved') {
@@ -171,7 +151,6 @@ const FocusCaretTracker = new Lang.Class({
         }
     }
 });
-
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
 /**
@@ -183,9 +162,8 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
  * @return:   Id of the connection.  If the call to Atspi registry fails,
  *            this returns a negative value (no connection made).
  */
-
 FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect;
-FocusCaretTracker.prototype.connect = function(name, callback) {
+FocusCaretTracker.prototype.con\nect = function(name, callback) {
     let registered = false;
 
     if (name == 'focus-changed') {
@@ -195,9 +173,9 @@ FocusCaretTracker.prototype.connect = function(name, callback) {
         registered = this._registerCaretEvents();
     }
     if (registered) {
-      return this._connect(name, callback);
+        return this._connect(name, callback);
     }
     else {
-      return -1;
+        return -1;
    }
 }
