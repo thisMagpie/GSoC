@@ -67,7 +67,7 @@ const Magnifier = new Lang.Class({
         let mask;
         [this.xMouse, this.yMouse, mask] = global.get_pointer();
 
-		//TODO  THIS IS NOT GOING TO HELP
+		//TODO This is not going to help caret events
         let aZoomRegion = new ZoomRegion(this, this._cursorRoot);
         this._zoomRegions.push(aZoomRegion);
         let showAtLaunch = this._settingsInit(aZoomRegion);
@@ -745,12 +745,12 @@ const ZoomRegion = new Lang.Class({
     isActive: function() {
         return this._magView != null;
     },
-     							
+
     setFocusTrackingEnabled: function(enableFlag) {
         if (enableFlag && !this._focusConnectId) {
             this._focusConnectId = Main.focusCaretTracker.connect(
            'focus-changed', Lang.bind (this, this._manageFocusCaretTracking)
-            );            
+            );
         }
         else {
             Main.focusCaretTracker.disconnect(this._focusConnectId);
@@ -762,7 +762,7 @@ const ZoomRegion = new Lang.Class({
         if (enableFlag && !this._caretConnectId) {
             this._caretConnectId = Main.focusCaretTracker.connect(
            'caret-changed', Lang.bind (this, this._manageFocusCaretTracking)
-            );            
+            );
         }
         else {
             Main.focusCaretTracker.disconnect(this._caretConnectId);
@@ -1524,7 +1524,7 @@ const ZoomRegion = new Lang.Class({
     ///private methods///
     _manageFocusTracking: function(focusCaretTracker, event) {
         let acc = event.source;
-        
+
         // Applies only to the first zoom region.
         if(this._zoomRegions.length && acc) {
             let zoomer = this._zoomRegions[0];
@@ -1931,7 +1931,7 @@ const MagShaderEffects = new Lang.Class({
      * getBrightness:
      * Retrieve current brightness of the magnified view.
      * @return: Object containing the brightness for the red, green,
-     *          and blue channels.  Values of 0.0 represent "standard" 
+     *          and blue channels.  Values of 0.0 represent "standard"
      *          brightness (no change), whereas values less or greater than
      *          0.0 indicate decreased or incresaed brightness, respectively.
      */
