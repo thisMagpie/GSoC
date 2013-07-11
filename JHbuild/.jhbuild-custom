@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Only rebuild if there is a change to the module.
+build_policy = 'updated'
+
+moduleset = 'gnome-apps-3.10'
+
+modules = ['meta-gnome-core', 'meta-gnome-apps-tested', 'meta-gnome-apps-tested' ]
+
+checkoutroot = os.path.expanduser('~/gnome/source')
+prefix = os.path.expanduser('~/gnome/install')
+
+ignore_suggests = True
+
+# Use system libraries for the builds
+if use_lib64:
+    _libdir = 'lib64'
+else:
+    _libdir = 'lib'
+    
+addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', _libdir, 'pkgconfig'))
+addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', 'share', 'pkgconfig'))
+addpath('PKG_CONFIG_PATH','/usr/lib64/pkgconfig')
+addpath('PKG_CONFIG_PATH','/usr/share/pkgconfig')
+
+# D-BUS service files gnome-jhbuild-xephyr-session
+addpath('XDG_DATA_DIRS', prefix + '/share')
+# Look in /etc/xdg for system-global autostart files
+addpath('XDG_CONFIG_DIRS', prefix +'/etc/xdg')
