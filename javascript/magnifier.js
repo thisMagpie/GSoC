@@ -1455,8 +1455,8 @@ const ZoomRegion = new Lang.Class({
         if (!this.isActive())
             return;
 
-        let [xMagMouse, yMagMouse] = this._screenToViewPort(this._magnifier.x,
-                                                            this._magnifier.y);
+        let [xMagMouse, yMagMouse] = this._screenToViewPort(this._magnifier.xMouse,
+                                                            this._magnifier.yMouse);
         xMagMouse = Math.round(xMagMouse);
         yMagMouse = Math.round(yMagMouse);
 
