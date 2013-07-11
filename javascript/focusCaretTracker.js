@@ -163,7 +163,7 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
  *            this returns a negative value (no connection made).
  */
 FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect;
-FocusCaretTracker.prototype.con\nect = function(name, callback) {
+FocusCaretTracker.prototype.connect = function(name, callback) {
     let registered = false;
 
     if (name == 'focus-changed') {
