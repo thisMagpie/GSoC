@@ -41,9 +41,8 @@ const FocusCaretTracker = new Lang.Class({
      */
     _registerFocusEvents: function() {
 
-        if (this._trackingFocus) {
+        if (this._trackingFocus) 
             return true;
-        }
 
         let registeredFocus = false;
         let registeredSelect = false;
@@ -52,7 +51,7 @@ const FocusCaretTracker = new Lang.Class({
             registeredFocus = this._atspiListener.register('object:state-changed:focused');
             registeredSelect = this._atspiListener.register('object:state-changed:selected');
         }
-        catch{
+        catch(err){
             log(err.message);
         }
 
@@ -73,10 +72,10 @@ const FocusCaretTracker = new Lang.Class({
 
         try{
             deregisteredFocus = this._atspiListener.register('object:state-changed:focused');
-            deregisteredSelect = this._atspiListener.register('object:state-changed:selected')
+            deregisteredSelect = this._atspiListener.register('object:state-changed:selected');
         }
-        catch{
-            log(err.message)
+        catch(err){
+            log(err.message);
         }
 
         return this._trackingFocus = !(deregisteredFocus && deregisteredSelect);
@@ -102,9 +101,10 @@ const FocusCaretTracker = new Lang.Class({
         try{
             this._trackingCaret = this._atspiListener.register('object:text-caret-moved');
         }
-        catch{
+        catch(log){
             log(err.message);
         }
+
         return this._trackingCaret;
     },
 
@@ -120,10 +120,10 @@ const FocusCaretTracker = new Lang.Class({
         try{
             this._trackingCaret = !this._atspiListener.deregister('object:text-caret-moved');
         }
-        catch{
-            log(err.message)
+        catch(err){
+            log(err.message);
         }
-
+        
         return this._trackingCaret;
     },
 
