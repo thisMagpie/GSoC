@@ -1,6 +1,5 @@
 // -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 
-const Atspi = imports.gi.Atspi;
 const Clutter = imports.gi.Clutter;
 const GDesktopEnums = imports.gi.GDesktopEnums;
 const Gio = imports.gi.Gio;
@@ -37,8 +36,8 @@ const CONTRAST_BLUE_KEY         = 'contrast-blue';
 const LENS_MODE_KEY             = 'lens-mode';
 const CLAMP_MODE_KEY            = 'scroll-at-edges';
 const MOUSE_TRACKING_KEY        = 'mouse-tracking';
-const FOCUS_TRACKING_KEY        = 'focus-tracking';
-const CARET_TRACKING_KEY        = 'caret-tracking';
+const FOCUS_TRACKING_KEY        = 'mouse-tracking';
+const CARET_TRACKING_KEY        = 'mouse-tracking';
 const SHOW_CROSS_HAIRS_KEY      = 'show-cross-hairs';
 const CROSS_HAIRS_THICKNESS_KEY = 'cross-hairs-thickness';
 const CROSS_HAIRS_COLOR_KEY     = 'cross-hairs-color';
@@ -64,14 +63,14 @@ const Magnifier = new Lang.Class({
 
         // Create the first ZoomRegion and initialize it according to the
         // magnification settings.
-        let mask;
-        [this.xMouse, this.yMouse, mask] = global.get_pointer();
 
-		//TODO This is not going to help caret events
+        let mask;
+        [this.xPoint, this.yPoint, mask] = global.get_pointer();
+
         let aZoomRegion = new ZoomRegion(this, this._cursorRoot);
         this._zoomRegions.push(aZoomRegion);
         let showAtLaunch = this._settingsInit(aZoomRegion);
-        aZoomRegion.scrollContentsTo(this.xMouse, this.yMouse);
+        aZoomRegion.scrollContentsTo(this.xPoint, this.yPoint);
 
         xfixesCursor.connect('cursor-change', Lang.bind(this, this._updateMouseSprite));
         this._xfixesCursor = xfixesCursor;
@@ -169,11 +168,11 @@ const Magnifier = new Lang.Class({
      * @return      true.
      */
     scrollToMousePos: function() {
-        let [xMouse, yMouse, mask] = global.get_pointer();
+        let [xPoint, yPoint, mask] = global.get_pointer();
 
-        if (xMouse != this.xMouse || yMouse != this.yMouse) {
-            this.xMouse = xMouse;
-            this.yMouse = yMouse;
+        if (xPoint != this.xPoint || yPoint != this.Point) {
+            this.xPoint = xPoint;
+            this.yPoint = yPoint;
 
             let sysMouseOverAny = false;
             this._zoomRegions.forEach(function(zoomRegion, index, array) {
@@ -188,32 +187,6 @@ const Magnifier = new Lang.Class({
         return true;
     },
 
-    /**
-    * scrollToFocusPos:
-    * Position all zoom regions' ROI relative to the current location of the
-    * system pointer.
-    * @return      true.
-    */
-    scrollToFocusPos: function() {
-
-        let [xFocus, yFocus, mask] = global.get_pointer();
-
-        if (xFocus != this.xe || y != this.y) {
-            this.xFocus = xFocus;
-            this.yFocus = yFocus;
-
-            let sysFocusOverAny = false;
-            this._zoomRegions.forEach(function(zoomRegion, index, array) {
-                if (zoomRegion.scrollToFocusPos())
-                    sysFocusOverAny = true;
-            });
-            if (sysFocusOverAny)
-                this.hideSystemCursor();
-            else
-                this.showSystemCursor();
-        }
-        return true;
-    },
     /**
      * createZoomRegion:
      * Create a ZoomRegion instance with the given properties.
@@ -244,15 +217,15 @@ const Magnifier = new Lang.Class({
     },
 
     /**
-    * addZoomRegion:
-    * Append the given ZoomRegion to the list of currently defined ZoomRegions
-    * for this Magnifier instance.
-    * @zoomRegion:     The zoomRegion to add.
-    */
+     * addZoomRegion:
+     * Append the given ZoomRegion to the list of currently defined ZoomRegions
+     * for this Magnifier instance.
+     * @zoomRegion:     The zoomRegion to add.
+     */
     addZoomRegion: function(zoomRegion) {
         if(zoomRegion) {
             this._zoomRegions.push(zoomRegion);
-            if (!this.isTrackingMouse())
+            if (!this.isTrackingMouse())//TODO this needs a more suitable condition
                 this.startTrackingMouse();
         }
     },
@@ -444,8 +417,9 @@ const Magnifier = new Lang.Class({
             let [clipWidth, clipHeight] = this._crossHairs.getClip();
             return (clipWidth > 0 && clipHeight > 0);
         }
-        else
+        else{
             return false;
+        }
      },
 
     //// Private methods ////
@@ -478,13 +452,15 @@ const Magnifier = new Lang.Class({
             if (aPref)
                 zoomRegion.setMouseTrackingMode(aPref);
 
-            aPref = this._settings.get_enum(CARET_TRACKING_KEY);
-            if (aPref)
-                zoomRegion.setCaretTrackingMode(aPref);
-
-            aPref = this._settings.get_enum(FOCUS_TRACKING_KEY);
+            //TODO if these do end up with the same four tracking modes as mouse then
+            //It should be pretty easy to use a single setTrackingMode method
+         /*   aPref = this._settings.get_enum(FOCUS_TRACKING_KEY);
             if (aPref)
                 zoomRegion.setFocusTrackingMode(aPref);
+
+            aPref = this._settings.get_enum(CARET_TRACKING_KEY);
+            if (aPref)
+                zoomRegion.setCaretTrackingMode(aPref);*/
 
             aPref = this._settings.get_boolean(INVERT_LIGHTNESS_KEY);
             if (aPref)
@@ -525,10 +501,10 @@ const Magnifier = new Lang.Class({
                                Lang.bind(this, this._updateClampMode));
         this._settings.connect('changed::' + MOUSE_TRACKING_KEY,
                                Lang.bind(this, this._updateMouseTrackingMode));
+     /*   this._settings.connect('changed::' + FOCUS_TRACKING_KEY,
+                               Lang.bind(this, this._updateMouseTrackingMode));
         this._settings.connect('changed::' + CARET_TRACKING_KEY,
-                               Lang.bind(this, this._updateCaretTrackingMode));
-        this._settings.connect('changed::' + FOCUS_TRACKING_KEY,
-                               Lang.bind(this, this._updateFocusTrackingMode));
+                                Lang.bind(this, this._updateMouseTrackingMode));*/
         this._settings.connect('changed::' + INVERT_LIGHTNESS_KEY,
                                Lang.bind(this, this._updateInvertLightness));
         this._settings.connect('changed::' + COLOR_SATURATION_KEY,
@@ -545,6 +521,7 @@ const Magnifier = new Lang.Class({
                                Lang.bind(this, this._updateContrast));
         this._settings.connect('changed::' + CONTRAST_BLUE_KEY,
                                Lang.bind(this, this._updateContrast));
+
         this._settings.connect('changed::' + SHOW_CROSS_HAIRS_KEY,
                                Lang.bind(this, function() {
             this.setCrosshairsVisible(this._settings.get_boolean(SHOW_CROSS_HAIRS_KEY));
@@ -552,7 +529,7 @@ const Magnifier = new Lang.Class({
 
         this._settings.connect('changed::' + CROSS_HAIRS_THICKNESS_KEY,
                                Lang.bind(this, function() {
-            this.setCrosshairsThickness(this._settings.get_int(CROSS_HAIRS_THICKNESS_KEY));
+        this.setCrosshairsThickness(this._settings.get_int(CROSS_HAIRS_THICKNESS_KEY));
         }));
 
         this._settings.connect('changed::' + CROSS_HAIRS_COLOR_KEY,
@@ -588,8 +565,13 @@ const Magnifier = new Lang.Class({
         }
     },
 
+    ///private methods///
+    /**
+     * set of anonymous methods to perform update so screen can be repainted.
+     * this._zoomRegions.length only ever applies to the first zoom region
+     * */
+
     _updateMagFactor: function() {
-        // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
             // Mag factor is accurate to two decimal places.
             let magFactor = parseFloat(this._settings.get_double(MAG_FACTOR_KEY).toFixed(2));
@@ -598,14 +580,12 @@ const Magnifier = new Lang.Class({
     },
 
     _updateLensMode: function() {
-        // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
             this._zoomRegions[0].setLensMode(this._settings.get_boolean(LENS_MODE_KEY));
         }
     },
 
     _updateClampMode: function() {
-        // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
             this._zoomRegions[0].setClampScrollingAtEdges(
                 !this._settings.get_boolean(CLAMP_MODE_KEY)
@@ -614,7 +594,6 @@ const Magnifier = new Lang.Class({
     },
 
     _updateMouseTrackingMode: function() {
-        // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
             this._zoomRegions[0].setMouseTrackingMode(
                 this._settings.get_enum(MOUSE_TRACKING_KEY)
@@ -622,26 +601,7 @@ const Magnifier = new Lang.Class({
         }
     },
 
-    _updateFocusTrackingMode: function() {
-        // Applies only to the first zoom region.
-        if (this._zoomRegions.length) {
-            this._zoomRegions[0].setFocusTrackingMode(
-                this._settings.get_enum(FOCUS_TRACKING_KEY)
-            );
-        }
-    },
-
-    _updateCaretTrackingMode: function() {
-        // Applies only to the first zoom region.
-        if (this._zoomRegions.length) {
-            this._zoomRegions[0].setCaretTrackingMode(
-                this._settings.get_enum(CARET_TRACKING_KEY)
-            );
-        }
-    },
-
     _updateInvertLightness: function() {
-        // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
             this._zoomRegions[0].setInvertLightness(
                 this._settings.get_boolean(INVERT_LIGHTNESS_KEY)
@@ -650,7 +610,6 @@ const Magnifier = new Lang.Class({
     },
 
     _updateColorSaturation: function() {
-        // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
             this._zoomRegions[0].setColorSaturation(
                 this._settings.get_double(COLOR_SATURATION_KEY)
@@ -659,7 +618,6 @@ const Magnifier = new Lang.Class({
     },
 
     _updateBrightness: function() {
-        // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
             let brightness = {};
             brightness.r = this._settings.get_double(BRIGHT_RED_KEY);
@@ -670,7 +628,6 @@ const Magnifier = new Lang.Class({
     },
 
     _updateContrast: function() {
-        // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
             let contrast = {};
             contrast.r = this._settings.get_double(CONTRAST_RED_KEY);
@@ -685,12 +642,12 @@ Signals.addSignalMethods(Magnifier.prototype);
 const ZoomRegion = new Lang.Class({
     Name: 'ZoomRegion',
 
-    _init: function(magnifier, sourceActor) {
+    _init: function(magnifier, mouseSourceActor) {
         this._magnifier = magnifier;
 
-        this._mouseTrackingMode = GDesktopEnums.MagnifierMouseTrackingMode.NONE;
-        this._focusTrackingMode = GDesktopEnums.MagnifierFocusTrackingMode.NONE;
-        this._caretTrackingMode = GDesktopEnums.MagnifierCaretTrackingMode.NONE;
+        this._pointTrackingMode = GDesktopEnums.MagnifierMouseTrackingMode.NONE;
+       // this._focusTrackingMode = GDesktopEnums.MagnifierMouseTrackingMode.NONE;
+      //  this._caretTrackingMode = GDesktopEnums.MagnifierMouseTrackingMode.NONE;
         this._clampScrollingAtEdges = false;
         this._lensMode = false;
         this._screenPosition = GDesktopEnums.MagnifierScreenPosition.FULL_SCREEN;
@@ -702,7 +659,7 @@ const ZoomRegion = new Lang.Class({
         this._magView = null;
         this._background = null;
         this._uiGroupClone = null;
-        this._sourceActor = sourceActor;
+        this._mouseSourceActor = mouseSourceActor;
         this._mouseActor  = null;
         this._crossHairs = null;
         this._crossHairsActor = null;
@@ -716,6 +673,8 @@ const ZoomRegion = new Lang.Class({
         this._xMagFactor = 1;
         this._yMagFactor = 1;
         this._followingCursor = false;
+        this._caretConnected = false;
+        this._focusConnected = false;
 
         Main.layoutManager.connect('monitors-changed',
                                    Lang.bind(this, this._monitorsChanged));
@@ -732,7 +691,7 @@ const ZoomRegion = new Lang.Class({
                 this._magnifier.hideSystemCursor();
             this._updateMagViewGeometry();
             this._updateCloneGeometry();
-            this._updatePosition();
+            this._updateMousePosition();
         } else if (!activate && this.isActive()) {
             this._destroyActors();
         }
@@ -746,29 +705,6 @@ const ZoomRegion = new Lang.Class({
         return this._magView != null;
     },
 
-    setFocusTrackingEnabled: function(enableFlag) {
-        if (enableFlag && !this._focusConnectId) {
-            this._focusConnectId = Main.focusCaretTracker.connect(
-           'focus-changed', Lang.bind (this, this._manageFocusCaretTracking)
-            );
-        }
-        else {
-            Main.focusCaretTracker.disconnect(this._focusConnectId);
-            this._focusConnectId = null;
-        }
-    },
-
-	setCaretTrackingEnabled: function(enableFlag) {
-        if (enableFlag && !this._caretConnectId) {
-            this._caretConnectId = Main.focusCaretTracker.connect(
-           'caret-changed', Lang.bind (this, this._manageFocusCaretTracking)
-            );
-        }
-        else {
-            Main.focusCaretTracker.disconnect(this._caretConnectId);
-            this._caretConnectId = null;
-        }
-    },
     /**
      * setMagFactor:
      * @xMagFactor:     The power to set the horizontal magnification factor to
@@ -805,37 +741,11 @@ const ZoomRegion = new Lang.Class({
     },
 
     /**
-     * setFocusTrackingMode
-     * @mode:     One of the enum MouseTrackingMode values.TODO
-     */
-    setFocusTrackingMode: function(mode) {
-        if (mode >= GDesktopEnums.MagnifierFocusTrackingMode.NONE &&
-            mode <= GDesktopEnums.MagnifierFocusTrackingMode.PUSH)
-            this._focusTrackingMode = mode;
-    },
-
-    /**
-     * setCaretTrackingMode
-     * @mode:     One of the enum CaretTrackingMode values.
-     */
-    setCaretTrackingMode: function(mode) {
-        if (mode >= GDesktopEnums.MagnifierCaretTrackingMode.NONE &&
-            mode <= GDesktopEnums.MagnifierCaretTrackingMode.CENTERED)
-            this._caretTrackingMode = mode;
-    },
-
-    /**
      * getMouseTrackingMode
      * @return:     One of the enum MouseTrackingMode values.
      */
     getMouseTrackingMode: function() {
         return this._mouseTrackingMode;
-    },
-    getFocusTrackingMode: function() {
-        return this._focusTrackingMode;
-    },
-    getCaretTrackingMode: function() {
-        return this._caretTrackingMode;
     },
 
     /**
@@ -939,7 +849,7 @@ const ZoomRegion = new Lang.Class({
     setBottomHalf: function() {
         let viewPort = {};
         viewPort.x = 0;
-        viewPort.y = global.screen_height/2;
+        viewPort.y = global.screen_height / 2;
         viewPort.width = global.screen_width;
         viewPort.height = global.screen_height/2;
         this._setViewPort(viewPort);
@@ -1173,7 +1083,7 @@ const ZoomRegion = new Lang.Class({
         return contrast;
     },
 
-    //// Private methods ////
+    /// Private methods ///
 
     _createActors: function() {
         // The root actor for the zoom region
@@ -1199,12 +1109,12 @@ const ZoomRegion = new Lang.Class({
         this._uiGroupClone = new Clutter.Clone({ source: Main.uiGroup });
         mainGroup.add_actor(this._uiGroupClone);
 
-        // Add either the given sourceActor to the ZoomRegion, or a clone of
+        // Add either the given mouseSourceActor to the ZoomRegion, or a clone of
         // it.
-        if (this._sourceActor.get_parent() != null)
-            this._mouseActor = new Clutter.Clone({ source: this._sourceActor });
+        if (this._mouseSourceActor.get_parent() != null)
+            this._mouseActor = new Clutter.Clone({ source: this._mouseSourceActor });
         else
-            this._mouseActor = this._sourceActor;
+            this._mouseActor = this._mouseSourceActor;
         mainGroup.add_actor(this._mouseActor);
 
         if (this._crossHairs)
@@ -1221,7 +1131,7 @@ const ZoomRegion = new Lang.Class({
     },
 
     _destroyActors: function() {
-        if (this._mouseActor == this._sourceActor)
+        if (this._mouseActor == this._mouseSourceActor)
             this._mouseActor.get_parent().remove_actor (this._mouseActor);
         if (this._crossHairs)
             this._crossHairs.removeFromParent(this._crossHairsActor);
@@ -1257,7 +1167,7 @@ const ZoomRegion = new Lang.Class({
         if (!fromROIUpdate)
             this._changeROI({ redoCursorTracking: this._followingCursor }); // will update mouse
 
-        if (this.isActive() && this._isoverRegion())
+        if (this.isActive() && this._isMouseOverRegion())
             this._magnifier.hideSystemCursor();
     },
 
@@ -1283,7 +1193,7 @@ const ZoomRegion = new Lang.Class({
         if (params.redoCursorTracking &&
             this._mouseTrackingMode != GDesktopEnums.MagnifierMouseTrackingMode.NONE) {
             // This depends on this.xMagFactor/yMagFactor already being updated
-            [params.xCenter, params.yCenter] = this._centerFromMousePosition();
+            [params.xCenter, params.yCenter] = this._centerFromPointPosition();
         }
 
         if (this._clampScrollingAtEdges) {
@@ -1312,37 +1222,22 @@ const ZoomRegion = new Lang.Class({
         this._updateMousePosition();
     },
 
-    _isFocusOverRegion: function() {
-        // Return whether the system mouse sprite is over this ZoomRegion.  If the
-        // mouse's position is not given, then it is fetched.
-        let focusIsOver = false;
-        if (this.isActive()) {
-            let xFocus = this._magnifier.x;
-            let yFocus = this._magnifier.yFocus;
-
-            focusIsOver = (
-                xFocus >= this._viewPortX && x < (this._viewPortX + this._viewPortWidth) &&
-                yFocus >= this._viewPortY && y < (this._viewPortY + this._viewPortHeight)
-            );
-        }
-        return focusIsOver;
-    },
-
-   _isMouseOverRegion: function() {
+    _isPointOverRegion: function() {
         // Return whether the system mouse sprite is over this ZoomRegion.  If the
         // mouse's position is not given, then it is fetched.
         let mouseIsOver = false;
         if (this.isActive()) {
-            let xMouse = this._magnifier.xMouse;
-            let yMouse = this._magnifier.yMouse;
+            let xPoint = this._magnifier.xPoint;
+            let yPoint = this._magnifier.yPoint;
 
             mouseIsOver = (
-                xMouse >= this._viewPortX && xMouse < (this._viewPortX + this._viewPortWidth) &&
-                yMouse >= this._viewPortY && yMouse < (this._viewPortY + this._viewPortHeight)
+                xPoint >= this._viewPortX && xPoint < (this._viewPortX + this._viewPortWidth) &&
+                yPoint >= this._viewPortY && yPoint < (this._viewPortY + this._viewPortHeight)
             );
         }
         return mouseIsOver;
     },
+
     _isFullScreen: function() {
         // Does the magnified view occupy the whole screen? Note that this
         // doesn't necessarily imply
@@ -1356,48 +1251,48 @@ const ZoomRegion = new Lang.Class({
         return true;
     },
 
-    _centerFromPosition: function() {
+    _centerFromPointPosition: function() {
         // Determines where the center should be given the current cursor
         // position and mouse tracking mode
 
-        let x = this._magnifier.x;
-        let y = this._magnifier.y;
+        let xPoint = this._magnifier.xPoint;
+        let yPoint = this._magnifier.yPoint;
 
         if (this._mouseTrackingMode == GDesktopEnums.MagnifierMouseTrackingMode.PROPORTIONAL) {
-            return this._centerFromMouseProportional(x, y);
+            return this._centerFromPointProportional(xPoint, yPoint);
         }
         else if (this._mouseTrackingMode == GDesktopEnums.MagnifierMouseTrackingMode.PUSH) {
-            return this._centerFromPush(x, y);
+            return this._centerFromPointPush(xPoint, yPoint);
         }
         else if (this._mouseTrackingMode == GDesktopEnums.MagnifierMouseTrackingMode.CENTERED) {
-            return this._centerFromCentered(x, y);
+            return this._centerFromPointCentered(xPoint, yPoint);
         }
 
         return null; // Should never be hit
     },
 
-    _centerFromPush: function(x, y) {
+    _centerFromPointPush: function(xPoint, yPoint) {
         let [xRoi, yRoi, widthRoi, heightRoi] = this.getROI();
-        let [cursorWidth, cursorHeight] = this._sourceActor.get_size();
+        let [cursorWidth, cursorHeight] = this._mouseSourceActor.get_size();
         let xPos = xRoi + widthRoi / 2;
         let yPos = yRoi + heightRoi / 2;
         let xRoiRight = xRoi + widthRoi - cursorWidth;
         let yRoiBottom = yRoi + heightRoi - cursorHeight;
 
-        if (x < xRoi)
-            xPos -= (xRoi - x);
-        else if (xMouse > x)
-            xPos += (x - xRoiRight);
+        if (xPoint < xRoi)
+            xPos -= (xRoi - xPoint);
+        else if (xPoint > xRoiRight)
+            xPos += (xPoint - xRoiRight);
 
-        if (y < yRoi)
-            yPos -= (yRoi - y);
-        else if (y > yRoiBottom)
-            yPos += (y - yRoiBottom);
+        if (yPoint < yRoi)
+            yPos -= (yRoi - yPoint);
+        else if (yPoint > yRoiBottom)
+            yPos += (yPoint - yRoiBottom);
 
         return [xPos, yPos];
     },
 
-    _centerFromMouseProportional: function(xMouse, yMouse) {
+    _centerFromPointProportional: function(xPoint, yPoint) {
         let [xRoi, yRoi, widthRoi, heightRoi] = this.getROI();
         let halfScreenWidth = global.screen_width / 2;
         let halfScreenHeight = global.screen_height / 2;
@@ -1406,16 +1301,79 @@ const ZoomRegion = new Lang.Class({
         let unscaledPadding = Math.min(this._viewPortWidth, this._viewPortHeight) / 5;
         let xPadding = unscaledPadding / this._xMagFactor;
         let yPadding = unscaledPadding / this._yMagFactor;
-        let xProportion = (xMouse - halfScreenWidth) / halfScreenWidth;   // -1 ... 1
-        let yProportion = (yMouse - halfScreenHeight) / halfScreenHeight; // -1 ... 1
-        let xPos = xMouse - xProportion * (widthRoi / 2 - xPadding);
-        let yPos = yMouse - yProportion * (heightRoi /2 - yPadding);
+        let xProportion = (xPoint - halfScreenWidth) / halfScreenWidth;   // -1 ... 1
+        let yProportion = (yPoint - halfScreenHeight) / halfScreenHeight; // -1 ... 1
+        let xPos = xPoint - xProportion * (widthRoi / 2 - xPadding);
+        let yPos = yPoint - yProportion * (heightRoi / 2 - yPadding);
 
         return [xPos, yPos];
     },
 
-    _centerFromCentered: function(x, y) {
-        return [x, y];
+    _centerFromPointCentered: function(xPoint, yPoint) {
+        return [xPoint, yPoint];
+    },
+
+    ///private methods///
+    _focusCaretTracking: function(focusCaretTracker, event) {
+        let acc = event.source;
+
+        // Applies only to the first zoom region.
+        if(this._zoomRegions.length && acc) {
+            let zoomer = this._zoomRegions[0];
+            let target = false;
+            let roleName = acc.get_role_name();
+
+            if((event.type.indexOf('object:state-changed') == 0 && event.detail1 == 1) || event.type == 'object:text-caret-moved') {
+                log ('<accessible> : ' + acc.get_name());
+                log ('<caller> ' + caller);
+                log ('<event> ' + event.type + ',' + event.detail1);
+                log ('<contructor>' + acc.constructor);
+                log ('<role name> ' + roleName);
+
+                if(event.type == 'object:text-caret-moved') {
+                    let text = acc.get_text_iface();
+
+                    if (text && text.get_caret_offset() >= 0) {
+
+                        try{
+                            let offset = text.get_caret_offset();
+                            text_extents = text.get_character_extents(offset, 0);
+                            target = (text_extents.width + text_extents.height > 0);
+
+                            if (text_extents && target) {
+                                let xPoint = extents.xPoint;
+                                let yPoint = extents.yPoint;
+                                log ('<text_extents> '+ xPoint + ' '  + yPoint + ' ' + text_extents.width + ' ' + text_extents.height + '\nGjs-Message: JS LOG: END ');
+                                    zoomer.scrollContentsTo(this._centerFromPointCentered(this.xPoint, this.yPoint));
+                            }
+                        }
+                        catch(err) {
+                            log(err.message);
+                        }
+                    }
+                }
+                else if(event.indexOf('object:state-changed') == 0 && event.detail1 == 1) {
+
+                    try{
+                        let comp = acc.get_component_iface();
+                        let extents = comp.get_extents(Atspi.CoordType.SCREEN);
+
+                        if (comp && extents) {
+                            let xPoint = extents.xPoint;
+                            let yPoint = extents.yPoint;
+                            log ('<extents> ['+ xPoint + ' ' + yPoint + ' ' + extents.width + ' ' + extents.height + ']\nGjs-Message: JS LOG: END ');
+                            zoomer.scrollContentsTo(zoomer._centerFromPointPush(this.xPoint, this.yPoint));
+                        }
+                        else {
+                            log('no component' );
+                        }
+                    }
+                    catch(err){
+                        log(err.message);
+                    }
+                }
+            }
+        }
     },
 
     _screenToViewPort: function(screenX, screenY) {
@@ -1455,8 +1413,9 @@ const ZoomRegion = new Lang.Class({
         if (!this.isActive())
             return;
 
-        let [xMagMouse, yMagMouse] = this._screenToViewPort(this._magnifier.xMouse,
-                                                            this._magnifier.yMouse);
+        let [xMagMouse, yMagMouse] = this._screenToViewPort(this._magnifier.xPoint,
+                                                            this._magnifier.yPoint);
+
         xMagMouse = Math.round(xMagMouse);
         yMagMouse = Math.round(yMagMouse);
 
@@ -1469,21 +1428,22 @@ const ZoomRegion = new Lang.Class({
         }
     },
 
-    _updateFocusPosition: function() {
+    _updatePosition: function() {
         if (!this.isActive())
             return;
 
-        let [xMagFocus, yMagFocus] = this._screenToViewPort(this._magnifier.x,
-                                                            this._magnifier.y);
-        xMagFocus = Math.round(x);
-        yMagFocus = Math.round(y);
+        let [xMagMouse, yMagMouse] = this._screenToViewPort(this._magnifier.xPoint,
+                                                            this._magnifier.yPoint);
 
-        this._mouseActor.set_position(xMagFocus, yMagFocus);
+        xMagMouse = Math.round(xMagMouse);
+        yMagMouse = Math.round(yMagMouse);
+
+        this._mouseActor.set_position(xMagMouse, yMagMouse);
 
         if (this._crossHairsActor) {
             let [groupWidth, groupHeight] = this._crossHairsActor.get_size();
-            this._crossHairsActor.set_position(xMagFocus - groupWidth / 2,
-                                               yMagFocus - groupHeight / 2);
+            this._crossHairsActor.set_position(xMagMouse - groupWidth / 2,
+                                               yMagMouse - groupHeight / 2);
         }
     },
 
@@ -1501,87 +1461,6 @@ const ZoomRegion = new Lang.Class({
         else
             this.setScreenPosition(this._screenPosition);
     }
-
-	_setFocusTrackingEnabled: function(enableFlag) {
-        if (enableFlag && !this._focusConnectId) {
-            this._focusConnectId = Main.focusCaretTracker.connect('focus-changed', Lang.bind (this, this._manageFocusTracking));
-        }
-
-        else {
-            this._focusConnectId = null;
-        }
-    },
-
-    _setCaretTrackingEnabled: function(enableFlag) {
-        if (enableFlag && !this._caretConnectId) {
-            this._caretConnectId = Main.focusCaretTracker.connect('caret-changed', Lang.bind (this, this._manageFocusTracking));
-        }
-
-        else {
-            this._caretConnectId = null;
-        }
-    },
-    ///private methods///
-    _manageFocusTracking: function(focusCaretTracker, event) {
-        let acc = event.source;
-
-        // Applies only to the first zoom region.
-        if(this._zoomRegions.length && acc) {
-            let zoomer = this._zoomRegions[0];
-            let target = false;
-            let roleName = acc.get_role_name();
-
-            if(roleName=='terminal')
-                return;
-
-            if(event.type.indexOf('object:state-changed')==0 && event.detail1 == 1) || event.type == 'object:text-caret-moved') {
-                log ('<accessible> : ' + acc.get_name());
-                log ('<caller> ' + caller);
-                log ('<event> ' + event.type + ',' + event.detail1);
-                log ('<contructor>' + acc.constructor);
-                log ('<role name> ' + roleName);
-
-                if(event.type == 'object:text-caret-moved') {
-                    let text = acc.get_text_iface();
-
-                    if (text && text.get_caret_offset() >= 0) {
-
-                        try{
-                            let offset = text.get_caret_offset();
-                            text_extents = text.get_character_extents(offset, 0);
-                            target = (text_extents.width + text_extents.height > 0);
-
-                            if (text_extents && target) {
-                                log ('<text_extents> '+ text_extents.x + ' ' + text_extents.y + ' ' + text_extents.width + ' ' + text_extents.height + '\nGjs-Message: JS LOG: END ');
-                                    zoomer.scrollContentsTo(this._centerFromCentered(extents.x, extents.y));
-                            }
-                        }
-                        catch(err) {
-                            log(err.message);
-                        }
-                    }
-                }
-                else if((event.indexOf('object:state-changed') == 0 && event.detail1 == 1) {
-
-                    try{
-                        let comp = acc.get_component_iface();
-                        let extents = comp.get_extents(Atspi.CoordType.SCREEN);
-
-                        if (comp && extents) {
-                            log ('<extents> ['+ extents.x + ' ' + extents.y + ' ' + extents.width + ' ' + extents.height + ']\nGjs-Message: JS LOG: END ');
-                            zoomer.scrollContentsTo(zoomer._centerFromPush(extents.x, extents.y));
-                        }
-                        else {
-                                log('no component' );
-                        }
-                    }
-                    catch(err){
-                        log(err.message);
-                    }
-                }
-            }
-        }
-    },
 });
 
 const Crosshairs = new Lang.Class({
@@ -1628,7 +1507,7 @@ const Crosshairs = new Lang.Class({
     * actor, and add the clone instead.  Returns either the original or the
     * clone.
     * @zoomRegion:      The container to add the crosshairs group to.
-    * @magnified:  The actor for the zoom region -- used to
+    * @magnified:       The actor for the zoom region -- used to
     *                   position the crosshairs and properly layer them below
     *                   the mouse.
     * @return           The crosshairs actor, or its clone.
@@ -1647,12 +1526,39 @@ const Crosshairs = new Lang.Class({
 
                 container.add_actor(crosshairsActor);
                 container.raise_child(magnified, crosshairsActor);
-                let [x, y] = magnified.get_position();
+                let [xPoint, yPoint] = magnified.get_position();
                 let [crosshairsWidth, crosshairsHeight] = crosshairsActor.get_size();
-                crosshairsActor.set_position(x - crosshairsWidth / 2 , y - crosshairsHeight / 2);
+                crosshairsActor.set_position(xPoint - crosshairsWidth / 2 , yPoint - crosshairsHeight / 2);
             }
         }
         return crosshairsActor;
+    },
+
+   setFocusTrackingEnabled: function() {
+        if (this._mouseTrackingMode != GDesktopEnums.MagnifierMouseTrackingMode.NONE) {
+            Main.focusCaretTracker.connect(
+            'focus-changed', Lang.bind (this, this._focusCaretTracking)
+            );
+        }
+        else {
+            Main.focusCaretTracker.disconnect(
+            'focus-changed', Lang.bind(this, this._focusCaretTracking)
+            );
+        }
+    },
+
+    setCaretTrackingEnabled: function() {
+        if (this._mouseTrackingMode != GDesktopEnums.MagnifierMouseTrackingMode.NONE) {
+            caretConnect = Main.focusCaretTracker.connect(
+           'caret-changed', Lang.bind (this, this._focusCaretTracking)
+           );
+        }
+        else {
+            Main.focusCaretTracker.disconnect(
+            'caret-changed', Lang.bind (this, this._focusCaretTracking)
+            );
+            this._caretConnectId = null;
+        }
     },
 
     /**
