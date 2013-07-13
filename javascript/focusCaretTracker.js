@@ -11,15 +11,17 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *
+ *     
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  *
- * Author:\
+ * Author:
  *   Joseph Scheuhammer <clown@alum.mit.edu>
  * Contributor:
  *   Magdalen Berns <thismagpie@live.com>
  */
+ 
+let _atspiCallBack = null; 
 
 const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
@@ -143,7 +145,7 @@ const FocusCaretTracker = new Lang.Class({
 
     _changed: function(event) {
 
-        if (event.indexOf('object:state-changed') == 0) {
+        if (event.type.indexOf('object:state-changed') == 0) {
             this.emit('focus-changed', event);
         }
         else if (event.type == 'object:text-caret-moved') {
