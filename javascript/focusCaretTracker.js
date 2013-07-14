@@ -21,11 +21,11 @@
  *   Magdalen Berns <thismagpie@live.com>
  */
 
-let _atspiCallBack = null;
-
 const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
 const Signals = imports.signals;
+
+let _atspiCallBack = null;
 
 const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
