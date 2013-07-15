@@ -182,10 +182,8 @@ const Magnifier = new Lang.Class({
 
             if (sysMouseOverAny) {
                 this.hideSystemCursor();
-            }
-            else{
+            }                                                                                                                                                                                                                                                                                                                                                              
                 this.showSystemCursor();
-            }
         }
         return true;
     },
@@ -454,10 +452,10 @@ const Magnifier = new Lang.Class({
             aPref = this._settings.get_enum(MOUSE_TRACKING_KEY);
             if (aPref)
                 zoomRegion.setMouseTrackingMode(aPref);
-         //   aPref = this._settings.get_enum(FOCUS_TRACKING_KEY);
+            aPref = this._settings.get_enum(FOCUS_TRACKING_KEY);
             if (aPref)
                 zoomRegion.setFocusTrackingMode(aPref);
-         //   aPref = this._settings.get_enum(CARET_TRACKING_KEY);
+           aPref = this._settings.get_enum(CARET_TRACKING_KEY);
             if (aPref)
                 zoomRegion.setCaretTrackingMode(aPref);
 
@@ -500,10 +498,10 @@ const Magnifier = new Lang.Class({
                                Lang.bind(this, this._updateClampMode));
         this._settings.connect('changed::' + MOUSE_TRACKING_KEY,
                                Lang.bind(this, this._updateMouseTrackingMode));
-      /*  this._settings.connect('changed::' + FOCUS_TRACKING_KEY,
+        this._settings.connect('changed::' + FOCUS_TRACKING_KEY,
                                Lang.bind(this, this._updateFocusTrackingMode));
         this._settings.connect('changed::' + CARET_TRACKING_KEY,
-                                Lang.bind(this, this._updateCaretTrackingMode));*/
+                                Lang.bind(this, this._updateCaretTrackingMode));
         this._settings.connect('changed::' + INVERT_LIGHTNESS_KEY,
                                Lang.bind(this, this._updateInvertLightness));
         this._settings.connect('changed::' + COLOR_SATURATION_KEY,
@@ -611,6 +609,7 @@ const Magnifier = new Lang.Class({
             );
         }
     },
+    
     _updateCaretTrackingMode: function() {
         if (this._zoomRegions.length) {
             this._zoomRegions[0].setCaretTrackingMode(
@@ -1579,30 +1578,26 @@ const Crosshairs = new Lang.Class({
         return crosshairsActor;
     },
 
-   setFocusTrackingEnabled: function() {
-//        if (this._focusTrackingMode != GDesktopEnums.MagnifierMouseTrackingMode.NONE) {
-            Main.focusCaretTracker.connect(
-            'focus-changed', Lang.bind (this, this._focusCaretTracking)
-            );
+    setFocusTrackingEnabled: function() {
+    
+       // let focusConnectId ='focus-changed', Lang.bind (this, this._focusCaretTracking)TODO change later
+        if (this._focusTrackingMode != GDesktopEnums.MagnifierMouseTrackingMode.NONE) {
+            Main.focusCaretTracker.connect('focus-changed', Lang.bind (this, this._focusCaretTracking));
         }
-        else {
-            Main.focusCaretTracker.disconnect(
-            'focus-changed', Lang.bind(this, this._focusCaretTracking)
-            );
-        }
+        
+        Main.focusCaretTracker.disconnect('focus-changed', Lang.bind(this, this._focusCaretTracking));
     },
 
     setCaretTrackingEnabled: function() {
+
+    //let caretConnectId ='focus-changed', Lang.bind (this, this._focusCaretTracking) TODO change later
         if (this._caretTrackingMode != GDesktopEnums.MagnifierMouseTrackingMode.NONE) {
             caretConnect = Main.focusCaretTracker.connect(
-           'caret-changed', Lang.bind (this, this._focusCaretTracking)
-           );
+           'caret-changed', Lang.bind (this, this._focusCaretTracking));
         }
-        else {
-            Main.focusCaretTracker.disconnect(
-            'caret-changed', Lang.bind (this, this._focusCaretTracking)
-            );
-            this._caretConnectId = null;
+
+        Main.focusCaretTracker.disconnect('caret-changed', Lang.bind (this, this._focusCaretTracking));
+        //   this._caretConnectId = null; TODO is this really needed? check
         }
     },
 
