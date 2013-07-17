@@ -25,159 +25,169 @@ const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
 const Signals = imports.signals;
 
-let _atspiCallBack = null;
-
 const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
 
-    _init: function() {
-        Atspi.init();
-        this._atspiListener = Atspi.EventListener.new(Lang.bind(this, this._changed));
-        this._trackingFocus = false;
-        this._trackingCaret = false;
+    _init: function () {
+       Atspi.init();
+       this._atspiListener = Atspi.EventListener.new(Lang.bind(this, this._changed));
+       this._trackingFocus = false;
+       this._trackingCaret = false;
+       this.registerFocus  = false;
+       this.registerSelect = false;
     },
 
-    /**
-     * registerFocusEvents:
-     * @return: Boolean.
-     */
-    _registerFocusEvents: function() {
+   /**
+    * registerFocusEvents:
+    * @return: Boolean.
+    */
+    _registerFocusEvents: function () {
 
-        if (this._trackingFocus)
-            return true;
-
-        let registeredFocus = false;
-        let registeredSelect = false;
-
-        try{
-            registeredFocus = this._atspiListener.register('object:state-changed:focused');
-            registeredSelect = this._atspiListener.register('object:state-changed:selected');
-        }
-        catch(err){
-            log(err.message);
-        }
-
-        return this._trackingFocus = registeredFocus || registeredSelect;
+       if (this._trackingFocus) {
+           return true;
+       }
+    
+       this.registerFocus = this._atspiListener.register('object:state-changed:focused');
+       this.registerSelect = this._atspiListener.register('object:state-changed:selected');
+    
+       return this._trackingFocus = this.registerFocus || this.registerSelect;
     },
 
-    /**
-     * deregisterFocusEvents:
-     * @return: Boolean.
-     */
-    _deregisterFocusEvents: function() {
+   /**
+    * deregisterFocusEvents:
+    * @return: Boolean.
+    */
+   _deregisterFocusEvents: function () {
 
-        if (!this._trackingFocus)
-            return true;
+       if (!this._trackingFocus)
+           return true;
 
-        let deregisteredFocus = false;
-        let deregisteredSelect = false;
+       this.registerFocus = this._atspiListener.register('object:state-changed:focused');
+       this.registerSelect = this._atspiListener.register('object:state-changed:selected');
 
-        try{
-            deregisteredFocus = this._atspiListener.register('object:state-changed:focused');
-            deregisteredSelect = this._atspiListener.register('object:state-changed:selected');
-        }
-        catch(err){
-            log(err.message);
-        }
+       return this._trackingFocus = !(this.registerFocus && this.registerSelect);
+   },
 
-        return this._trackingFocus = !(deregisteredFocus && deregisteredSelect);
-    },
+   /**
+    * registerCaretEvents
+    * @return: Boolean.
+    */
+   _registerCaretEvents: function () {
 
-    /**
-     * registeredFocus
-     * @return: Boolean.
-     */
-    registeredFocusEvents: function() {
-        return this._trackingFocus;
-    },
+       if (this._trackingCaret)
+           return true;
 
-    /**
-     * registerCaretEvents
-     * @return: Boolean.
-     */
-    _registerCaretEvents: function() {
+       this._trackingCaret = this._atspiListener.register('object:text-caret-moved');
+       return this._trackingCaret;
+   },
 
-        if (this._trackingCaret)
-            return true;
+   /**
+    * deregisterCaretEvents
+    * @return: Boolean.
+    */
+   _deregisterCaretEvents: function () {
 
-        try{
-            this._trackingCaret = this._atspiListener.register('object:text-caret-moved');
-        }
-        catch(log){
-            log(err.message);
-        }
+       if (!this._trackingCaret)
+           return true;
 
-        return this._trackingCaret;
-    },
+       this._trackingCaret = !this._atspiListener.deregister('object:text-caret-moved');
+       return this._trackingCaret;
+   },
 
-    /**
-     * deregisterCaretEvents
-     * @return: Boolean.
-     */
-    _deregisterCaretEvents: function() {
+   /**
+    * RegisteredCaret
+    * @return: Boolean.
+    */
+   registeredCaretEvents: function () {
+       return this._trackingCaret;
+   },
 
-        if (!this._trackingCaret)
-            return true;
+   shutDown: function () {
+       this.deregisterFocusEvents();
+       this.deregisterCaretEvents();
+       this.disconnectAll();
+   },
 
-        try{
-            this._trackingCaret = !this._atspiListener.deregister('object:text-caret-moved');
-        }
-        catch(err){
-            log(err.message);
-        }
+   _changed: function (event) {
 
-        return this._trackingCaret;
-    },
-
-    /**
-     * RegisteredCaret
-     * @return: Boolean.
-     */
-    registeredCaretEvents: function() {
-        return this._trackingCaret;
-    },
-
-    shutDown: function() {
-        this.deregisterFocusEvents();
-        this.deregisterCaretEvents();
-        this.disconnectAll();
-    },
-
-    _changed: function(event) {
-
-        if (event.type.indexOf('object:state-changed') == 0) {
-            this.emit('focus-changed', event);
-        }
-        else if (event.type == 'object:text-caret-moved') {
-            this.emit('caret-changed', event);
-        }
-    }
+       if (event.type.indexOf('object:state-changed') == 0) {
+           this.emit('focus-changed', event);
+       }
+       else if (event.type == 'object:text-caret-moved') {
+           this.emit('caret-changed', event);
+       }
+   }
 });
-Signals.addSignalMethods(FocusCaretTracker.prototype);
+//TODO Move to magnifier
+function onFocus(caller, event) {
+    let acc = event.source;
 
-/**
- * Override connect() from Signals to manage Atpsi registry internally.  If
- * the call to the Atspi registry fails, or the signal is unknown, no  connection
- * is made and this returns a negative value.
- * @name:     Name of the signal.
- * @callback: Function to call when signal is emitted.
- * @return:   Id of the connection.  If the call to Atspi registry fails,
- *            this returns a negative value (no connection made).
- */
-FocusCaretTracker.prototype._connect = FocusCaretTracker.prototype.connect;
-FocusCaretTracker.prototype.connect = function(name, callback) {
-    let registered = false;
+    if (acc && event.type.indexOf('object:state-changed') == 0 && event.detail1 == 1) {
+        let name = acc.get_name();
+        let roleName = acc.get_role_name();
+        let comp = acc.get_component_iface();
 
-    if (name == 'focus-changed') {
-        registered = this._registerFocusEvents();
-    }
-    else if (name == 'caret-changed') {
-        registered = this._registerCaretEvents();
-    }
-    if (registered) {
-        return this._connect(name, callback);
+        if(acc=='Terminal' || roleName=='terminal')
+            return;
+
+        log ('<accessible> : ' + name);
+        log ('<caller> ' + caller);
+        log ('<event> ' + event.type + ',' + event.detail1);
+        log ('<contructor>' + acc.constructor);
+        log ('<role name> ' + roleName);
+
+        if (comp) {
+            let extents = comp.get_extents(Atspi.CoordType.SCREEN);
+
+            if (extents)
+                log ('<extents> ['+ extents.x + ' ' + extents.y + ' ' + extents.width + ' ' + extents.height + ']\nGjs-Message: JS LOG: END ');
+
+        }
+        else {
+            log ('focus lost \nGjs-Message: JS LOG: END ');
+        }
     }
     else {
-        return -1;
-   }
+        log ('no accessible \nGjs-Message: JS LOG: END ');
+    }
+}
+//TODO move to magnifier
+function onCaret(caller, event) {
+    let acc = event.source;
+
+    if (acc && event.type.indexOf("object:text-caret-moved") == 0) {
+        let name = acc.get_name();
+        let roleName = acc.get_role_name();
+        let text = acc.get_text_iface();
+
+        if ((name =='Terminal' || roleName=='terminal'))
+            return;
+
+        log ('<accessible> : ' + name);
+        log ('<caller> ' + caller);
+        log ('<event> ' + event.type + ',' + event.detail1);
+        log ('<contructor>' + acc.constructor);
+        log ('<role name> ' + roleName);
+
+        if (text && text.get_caret_offset() >= 0) {
+
+            try{
+                let offset = text.get_caret_offset();
+                text_extents = text.get_character_extents(offset, 0);
+
+                if (text_extents) {
+                    log ('<text_extents> '+text_extents.x + ' ' + text_extents.y + ' ' + text_extents.width + ' ' + text_extents.height + '\nGjs-Message: JS LOG: END ');
+                }
+            }
+            catch(err) {
+                log(err.message);
+            }
+        }
+        else {
+            log ('no text \nGjs-Message: JS LOG: END ');
+        }
+    }
+    else {
+        log ('no accessible \nGjs-Message: JS LOG: END ');
+    }
 }
