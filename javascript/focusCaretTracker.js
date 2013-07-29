@@ -107,6 +107,7 @@ const FocusCaretTracker = new Lang.Class({
        }
    }
 });
+Signals.addSignalMethods(FocusCaretTracker.prototype);
 //TODO Move to magnifier
 function onFocus(caller, event) {
     let acc = event.source;
