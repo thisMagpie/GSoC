@@ -1,29 +1,34 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Only rebuild if there is a change to the module.
-build_policy = 'updated'
 
-moduleset = 'gnome-apps-3.10'
+build_policy = ['updated']
 
-modules = ['meta-gnome-core', 'meta-gnome-apps-tested', 'meta-gnome-apps-tested' ]
+moduleset = ['gnome-apps-3.10', 'gnome-suites-core-deps-3.10']
+modules = ['meta-gnome-core-3.10']
 
-checkoutroot = os.path.expanduser('~/gnome/source')
-prefix = os.path.expanduser('~/gnome/install')
-
+checkoutroot = os.path.expanduser('/home/dev/gnome/source')
+prefix = os.path.expanduser('/home/dev/gnome/install')
 ignore_suggests = True
 
-# Use system libraries for the builds
-if use_lib64:
-    _libdir = 'lib64'
-else:
-    _libdir = 'lib'
-    
-addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', _libdir, 'pkgconfig'))
-addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', 'share', 'pkgconfig'))
-addpath('PKG_CONFIG_PATH','/usr/lib64/pkgconfig')
-addpath('PKG_CONFIG_PATH','/usr/share/pkgconfig')
+#this will be needed at some point.
+addpath('BASH','/bin/bash')
+addpath('SH','/usr/sh')
+addpath('ZSH','/bin/zsh')
 
-# D-BUS service files gnome-jhbuild-xephyr-session
-addpath('XDG_DATA_DIRS', prefix + '/share')
-# Look in /etc/xdg for system-global autostart files
-addpath('XDG_CONFIG_DIRS', prefix +'/etc/xdg')
+#turn off compiler optimisation for debugging
+os.environ['CFLAGS'] = ' -g -O0 -Werror -Wno-error=depreciated-declarations'
+os.environ['CXXFLAGS'] = ' -g -O0 -Werror -Wno-error=depreciated-declarations'
+
+autogenargs='--disable-static -enable-introspection'
+
+addpath('ACLOCAL_FLAGS', '/usr/share/aclocal')
+
+skip=['NetworkManager']
+
+module_autogenargs['gtk+'] = autogenargs + ' --with-xinput=yes'
+module_autogenargs['wayland'] = autogenargs + ' --with-xinput=yes --disable-documentation --disable-docs'
+module_autogenargs['cairo'] = autogenargs + ' --enable-gl'
+module_autogenargs['gnome-shell']=' --enable-jhbuild-wrapper-script'
+module_autogenargs['clutter'] = autogenargs + ' --enable-evdev-input --enable-x11-backend'
+module_autogenargs['PackageManager']=' --enable-yum --enable-zif'
+makeargs = 'V=1'
