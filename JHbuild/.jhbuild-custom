@@ -1,34 +1,29 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-build_policy = ['updated']
-
-moduleset = ['gnome-apps-3.10', 'gnome-suites-core-deps-3.10']
-modules = ['meta-gnome-core-3.10']
-
-checkoutroot = os.path.expanduser('/home/dev/gnome/source')
-prefix = os.path.expanduser('/home/dev/gnome/install')
-ignore_suggests = True
-
 #this will be needed at some point.
-addpath('BASH','/bin/bash')
-addpath('SH','/usr/sh')
-addpath('ZSH','/bin/zsh')
+addpath('BASH', '/bin/bash')
+addpath('SH', '/usr/sh')
+addpath('ZSH', '/bin/zsh')
 
 #turn off compiler optimisation for debugging
-os.environ['CFLAGS'] = ' -g -O0 -Werror -Wno-error=depreciated-declarations'
-os.environ['CXXFLAGS'] = ' -g -O0 -Werror -Wno-error=depreciated-declarations'
+os.environ['CFLAGS'] = ' -g -O0'
+os.environ['CXXFLAGS'] = ' -g -O0'
 
-autogenargs='--disable-static -enable-introspection'
+autogenargs=' --disable-static --enable-introspection'
 
 addpath('ACLOCAL_FLAGS', '/usr/share/aclocal')
 
-skip=['NetworkManager']
+skip=['gtk-doc', 'WebKit'] 
+
 
 module_autogenargs['gtk+'] = autogenargs + ' --with-xinput=yes'
 module_autogenargs['wayland'] = autogenargs + ' --with-xinput=yes --disable-documentation --disable-docs'
 module_autogenargs['cairo'] = autogenargs + ' --enable-gl'
 module_autogenargs['gnome-shell']=' --enable-jhbuild-wrapper-script'
 module_autogenargs['clutter'] = autogenargs + ' --enable-evdev-input --enable-x11-backend'
-module_autogenargs['PackageManager']=' --enable-yum --enable-zif'
-makeargs = 'V=1'
+module_autogenargs['PackageManager']=' --enable-yum'
+module_autogenargs['ibus']=' --enable-python-library --enable-gconf'
+module_autogenargs['gstreamer']=' --disable-docs'
+module_autogenargs['gnome-bluetooth']=' --disable-docs'
+makeargs = ' -v -j4'
