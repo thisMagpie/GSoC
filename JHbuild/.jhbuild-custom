@@ -16,7 +16,6 @@ addpath('ACLOCAL_FLAGS', '/usr/share/aclocal')
 
 skip=['gtk-doc', 'WebKit'] 
 
-
 module_autogenargs['gtk+'] = autogenargs + ' --with-xinput=yes'
 module_autogenargs['wayland'] = autogenargs + ' --with-xinput=yes --disable-documentation --disable-docs'
 module_autogenargs['cairo'] = autogenargs + ' --enable-gl'
