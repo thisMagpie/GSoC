@@ -91,12 +91,6 @@ const FocusCaretTracker = new Lang.Class({
        return this._trackingCaret;
    },
 
-   shutDown: function() {
-       this.deregisterFocusEvents();
-       this.deregisterCaretEvents();
-       this.disconnectAll();
-   },
-
    _changed: function(event) {
 
        if (event.type.indexOf('object:state-changed') == 0) {
