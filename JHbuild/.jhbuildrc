@@ -1,0 +1,8 @@
+build_policy = 'updated'
+moduleset = 'gnome-apps-3.10'
+modules = [ 'meta-gnome-core-shell' ]
+
+checkoutroot = os.path.expanduser('~/gnome/source')
+prefix = os.path.expanduser('~/gnome/install')
+ignore_suggests = True
+module_autogenargs['gnome-shell']=' --enable-jhbuild-wrapper-script --enable-introspection'
