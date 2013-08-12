@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 build_policy = 'updated'
 moduleset = 'gnome-apps-3.10'
 modules = [ 'meta-gnome-core-shell' ]
