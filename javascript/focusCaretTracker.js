@@ -62,7 +62,7 @@ const FocusCaretTracker = new Lang.Class({
         this._registerSelect = this._atspiListener.register(
                                            'object:state-changed:selected');
         return this._trackingFocus = !(this._registerFocus && 
-                                                        this._registerSelect);
+                                                    this._registerSelect);
     },
 
     _registerCaretEvents: function() {
@@ -77,16 +77,12 @@ const FocusCaretTracker = new Lang.Class({
 
     _deregisterCaretEvents: function() {
 
-    if (!this._trackingCaret)
-        return true;
+        if (!this._trackingCaret)
+            return true;
 
-    this._trackingCaret = !this._atspiListener.deregister(
-                                                    'object:text-caret-moved');
-    return this._trackingCaret;
-    },
-
-    registeredCaretEvents: function() {
-       return this._trackingCaret;
+        this._trackingCaret = !this._atspiListener.deregister(
+                                                        'object:text-caret-moved');
+        return this._trackingCaret;
     },
 
     _changed: function(event) {
@@ -139,7 +135,7 @@ function onCaret(caller, event) {
         let roleName = acc.get_role_name();
         let text = acc.get_text_iface();
 
-        if ((name == 'Terminal' || roleName == 'terminal'))
+        if (name == 'Terminal' || roleName == 'terminal')
             return;
 
         log('<accessible> : ' + name);
@@ -150,21 +146,15 @@ function onCaret(caller, event) {
 
         if (text && text.get_caret_offset() >= 0) {
 
-            try {
-                let offset = text.get_caret_offset();
-                text_extents = text.get_character_extents(offset, 0);
+            let offset = text.get_caret_offset();
+            text_extents = text.get_character_extents(offset, 0);
 
-                if (text_extents) {
-                    log('<text_extents> ' + text_extents.x + ' ' +
-                                            text_extents.y + ' ' +
-                                            text_extents.width + ' ' +
-                                            text_extents.height +
-                                            '\nGjs-Message: JS LOG: END ');
-                }
-            }
-            catch (err) {
-                log(err.message);
-            }
+            if (text_extents) 
+                log('<text_extents> ' + text_extents.x + ' ' +
+                                        text_extents.y + ' ' +
+                                        text_extents.width + ' ' +
+                                        text_extents.height +
+                                        '\nGjs-Message: JS LOG: END ');
         }
         else {
             log('no text \nGjs-Message: JS LOG: END ');
