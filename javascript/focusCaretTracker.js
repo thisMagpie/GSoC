@@ -99,20 +99,29 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 function extentsOnFocus(caller, event) {
     let acc = event.source;
 
-    if (event.type.indexOf('object:state-changed') == 0 && event.detail1 == 1) {
+    if (acc && event.type.indexOf('object:state-changed') == 0 && event.detail1 == 1) {
         let roleName = acc.get_role_name();
         let comp = acc.get_component_iface();
         return comp.get_extents(Atspi.CoordType.SCREEN);
     }
+    else {
+        return [-1,-1,-1,-1];
+    }
 }
-
 function extentsAtCaret(caller, event) {
     let acc = event.source;
 
     if (acc && event.type.indexOf('object:text-caret-moved') == 0) {
         let roleName = acc.get_role_name();
         let text = acc.get_text_iface();
-        //TODO do some sort of check
-        return text.get_character_extents(text.get_caret_offset(), 0);
+        if (text && text.get_caret_offset() >= 0){
+            return text.get_character_extents(text.get_caret_offset(), 0);
+        }
+        else {
+            return [-1,-1,-1,-1]
+        }
+    }
+    else {
+        return [-1,-1,-1,-1]
     }
 }
