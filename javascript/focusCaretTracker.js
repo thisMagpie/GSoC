@@ -118,10 +118,10 @@ function extentsAtCaret(caller, event) {
             return text.get_character_extents(text.get_caret_offset(), 0);
         }
         else {
-            return [-1,-1,-1,-1]
+            return [-1,-1,-1,-1];
         }
     }
     else {
-        return [-1,-1,-1,-1]
+        return [-1,-1,-1,-1];
     }
 }
