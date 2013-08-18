@@ -35,7 +35,7 @@ const FocusCaretTracker = new Lang.Class({
 
     // Note that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
-    registerFocusListener : function() {
+    registerFocusListener: function() {
 
         if (this._atspiListener.register('object:state-changed:focused')) {
             return true;
@@ -75,16 +75,16 @@ const FocusCaretTracker = new Lang.Class({
 
     deregisterCaretListener: function() {
 
-        if(!this._atspiListener.deregister('object:text-caret-moved')){
+        if (!this._atspiListener.deregister('object:text-caret-moved')) {
             return true;
         }
-        else{
+        else {
             return false;
         }
     },
 
     //// Private method ////
-    _changed: function(event) {
+    changed: function(event) {
 
         if (event.type.indexOf('object:state-changed') == 0) {
             this.emit('focus-changed', event);
@@ -105,23 +105,19 @@ function extentsOnFocus(caller, event) {
         return comp.get_extents(Atspi.CoordType.SCREEN);
     }
     else {
-        return [-1,-1,-1,-1];
+        return [-1 , -1, -1 , -1];
     }
 }
+
 function extentsAtCaret(caller, event) {
     let acc = event.source;
+    let extents = [-1 , -1, -1 , -1];
 
     if (acc && event.type.indexOf('object:text-caret-moved') == 0) {
         let roleName = acc.get_role_name();
         let text = acc.get_text_iface();
-        if (text && text.get_caret_offset() >= 0){
-            return text.get_character_extents(text.get_caret_offset(), 0);
-        }
-        else {
-            return [-1,-1,-1,-1];
-        }
+        if (text && text.get_caret_offset() >= 0)
+            extents = text.get_character_extents(text.get_caret_offset(), 0);
     }
-    else {
-        return [-1,-1,-1,-1];
-    }
+    return extents;
 }
