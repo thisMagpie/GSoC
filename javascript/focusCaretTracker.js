@@ -1,6 +1,6 @@
-// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
-/**
- * Copyright 2012-2013 Inclusive Design Research Centre, OCAD University.
+/* -*- mode: js2; js2-basic-offset: 4; indent-tabs-mode: nil -*- */
+/*
+ * Copyright 2012 Inclusive Design Research Centre, OCAD University.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,8 +17,6 @@
  *
  * Author:
  *   Joseph Scheuhammer <clown@alum.mit.edu>
- * Contributor:
- *   Magdalen Berns <thismagpie@live.com>
  */
 
 const Atspi = imports.gi.Atspi;
@@ -28,92 +26,60 @@ const Signals = imports.signals;
 const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
 
-    _init: function() {
+    _init : function() {
         Atspi.init(); //TODO put somewhere better later
         this._atspiListener = Atspi.EventListener.new(Lang.bind(this, this._changed));
+        this._stateChanged = 'object:state-changed:';
+        this._caretMoved = 'object:text-caret-moved';
     },
 
     // Note that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
-    registerFocusListener: function() {
-
-        if (this._atspiListener.register('object:state-changed:focused')) {
-            return true;
-        }
-        else if (this._atspiListener.register('object:state-changed:selected')) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    registerFocusListener : function() {
+        return this._atspiListener.register(this._stateChanged + 'focused') || this._atspiListener.register(
+                                                                               this._stateChanged + 'selected');
     },
 
-    registerCaretListener: function() {
-
-        if (this._atspiListener.register('object:text-caret-moved')) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    registerCaretListener : function() {
+        return this._atspiListener.register(this.caretMoved);
     },
 
     // Note that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
-    deregisterFocusListener: function() {
-
-        if (!this._atspiListener.register('object:state-changed:focused')) {
-            return true;
-        }
-        else if (!this._atspiListener.register('object:state-changed:selected')) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    deregisterFocusListener : function() {
+        return (this._atspiListener.register(
+                        this._stateChanged + 'focused') &&
+                this._atspiListener.register(
+                        this._stateChanged + 'selected'));
     },
 
-    deregisterCaretListener: function() {
-
-        if (!this._atspiListener.deregister('object:text-caret-moved')) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    deregisterCaretListener : function() {
+        return this._atspiListener.deregister(this._caretMoved);
     },
 
-    changed: function(event) {
+    _notify : function(event) {
+        let change = '';
 
-        if (event.type.indexOf('object:state-changed') == 0) {
-            this.emit('focus-changed', event);
+        if (event.type.indexOf(this.stateChanged) == 0) {
+            change = 'focus-changed';
         }
-        else if (event.type == 'object:text-caret-moved') {
-            this.emit('caret-changed', event);
+        else if (event.type == this.caretMoved) {
+            change = 'caret-moved';
         }
-    }
+        this.emit(change, event);
+   }
 });
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-function extentsOnFocus(caller, event) {
-    let acc = event.source;
-
-    if (acc && event.type.indexOf('object:state-changed') == 0 && event.detail1 == 1) {
-        let roleName = acc.get_role_name();
-        let comp = acc.get_component_iface();
-        return comp.get_extents(Atspi.CoordType.SCREEN);
-    }
-    else {
-        return [-1 , -1, -1 , -1];
-    }
-}
-
-function extentsAtCaret(caller, event) {
-    let acc = event.source;
+//Should do check for accessible when making call (if necessary)
+function extentsAtROI(caller, event) {
     let extents = [-1 , -1, -1 , -1];
 
-    if (acc && event.type.indexOf('object:text-caret-moved') == 0) {
-        let roleName = acc.get_role_name();
+    if (event.type.indexOf('object:state-changed') == 0 && event.detail1 == 1) {
+        let component = acc.get_component_iface();
+        extents = comp.get_extents(Atspi.CoordType.SCREEN);
+    }
+    else if (event.type.indexOf('object:text-caret-moved') == 0) {
         let text = acc.get_text_iface();
         if (text && text.get_caret_offset() >= 0)
             extents = text.get_character_extents(text.get_caret_offset(), 0);
