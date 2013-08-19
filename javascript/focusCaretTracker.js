@@ -27,8 +27,8 @@ const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
 
     _init : function() {
-        Atspi.init(); //TODO put somewhere better later
-        this._atspiListener = Atspi.EventListener.new(Lang.bind(this, this._changed));
+        Atspi.init(); // TODO put somewhere better later
+        this._atspiListener = Atspi.EventListener.new(Lang.bind(this, this._notifyUpdate));
         this._stateChanged = 'object:state-changed:';
         this._caretMoved = 'object:text-caret-moved';
     },
@@ -41,37 +41,35 @@ const FocusCaretTracker = new Lang.Class({
     },
 
     registerCaretListener : function() {
-        return this._atspiListener.register(this.caretMoved);
+        return this._atspiListener.register(this._caretMoved);
     },
 
     // Note that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
     deregisterFocusListener : function() {
-        return (this._atspiListener.register(
+        return this._atspiListener.register(
                         this._stateChanged + 'focused') &&
                 this._atspiListener.register(
-                        this._stateChanged + 'selected'));
+                        this._stateChanged + 'selected');
     },
 
     deregisterCaretListener : function() {
         return this._atspiListener.deregister(this._caretMoved);
     },
 
-    _notify : function(event) {
-        let change = '';
+    _notifyUpdate : function(event) {
+        let update = null;
 
-        if (event.type.indexOf(this.stateChanged) == 0) {
-            change = 'focus-changed';
-        }
-        else if (event.type == this.caretMoved) {
-            change = 'caret-moved';
-        }
-        this.emit(change, event);
-   }
+        if (event.type.indexOf(this._stateChanged) == 0)
+            update = 'focus-changed';      
+        else if (event.type == this._caretMoved) 
+            update = 'caret-moved';
+        this.emit(update, event);
+    }
 });
 Signals.addSignalMethods(FocusCaretTracker.prototype);
 
-//Should do check for accessible when making call (if necessary)
+// Should do check for accessible when making call (if necessary)
 function extentsAtROI(caller, event) {
     let extents = [-1 , -1, -1 , -1];
 
@@ -81,7 +79,7 @@ function extentsAtROI(caller, event) {
     }
     else if (event.type.indexOf('object:text-caret-moved') == 0) {
         let text = acc.get_text_iface();
-        if (text && text.get_caret_offset() >= 0)
+        if (text.get_caret_offset() >= 0)
             extents = text.get_character_extents(text.get_caret_offset(), 0);
     }
     return extents;
