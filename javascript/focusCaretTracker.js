@@ -29,8 +29,8 @@ const FocusCaretTracker = new Lang.Class({
     _init : function() {
         Atspi.init(); // TODO put somewhere better later
         this._atspiListener = Atspi.EventListener.new(Lang.bind(this, this._notifyUpdate));
-        this._stateChanged = 'object:state-changed:';
-        this._caretMoved = 'object:text-caret-moved';
+        let _stateChanged = 'object:state-changed:';
+        let _caretMoved = 'object:text-caret-moved';
     },
 
     // Note that select events have been included in the logic for focus events
