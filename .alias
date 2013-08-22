@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 Magdalen Berns. 
+# Copyright (C) 2013 Magdalen Berns.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,12 +14,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
-#
-
+ 
 alias la="ls -la --size"
-alias gsbuild="cd /home/magpie/gnome/gnome-shell/src; ./gnome-shell --replace"
+alias gsbuild="jhbuild run /home/magpie/gnome/gnome-shell/src/gnome-shell --replace"
 alias gsreal="./usr/bin/gnome-shell --replace"
 alias pk="pkcon search name"
 alias avail="grep Available"
-alias in="grep Installed"
+alias in="grep Installed"					
+alias takefile="sudo chown magpie:magpie"
+alias running="ps -fe | grep "
+alias eget="sudo easy_install"
 alias get="sudo yum install -y"
