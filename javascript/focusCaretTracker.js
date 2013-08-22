@@ -23,63 +23,46 @@ const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
 const Signals = imports.signals;
 
-const CARETMOVE 		= 'object:text-caret-moved';
-const STATECHANGE 		= 'object:state-changed';
+const CARETMOVED = 'object:text-caret-moved';
+const STATECHANGED = 'object:STATECHANGED-changed';
 
 const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
 
-    _init : function() {
-        Atspi.init(); // TODO put somewhere better later
-        this._atspiListener = Atspi.EventListener.new(Lang.bind(this, this._notifyUpdate));
-
+    _init: function() {
+        Atspi.init(),// TODO put somewhere better later
+        this.atspiListener = Atspi.EventListener.newSimple(Lang.bind(this, this._onChanged));
+        this.atspiListener._update = this;
     },
 
     // Note that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
-    registerFocusListener : function() {
-        return this._atspiListener.register(STATECHANGE + ':focused') || this._atspiListener.register(
-                                                                               STATECHANGE + 'selected');
+    registerFocusListener: function() {
+        return this.atspiListener.register(STATECHANGED + ':focused') || this.atspiListener.register(
+                                           STATECHANGED + ':selected');
     },
 
-    registerCaretListener : function() {
-        return this._atspiListener.register(this.caretMoved);
+    registerCaretListener: function() {
+        return this.atspiListener.register(CARETMOVED);
     },
 
     // Note that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
-    deregisterFocusListener : function() {
-        return this._atspiListener.deregister(STATECHANGE + 'focused') && this._atspiListener.deregister(
-                        													STATECHANGE + 'selected');
+    deregisterFocusListener: function() {
+        return (this.atspiListener.deregister(
+                                            STATECHANGED + ':focused') && this.atspiListener.deregister(
+                                            STATECHANGED + ':selected'));
     },
 
-    deregisterCaretListener : function() {
-        return this._atspiListener.deregister(this.caretMoved);
+    deregisterCaretListener: function() {
+        return this.atspiListener.deregister(CARETMOVED);
     },
 
-    _notifyUpdate : function(event) {
-        let update = null;
+    _onChanged: function(event) {
 
-        if (event.type.indexOf(STATECHANGE) == 0)
-            update = 'focus-changed';
-        else if (event.type == caretMoved)
-            update = 'caret-moved';
+        if (event.type.indexOf(STATECHANGED) == 0)_update = 'focus-changed';
+        else if (event.type == CARETMOVED) _update = 'caret-moved';
         this.emit(update, event);
     }
 });
 Signals.addSignalMethods(FocusCaretTracker.prototype);
-
-function extentsAtROI(caller, event) {
-    let extents = [-1 , -1, -1 , -1];
-
-    if (event.type.indexOf(STATECHANGE) == 0 && event.detail1 == 1) {
-        let component = acc.get_component_iface();
-        extents = comp.get_extents(Atspi.CoordType.SCREEN);
-    }
-    else if (event.type.indexOf(CARETCHANGE) == 0) {
-        let text = acc.get_text_iface();
-        if (text.get_caret_offset() >= 0)
-            extents = text.get_character_extents(text.get_caret_offset(), 0);
-    }
-    return extents;
-}
