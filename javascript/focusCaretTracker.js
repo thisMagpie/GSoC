@@ -36,9 +36,18 @@ const FocusCaretTracker = new Lang.Class({
         this.atspiListener._update = this;
     },
 
-    _update: function(Atspi.EventListener) {
-        return this.atspiListener._update;
-    },
+    /**
+    * @function _onChanged: This function makes use of the delegate property in order to obtain
+                    objects from atspiListener.
+    * @return: There is a 'void' return, but a caret moved or focus changed signal is emitted
+    */
+    _onChanged: function(event) {
+        let _update=null;
+        
+        if (event.type.indexOf(STATECHANGED) == 0) _update = 'focus-changed';
+        else if (event.type == CARETMOVED) _update = 'caret-moved';
+        this.emit(_update, event);
+    }
 
     // Note: that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected
@@ -61,20 +70,6 @@ const FocusCaretTracker = new Lang.Class({
 
     deregisterCaretListener: function() {
         return this.atspiListener.deregister(CARETMOVED);
-    },
-
-    //// private method ////
-
-    /**
-    * @ _onChanged: This function makes use of the delegate property in order to obtain
-                    objects from atspiListener.
-    * @ Return: There is a 'void' return, but a caret moved or focus changed signal is emitted
-    */
-    _onChanged: function(event) {
-
-        if (event.type.indexOf(STATECHANGED) == 0) _update = 'focus-changed';
-        else if (event.type == CARETMOVED) _update = 'caret-moved';
-        this.emit(_update, event);
     }
 });
 Signals.addSignalMethods(FocusCaretTracker.prototype);
