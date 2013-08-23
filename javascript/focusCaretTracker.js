@@ -1,4 +1,4 @@
-//* -*- mode: js2; js2-basic-offset: 4; indent-tabs-mode: nil -*- */
+/** -*- mode: js2; js2-basic-offset: 4; indent-tabs-mode: nil -*- */
 /*
  * Copyright 2012 Inclusive Design Research Centre, OCAD University.
  *
@@ -23,10 +23,9 @@
 
 const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
-const Signals = imports.signals;
 
-const CARETMOVED = 'object:text-caret-moved';
-const STATECHANGED = 'object:state-changed';
+const CARETMOVED        = 'object:text-caret-moved';
+const STATECHANGED      = 'object:state-changed';
 
 const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
@@ -37,7 +36,7 @@ const FocusCaretTracker = new Lang.Class({
         this.atspiListener._update = this;
     },
 
-    // Note that select events have been included in the logic for focus events
+    // Note: that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected
     registerFocusListener: function() {
         return this.atspiListener.register(STATECHANGED + ':focused') || this.atspiListener.register(
@@ -48,7 +47,7 @@ const FocusCaretTracker = new Lang.Class({
         return this.atspiListener.register(CARETMOVED);
     },
 
-    // Note that select events have been included in the logic for focus events
+    // Note: that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
     deregisterFocusListener: function() {
         return this.atspiListener.deregister(
@@ -73,3 +72,4 @@ const FocusCaretTracker = new Lang.Class({
         this.emit(update, event);
     }
 });
+Signals.addSignalMethods(FocusCaretTracker.prototype);
