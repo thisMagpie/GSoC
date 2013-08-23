@@ -17,6 +17,8 @@
  *
  * Author:
  *   Joseph Scheuhammer <clown@alum.mit.edu>
+ * Contributor (2013):
+     Magdalen Berns <m.berns@sms.ed.ac.uk>
  */
 
 const Atspi = imports.gi.Atspi;
@@ -24,19 +26,19 @@ const Lang = imports.lang;
 const Signals = imports.signals;
 
 const CARETMOVED = 'object:text-caret-moved';
-const STATECHANGED = 'object:STATECHANGED-changed';
+const STATECHANGED = 'object:state-changed';
 
 const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
 
     _init: function() {
         Atspi.init(),// TODO put somewhere better later
-        this.atspiListener = Atspi.EventListener.newSimple(Lang.bind(this, this._onChanged));
+        this.atspiListener = Atspi.EventListener.new(Lang.bind(this, this._onChanged));
         this.atspiListener._update = this;
     },
 
     // Note that select events have been included in the logic for focus events
-    // only because objects will lose focus the moment they are selected.
+    // only because objects will lose focus the moment they are selected
     registerFocusListener: function() {
         return this.atspiListener.register(STATECHANGED + ':focused') || this.atspiListener.register(
                                            STATECHANGED + ':selected');
@@ -49,20 +51,25 @@ const FocusCaretTracker = new Lang.Class({
     // Note that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
     deregisterFocusListener: function() {
-        return (this.atspiListener.deregister(
+        return this.atspiListener.deregister(
                                             STATECHANGED + ':focused') && this.atspiListener.deregister(
-                                            STATECHANGED + ':selected'));
+                                            STATECHANGED + ':selected');
     },
 
     deregisterCaretListener: function() {
         return this.atspiListener.deregister(CARETMOVED);
     },
 
+    //// private method ////
+    /**
+    * @ _onChanged: This function makes use of the delegate property in order to obtain
+                    objects from atspiListener.
+    * @ Return: There is a 'void' return, but a caret moved or focus changed signal is emitted
+    */
     _onChanged: function(event) {
 
-        if (event.type.indexOf(STATECHANGED) == 0)_update = 'focus-changed';
+        if (event.type.indexOf(STATECHANGED) == 0) _update = 'focus-changed';
         else if (event.type == CARETMOVED) _update = 'caret-moved';
         this.emit(update, event);
     }
 });
-Signals.addSignalMethods(FocusCaretTracker.prototype);
