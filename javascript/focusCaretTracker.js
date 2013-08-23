@@ -31,9 +31,13 @@ const FocusCaretTracker = new Lang.Class({
     Name: 'FocusCaretTracker',
 
     _init: function() {
-        Atspi.init(),// TODO put somewhere better later
+        Atspi.init();
         this.atspiListener = Atspi.EventListener.new(Lang.bind(this, this._onChanged));
         this.atspiListener._update = this;
+    },
+
+    _update: function(Atspi.EventListener) {
+        return this.atspiListener._update;
     },
 
     // Note: that select events have been included in the logic for focus events
@@ -60,6 +64,7 @@ const FocusCaretTracker = new Lang.Class({
     },
 
     //// private method ////
+
     /**
     * @ _onChanged: This function makes use of the delegate property in order to obtain
                     objects from atspiListener.
@@ -69,7 +74,7 @@ const FocusCaretTracker = new Lang.Class({
 
         if (event.type.indexOf(STATECHANGED) == 0) _update = 'focus-changed';
         else if (event.type == CARETMOVED) _update = 'caret-moved';
-        this.emit(update, event);
+        this.emit(_update, event);
     }
 });
 Signals.addSignalMethods(FocusCaretTracker.prototype);
