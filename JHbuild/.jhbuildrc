@@ -1,10 +1,71 @@
-#!/usr/bin/python
+# -*- mode: python -*-
+#
+# jhbuildrc for building gnome-shell. Customizations shuld be done in
+# ~/.jhbuildrc
+#
+# Copyright (C) 2008 Red Hat, Inc.
+#
+# Some ideas and a bit of code taken from gtk-osx-build
+#
+# Copyright (C) 2006, 2007, 2008 Imendio AB
+#
+# Use .jhbuildrc to override the moduleset, modules to build,
+# the source checkout location, installation prefix, or svn usernames
+# etc.
+#
+# JHBUILDRC_GNOME_SHELL 
+import os, sys, tempfile
 
+# policy for modules to build, options are:
+#  - all: build everything requested
+#  - updated: build only modules that have changed
+#  - updated-deps: build modules that have changed, or their dependencies
+#    have changed.
 build_policy = 'updated'
-moduleset = 'gnome-apps-3.10'
-modules = [ 'meta-gnome-core-shell' ]
 
+# moduleset settings:
+# To include wayland moduleset:
+# moduleset = [ 'gnome-suites-core-3.10', 'other/wayland' ]
+# to build with dependencies use:
+# moduleset = [ 'gnome-suites-core-3.10', 'gnome-suites-core-deps-3.10', 'gnome-apps-3.10' ]
+# to use core modules needed for gnome-shell development:
+moduleset = [ 'gnome-suites-core-3.10' ]
+modules = [ 'meta gnome-core-shell' ]
+
+# what directory should the source be checked out to?
 checkoutroot = os.path.expanduser('~/gnome/source')
+
+# the prefix to configure/install modules to (must have write access)
 prefix = os.path.expanduser('~/gnome/install')
-ignore_suggests = True
-module_autogenargs['gnome-shell']=' --enable-jhbuild-wrapper-script --enable-introspection'
+
+interact      = True   # whether to interact with the user.
+quiet_mode    = True  # whether to display running commands output
+progress_bar  = True   # whether to display a progress bar when running in quiet mode
+
+# Use system librariess for the builds
+if use_lib64:
+    _libdir = 'lib64'
+else:
+    _libdir = 'lib'
+    
+addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', _libdir, 'pkgconfig'))
+addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', 'share', 'pkgconfig'))
+
+# Look in /usr/share for icons, D-BUS service files, etc
+addpath('XDG_DATA_DIRS', '/usr/share')
+# Look in /etc/xdg for system-global autostart files
+addpath('XDG_CONFIG_DIRS', '/etc/xdg')
+
+# further modifications (edit with caution)
+# override environment variables, command
+# autogenargs = '--disable-static'
+# cmakeargs = ''
+# makeargs = ''
+# cflags = ''
+# tags used as module filters
+# tags = []
+
+# modules to skip during dependency expansion
+skip = ['Webkit']
+
+module_autogenargs['gnome-shell'] = '--enable-jhbuild-wrapper-script'
