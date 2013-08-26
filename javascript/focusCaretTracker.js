@@ -95,7 +95,7 @@ Signals.addSignalMethods(FocusCaretTracker.prototype);
 
 function addTrackingMethods(proto) {
     proto.startTrackingFocus = _startTrackingFocus;
-    proto.stopTrackingFocus = _stopTrackingFocus;
     proto.startTrackingCaret = _startTrackingCaret;
-    proto.stopTrackingCaret =  _stopTrackingCaret;
+    proto.stopTrackingFocus = _stopTrackingFocus;
+    proto.stopTrackingCaret = _stopTrackingCaret;
 }
