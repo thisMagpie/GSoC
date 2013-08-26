@@ -40,7 +40,6 @@ const FocusCaretTracker = new Lang.Class({
         this._caretId = this;
         this._focusId = this.Atspi.connect('focus-changed', Lang.bind(this, this._startFocusTracking));
         this._focusId = this;
-        Mainloop.run('runMainloop');
     },
 
     _onChanged: function(event) {
@@ -67,6 +66,14 @@ const FocusCaretTracker = new Lang.Class({
     _stopTrackingCaret: function() {
         return this.Atspi.deregisterCaretListener();
     },
+
+    _isTrackingFocus: function() {
+        return _focusId;
+    }
+
+    _isTrackingCaret: function() {
+        return _caretId;
+    }
 
     // FIXME that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
@@ -98,4 +105,6 @@ function addTrackingMethods(proto) {
     proto.startTrackingCaret = _startTrackingCaret;
     proto.stopTrackingFocus = _stopTrackingFocus;
     proto.stopTrackingCaret = _stopTrackingCaret;
+    proto.isTrackingCaret = _isTrackingCaret;
+    proto.isTrackingFocus = _isTrackingFocus;
 }
