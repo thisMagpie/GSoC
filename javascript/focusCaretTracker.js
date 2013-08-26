@@ -18,11 +18,12 @@
  * Author:
  *   Joseph Scheuhammer <clown@alum.mit.edu>
  * Contributor (2013):
-     Magdalen Berns <m.berns@sms.ed.ac.uk>
+ *   Magdalen Berns <m.berns@sms.ed.ac.uk>
  */
 
 const Atspi = imports.gi.Atspi;
 const Lang = imports.lang;
+const Signals = imports.signals;
 
 const CARETMOVED        = 'object:text-caret-moved';
 const STATECHANGED      = 'object:state-changed';
@@ -34,23 +35,41 @@ const FocusCaretTracker = new Lang.Class({
         Atspi.init();
         this.atspiListener = Atspi.EventListener.new(Lang.bind(this, this._onChanged));
         this.atspiListener._update = this;
+
+        this._caretId = this.Atspi.connect('caret-changed', Lang.bind(this, this._startCaretTracking));
+        this._caretId = this;
+        this._focusId = this.Atspi.connect('focus-changed', Lang.bind(this, this._startFocusTracking));
+        this._focusId = this;
+        Mainloop.run('runMainloop');
     },
 
-    /**
-    * @function _onChanged: This function makes use of the delegate property in order to obtain
-                    objects from atspiListener.
-    * @return: There is a 'void' return, but a caret moved or focus changed signal is emitted
-    */
     _onChanged: function(event) {
-        let _update=null;
-        
-        if (event.type.indexOf(STATECHANGED) == 0) _update = 'focus-changed';
-        else if (event.type == CARETMOVED) _update = 'caret-moved';
-        this.emit(_update, event);
-    }
+        let _update = null;
 
-    // Note: that select events have been included in the logic for focus events
-    // only because objects will lose focus the moment they are selected
+        if (event.type.indexOf(STATECHANGED) == 0)
+            _update = 'focus-changed';
+        else if (event.type == CARETMOVED) _update = 'caret-moved';
+            this.emit(_update, event);
+    },
+
+    _startTrackingFocus: function() {
+        return this.Atspi.registerFocusListener();
+    },
+
+    _startTrackingCaret: function() {
+        return this.Atspi.registerCaretListener();
+    },
+
+    _stopTrackingFocus: function() {
+        return this.Atspi.deregisterFocusListener();
+    },
+
+    _stopTrackingCaret: function() {
+        return this.Atspi.deregisterCaretListener();
+    },
+
+    // FIXME that select events have been included in the logic for focus events
+    // only because objects will lose focus the moment they are selected.
     registerFocusListener: function() {
         return this.atspiListener.register(STATECHANGED + ':focused') || this.atspiListener.register(
                                            STATECHANGED + ':selected');
@@ -60,16 +79,23 @@ const FocusCaretTracker = new Lang.Class({
         return this.atspiListener.register(CARETMOVED);
     },
 
-    // Note: that select events have been included in the logic for focus events
+    // FIXME: that select events have been included in the logic for focus events
     // only because objects will lose focus the moment they are selected.
     deregisterFocusListener: function() {
-        return this.atspiListener.deregister(
-                                            STATECHANGED + ':focused') && this.atspiListener.deregister(
-                                            STATECHANGED + ':selected');
+        return this.atspiListener.deregister(STATECHANGED + ':focused') && this.atspiListener.deregister(
+                                             STATECHANGED + ':selected');
     },
 
     deregisterCaretListener: function() {
         return this.atspiListener.deregister(CARETMOVED);
     }
 });
+// Use the protype methods from
 Signals.addSignalMethods(FocusCaretTracker.prototype);
+
+function addTrackingMethods(proto) {
+    proto.startTrackingFocus = _startTrackingFocus;
+    proto.stopTrackingFocus = _stopTrackingFocus;
+    proto.startTrackingCaret = _startTrackingCaret;
+    proto.stopTrackingCaret =  _stopTrackingCaret;
+}
