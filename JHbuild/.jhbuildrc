@@ -38,16 +38,15 @@ checkoutroot = os.path.expanduser('~/gnome/source')
 # the prefix to configure/install modules to (must have write access)
 prefix = os.path.expanduser('~/gnome/install')
 
-interact      = True   # whether to interact with the user.
-quiet_mode    = True  # whether to display running commands output
-progress_bar  = True   # whether to display a progress bar when running in quiet mode
+interact      = True # whether to interact with the user.
+quiet_mode    = True # whether to display running commands output(Builds)
+progress_bar  = True # whether to display a progress bar when running in quiet mode
 
 # Use system librariess for the builds
 if use_lib64:
     _libdir = 'lib64'
 else:
     _libdir = 'lib'
-    
 addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', _libdir, 'pkgconfig'))
 addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', 'share', 'pkgconfig'))
 
@@ -68,4 +67,7 @@ addpath('XDG_CONFIG_DIRS', '/etc/xdg')
 # modules to skip during dependency expansion
 skip = ['Webkit']
 
+module_autogenargs['NetworkManager']=' --disable-gtk-doc'
+module_autogenargs['cogl']=' --disable-tests --enable-wayland-egl-platform=no --enable-wayland-egl-server=no'
+module_autogenargs['clutter']=' --enable-installed-tests=no --enable-wayland-backend=no'
 module_autogenargs['gnome-shell'] = '--enable-jhbuild-wrapper-script'
