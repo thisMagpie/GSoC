@@ -697,6 +697,9 @@ const ZoomRegion = new Lang.Class({
         this._xMagFactor = 1;
         this._yMagFactor = 1;
         this._followingCursor = false;
+        this.extents = [-1 , -1, -1 , -1];
+        this.xPoint = 0;
+        this.yPoint = 0;
 
         Main.layoutManager.connect('monitors-changed',
                                    Lang.bind(this, this._monitorsChanged));
@@ -708,25 +711,28 @@ const ZoomRegion = new Lang.Class({
 
     _updateFocus: function(caller, event) {
         let acc=event.source;
-        let extents = [-1 , -1, -1 , -1];
 
         if (event.type.indexOf('object:state-changed') == 0 && event.detail1 == 1) {
             let component = acc.get_component_iface();
-            extents = comp.get_extents(Atspi.CoordType.SCREEN);
+            this.extents = comp.get_extents(Atspi.CoordType.SCREEN);
         }
-        this._scrollContentsTo(extents.x, extents.y);
+        this.xPoint = this.extents.x;
+        this.yPoint = this.extents.y;
+        this._scrollContentsTo(this.xPoint, this.yPoint);
     },
 
     _updateCaret: function(caller, event) {
         let acc=event.source;
-        let extents = [-1 , -1, -1 , -1];
 
          if (event.type.indexOf('object:text-caret-moved') == 0) {
                 let text = acc.get_text_iface();
                 if (text && text.get_caret_offset() >= 0)
-                    extents = text.get_character_extents(text.get_caret_offset(), 0);
+                    this.extents = text.get_character_extents(text.get_caret_offset(), 0);
             }
-        this._scrollContentsTo(extents.x, extents.y);
+        this.xPoint = this.extents.x;
+        this.yPoint = this.extents.y;
+        
+        this._scrollContentsTo(this.xPoint, this.yPoint);
     },
 
     /**
@@ -741,6 +747,8 @@ const ZoomRegion = new Lang.Class({
             this._updateMagViewGeometry();
             this._updateCloneGeometry();
             this._updateMousePosition();
+            this._updateCaretPosition();
+            this._updateFocusPosition();
         } else if (!activate && this.isActive()) {
             this._destroyActors();
         }
@@ -802,7 +810,7 @@ const ZoomRegion = new Lang.Class({
      * @mode:     One of the enum FocusTrackingMode values.
      */
     setFocusTrackingMode: function(mode) {
-            this._focusTrackingMode = mode;
+        this._focusTrackingMode = mode;
     },
 
     /**
@@ -818,7 +826,7 @@ const ZoomRegion = new Lang.Class({
      * @mode:     One of the enum CaretTrackingMode values.
      */
     setCaretTrackingMode: function(mode) {
-            this._caretTrackingMode = mode;
+        this._caretTrackingMode = mode;
     },
 
     /**
@@ -1025,10 +1033,20 @@ const ZoomRegion = new Lang.Class({
      */
     scrollToMousePos: function() {
         this._followingCursor = true;
-        if (this._mouseTrackingMode != GDesktopEnums.MagnifierMouseTrackingMode.NONE)
+        if (this._mouseTrackingMode != GDesktopEnums.MagnifierMouseTrackingMode.NONE) {
             this._changeROI({ redoCursorTracking: true });
-        else
+        }
+        else if (this._focusTrackingMode != GDesktopEnums.MagnifierFocusTrackingMode.NONE) {
+            this._changeROI({ redoCursorTracking: true });
+        }
+        else if (this._caretTrackingMode != GDesktopEnums.MagnifierCaretTrackingMode.NONE) {
+            this._changeROI({ redoCursorTracking: true });
+        }
+        else {
             this._updateMousePosition();
+            this._updateFocusPosition();
+            this._updateCaretPosition();
+        }
 
         // Determine whether the system mouse pointer is over this zoom region.
         return this._isMouseOverRegion();
@@ -1339,13 +1357,13 @@ const ZoomRegion = new Lang.Class({
         let yMouse = this._magnifier.yMouse;
 
         if (this._mouseTrackingMode == GDesktopEnums.MagnifierMouseTrackingMode.PROPORTIONAL) {
-            return this._centerFromMouseProportional(xMouse, yMouse);
+            return this._centerFromPointProportional(xMouse, yMouse);
         }
         else if (this._mouseTrackingMode == GDesktopEnums.MagnifierMouseTrackingMode.PUSH) {
-            return this._centerFromMousePush(xMouse, yMouse);
+            return this._centerFromPointPush(xMouse, yMouse);
         }
         else if (this._mouseTrackingMode == GDesktopEnums.MagnifierMouseTrackingMode.CENTERED) {
-            return this._centerFromMouseCentered(xMouse, yMouse);
+            return this._centerFromPointCentered(xMouse, yMouse);
         }
 
         return null; // Should never be hit
@@ -1443,6 +1461,24 @@ const ZoomRegion = new Lang.Class({
         }
     },
 
+    _updateCaretPosition: function() {
+        if (!this.isActive())
+            return;
+
+        let [xMagPoint, yMagPoint] = this._screenToViewPort(this._xPoint,
+                                                            this._yPoint);
+
+        xPoint = Math.round(xPoint);
+        yPoint = Math.round(yPoint);
+
+    //TODO setter 
+
+        if (this._crossHairsActor) {
+            let [groupWidth, groupHeight] = this._crossHairsActor.get_size();
+            this._crossHairsActor.set_position(xPoint - groupWidth / 2,
+                                               yPoint - groupHeight / 2);
+        }
+    },
     _monitorsChanged: function() {
         if (!this.isActive())
             return;
