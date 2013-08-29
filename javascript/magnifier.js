@@ -748,7 +748,6 @@ const ZoomRegion = new Lang.Class({
             this._updateCloneGeometry();
             this._updateMousePosition();
             this._updateCaretPosition();
-            this._updateFocusPosition();
         } else if (!activate && this.isActive()) {
             this._destroyActors();
         }
@@ -1044,7 +1043,6 @@ const ZoomRegion = new Lang.Class({
         }
         else {
             this._updateMousePosition();
-            this._updateFocusPosition();
             this._updateCaretPosition();
         }
 
@@ -1465,18 +1463,18 @@ const ZoomRegion = new Lang.Class({
         if (!this.isActive())
             return;
 
-        let [xMagPoint, yMagPoint] = this._screenToViewPort(this._xPoint,
-                                                            this._yPoint);
+        let [xMagPoint, yMagPoint] = this._screenToViewPort(this.xPoint,
+                                                            this.yPoint);
 
-        xPoint = Math.round(xPoint);
-        yPoint = Math.round(yPoint);
+        xMagPoint = Math.round(xMagPoint);
+        yMagPoint = Math.round(yMagPoint);
 
     //TODO setter 
 
         if (this._crossHairsActor) {
             let [groupWidth, groupHeight] = this._crossHairsActor.get_size();
-            this._crossHairsActor.set_position(xPoint - groupWidth / 2,
-                                               yPoint - groupHeight / 2);
+            this._crossHairsActor.set_position(xMagPoint - groupWidth / 2,
+                                               yMagPoint - groupHeight / 2);
         }
     },
     _monitorsChanged: function() {
