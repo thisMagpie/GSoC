@@ -48,6 +48,7 @@ const CROSS_HAIRS_LENGTH_KEY    = 'cross-hairs-length';
 const CROSS_HAIRS_CLIP_KEY      = 'cross-hairs-clip';
 
 let magDBusService = null;
+let focusCaretTracker = null;
 
 const Magnifier = new Lang.Class({
     Name: 'Magnifier',
@@ -601,6 +602,24 @@ const Magnifier = new Lang.Class({
         }
     },
 
+    _updateFocusTrackingMode: function() {
+        // Applies only to the first zoom region.
+        if (this._zoomRegions.length) {
+            this._zoomRegions[0].setFocusTrackingMode(
+                this._settings.get_enum(FOCUS_TRACKING_KEY)
+            );
+        }
+    },
+
+    _updateCaretTrackingMode: function() {
+        // Applies only to the first zoom region.
+        if (this._zoomRegions.length) {
+            this._zoomRegions[0].setCaretTrackingMode(
+                this._settings.get_enum(CARET_TRACKING_KEY)
+            );
+        }
+    },
+
     _updateInvertLightness: function() {
         // Applies only to the first zoom region.
         if (this._zoomRegions.length) {
@@ -639,7 +658,7 @@ const Magnifier = new Lang.Class({
             contrast.b = this._settings.get_double(CONTRAST_BLUE_KEY);
             this._zoomRegions[0].setContrast(contrast);
         }
-    },
+    }
 });
 Signals.addSignalMethods(Magnifier.prototype);
 
@@ -649,7 +668,7 @@ const ZoomRegion = new Lang.Class({
     _init: function(magnifier, mouseSourceActor) {
         this._magnifier = magnifier;
 
-        let focusCaretTracker = new FocusCaretTracker.FocusCaretTracker();
+        this.focusCaretTracker = new FocusCaretTracker.FocusCaretTracker();
         this._mouseTrackingMode = GDesktopEnums.MagnifierMouseTrackingMode.NONE;
         this._focusTrackingMode = GDesktopEnums.MagnifierFocusTrackingMode.NONE;
         this._caretTrackingMode = GDesktopEnums.MagnifierCaretTrackingMode.NONE;
@@ -683,7 +702,6 @@ const ZoomRegion = new Lang.Class({
                                    Lang.bind(this, this._monitorsChanged));
         this.focusCaretTracker.connect('caret-moved',
                                     Lang.bind(this, this._updateCaret));
-
         this.focusCaretTracker.connect('focus-changed',
                                     Lang.bind(this, this._updateFocus));
     },
@@ -779,6 +797,37 @@ const ZoomRegion = new Lang.Class({
         return this._mouseTrackingMode;
     },
 
+    /**
+     * setFocusTrackingMode
+     * @mode:     One of the enum FocusTrackingMode values.
+     */
+    setFocusTrackingMode: function(mode) {
+            this._focusTrackingMode = mode;
+    },
+
+    /**
+     * getFocusTrackingMode
+     * @return:     One of the enum FocusTrackingMode values.
+     */
+    getFocusTrackingMode: function() {
+        return this._focusTrackingMode;
+    },
+
+    /**
+     * setCaretTrackingMode
+     * @mode:     One of the enum CaretTrackingMode values.
+     */
+    setCaretTrackingMode: function(mode) {
+            this._caretTrackingMode = mode;
+    },
+
+    /**
+     * getCaretTrackingMode
+     * @return:     One of the enum CaretTrackingMode values.
+     */
+    getCaretTrackingMode: function() {
+        return this._caretTrackingMode;
+    },
     /**
      * setViewPort
      * Sets the position and size of the ZoomRegion on screen.
