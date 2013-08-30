@@ -749,7 +749,7 @@ const ZoomRegion = new Lang.Class({
             this._updateMagViewGeometry();
             this._updateCloneGeometry();
             this._updateMousePosition();
-            this._updateCaretPosition();
+            this._updateCaretFocusPosition();
         } else if (!activate && this.isActive()) {
             this._destroyActors();
         }
@@ -1040,17 +1040,12 @@ const ZoomRegion = new Lang.Class({
         else {
             this._updateMousePosition();
         }
-        if (this._focusTrackingMode != GDesktopEnums.MagnifierFocusTrackingMode.NONE) {
+        if (this._caretTrackingMode != GDesktopEnums.MagnifierCaretTrackingMode.NONE && 
+                this._focusTrackingMode != GDesktopEnums.MagnifierFocusTrackingMode.NONE) {
             this._changeROI({ redoCursorTracking: true });
         }
         else {
-            this._updateFocusPosition();
-        }
-        if (this._caretTrackingMode != GDesktopEnums.MagnifierCaretTrackingMode.NONE) {
-            this._changeROI({ redoCursorTracking: true });
-        }
-        else {
-            this._updateCaretPosition();
+            this._updateCaretFocusPosition();
         }
         // Determine whether the system mouse pointer is over this zoom region.
         return this._isPointOverRegion();
@@ -1322,7 +1317,7 @@ const ZoomRegion = new Lang.Class({
 
         this._updateCloneGeometry();
         this._updateMousePosition();
-        this._updateCaretPosition();
+        this._updateCaretFocusPosition();
     },
 
     _isPointOverRegion: function() {
@@ -1452,7 +1447,7 @@ const ZoomRegion = new Lang.Class({
         this._uiGroupClone.set_position(Math.round(x), Math.round(y));
 
         this._updateMousePosition();
-        this._updateCaretPosition();
+        this._updateCaretFocusPosition();
     },
 
     _updateMousePosition: function() {
@@ -1474,7 +1469,7 @@ const ZoomRegion = new Lang.Class({
         }
     },
 
-    _updateCaretPosition: function() {
+    _updateCaretFocusPosition: function() {
 
         if (!this.isActive())
             return;
