@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkToggleAction" id="toggleaction1"/>
   <object class="GtkAdjustment" id="adjustment2">
     <property name="lower">100</property>
     <property name="upper">4096</property>
@@ -37,6 +38,43 @@
   <object class="GtkMenu" id="menu1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+  </object>
+  <object class="GtkListStore" id="screen_position_model">
+    <columns>
+      <!-- column-name positions -->
+      <column type="gchararray"/>
+      <!-- column-name text_scale -->
+      <column type="gfloat"/>
+      <!-- column-name setting_value -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Full Screen</col>
+        <col id="1">1.25</col>
+        <col id="2">full-screen</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Top Half</col>
+        <col id="1">1.25</col>
+        <col id="2">top-half</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Bottom Half</col>
+        <col id="1">1.25</col>
+        <col id="2">bottom-half</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Left Half</col>
+        <col id="1">1.25</col>
+        <col id="2">left-half</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Right Half</col>
+        <col id="1">1.25</col>
+        <col id="2">right-half</col>
+      </row>
+    </data>
   </object>
   <object class="GtkDialog" id="magPrefsDialog">
     <property name="can_focus">False</property>
@@ -428,9 +466,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkFrame" id="frame4">
+              <object class="GtkFrame" id="tracking-frame">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can_focus">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">True</property>
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">none</property>
                 <child>
@@ -446,7 +486,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkSwitch" id="switch1">
+                              <object class="GtkSwitch" id="focus-tracking-switch">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -508,7 +548,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="caret_label">
+                      <object class="GtkLabel" id="caret-tracking-label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0.12999999523162842</property>
@@ -521,7 +561,7 @@
                           <relation type="member-of" target="magPrefsDialog"/>
                         </accessibility>
                         <child internal-child="accessible">
-                          <object class="AtkObject" id="caret_label-atkobject">
+                          <object class="AtkObject" id="caret-tracking-label-atkobject">
                             <property name="AtkObject::accessible-name" translatable="yes">focus-tracking-label</property>
                           </object>
                         </child>
@@ -696,7 +736,7 @@
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <child>
-                                      <object class="GtkSwitch" id="switch2">
+                                      <object class="GtkSwitch" id="caret-tracking-switch">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
@@ -726,7 +766,30 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <placeholder/>
+                          <object class="GtkFrame" id="frame4">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label_xalign">0</property>
+                            <property name="shadow_type">none</property>
+                            <child>
+                              <object class="GtkAlignment" id="alignment9">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="left_padding">12</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </object>
+                            </child>
+                            <child type="label">
+                              <object class="GtkLabel" id="label11">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="xalign">0.27000001072883606</property>
+                                <property name="use_markup">True</property>
+                              </object>
+                            </child>
+                          </object>
                         </child>
                       </object>
                       <packing>
@@ -737,14 +800,14 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRadioButton" id="push2">
+                      <object class="GtkRadioButton" id="push3">
                         <property name="label" translatable="yes">push</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
-                        <property name="group">moveableLens</property>
+                        <property name="group">proportional3</property>
                       </object>
                       <packing>
                         <property name="left_attach">8</property>
@@ -754,7 +817,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRadioButton" id="push3">
+                      <object class="GtkRadioButton" id="proportional2">
                         <property name="label" translatable="yes">proportional</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -762,7 +825,7 @@
                         <property name="relief">none</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
-                        <property name="group">moveableLens</property>
+                        <property name="group">push2</property>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
@@ -772,14 +835,14 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRadioButton" id="push5">
+                      <object class="GtkRadioButton" id="centered2">
                         <property name="label" translatable="yes">centered</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
-                        <property name="group">moveableLens</property>
+                        <property name="group">push2</property>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
@@ -789,7 +852,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRadioButton" id="proportional2">
+                      <object class="GtkRadioButton" id="proportional3">
                         <property name="label" translatable="yes">proportional</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -807,14 +870,16 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRadioButton" id="push1">
+                      <object class="GtkRadioButton" id="push2">
                         <property name="label" translatable="yes">push</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
+                        <property name="active">True</property>
                         <property name="draw_indicator">True</property>
-                        <property name="group">moveableLens</property>
+                        <accelerator key="Return" signal="clicked"/>
+                        <accelerator key="Return" signal="activate"/>
                         <accessibility>
                           <relation type="member-of" target="centered"/>
                           <relation type="member-of" target="push"/>
@@ -901,8 +966,8 @@
                         <property name="xpad">2</property>
                         <property name="ypad">5</property>
                         <property name="label" translatable="yes">Focus Tracking</property>
+                        <property name="selectable">True</property>
                         <property name="width_chars">5</property>
-                        <property name="max_width_chars">0</property>
                         <accessibility>
                           <relation type="controlled-by" target="magPrefsDialog"/>
                           <relation type="controlled-by" target="seeing_zoom_switch"/>
@@ -921,7 +986,7 @@
                         </attributes>
                       </object>
                       <packing>
-                        <property name="left_attach">2</property>
+                        <property name="left_attach">1</property>
                         <property name="top_attach">1</property>
                         <property name="width">1</property>
                         <property name="height">1</property>
@@ -969,14 +1034,14 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRadioButton" id="push4">
+                      <object class="GtkRadioButton" id="centered3">
                         <property name="label" translatable="yes">centered</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
-                        <property name="group">moveableLens</property>
+                        <property name="group">proportional3</property>
                       </object>
                       <packing>
                         <property name="left_attach">8</property>
@@ -1175,8 +1240,11 @@
             <child type="tab">
               <object class="GtkLabel" id="Tracking">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_bottom">4</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">True</property>
+                <property name="margin_bottom">2</property>
                 <property name="xalign">0.41999998688697815</property>
                 <property name="label" translatable="yes">Tracking</property>
                 <property name="width_chars">6</property>
@@ -1916,43 +1984,6 @@
     <action-widgets>
       <action-widget response="0">closeButton</action-widget>
     </action-widgets>
-  </object>
-  <object class="GtkListStore" id="screen_position_model">
-    <columns>
-      <!-- column-name positions -->
-      <column type="gchararray"/>
-      <!-- column-name text_scale -->
-      <column type="gfloat"/>
-      <!-- column-name setting_value -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Full Screen</col>
-        <col id="1">1.25</col>
-        <col id="2">full-screen</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Top Half</col>
-        <col id="1">1.25</col>
-        <col id="2">top-half</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Bottom Half</col>
-        <col id="1">1.25</col>
-        <col id="2">bottom-half</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Left Half</col>
-        <col id="1">1.25</col>
-        <col id="2">left-half</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Right Half</col>
-        <col id="1">1.25</col>
-        <col id="2">right-half</col>
-      </row>
-    </data>
   </object>
   <object class="GtkSizeGroup" id="sizegroup1"/>
   <object class="GtkAdjustment" id="xHairsThickness">
