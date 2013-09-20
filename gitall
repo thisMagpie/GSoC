@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd $HOME/gnome/source
+
+for i in *; do
+  if [ -d $i ]; then
+    cd $i;
+    if test -d .git; then
+      echo " " $i; git pull
+    fi
+    cd ..
+  fi
+done
+jhbuild build gnome-shell
