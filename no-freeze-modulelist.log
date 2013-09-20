@@ -1,0 +1,183 @@
+[magpie@localhost source]$ for i in *; do (cd $i; if test -d .git; then echo -n $i-; git describe; else echo $i; fi); done
+accountsservice-0.6.34-15-g499bfeb
+anjuta-ANJUTA_3_9_92-2-g9ef741e
+anthy-9100h
+bash: cd: anthy-9100h.tar.gz: Not a directory
+anthy-9100h.tar.gz
+atk-ATK_2_9_4-5-gc26b596
+at-spi2-atk-AT_SPI2_ATK_2_9_92
+at-spi2-core-AT_SPI2_CORE_2_9_92
+autoconf-2.68
+bash: cd: autoconf-2.68.tar.bz2: Not a directory
+autoconf-2.68.tar.bz2
+automake-1.11.3
+bash: cd: automake-1.11.3.tar.xz: Not a directory
+automake-1.11.3.tar.xz
+bluez-5.6
+bash: cd: bluez-5.6.tar.xz: Not a directory
+bluez-5.6.tar.xz
+caribou-CARIBOU_0_4_12-1-g9a1c3c7
+cheese-3.9.90-30-g40190ad
+clutter-1.15.94-1-gc03f772
+clutter-gst-2.0.6-2-g03f0d8f
+clutter-gtk-1.4.4-8-g532aa93
+cogl-1.15.10-16-gb635b68
+colord-COLORD_1_1_2-1-g0384869
+colord-gtk-COLORD_GTK_0_1_25-2-ge14d364
+dconf-0.17.1-3-g0052350
+devhelp-3.9.91-10-g0d34b43
+evolution-data-server-EVOLUTION_DATA_SERVER_3_9_92-4-gc63f776
+fontconfig-2.10.95-5-g5e6b889
+bash: cd: fpaste: Not a directory
+fpaste
+gcr-3.9.91-30-g9a40d87
+gdk-pixbuf-2.29.3-21-gcb01db8
+gdl-GDL_3_9_91
+gdm-3.9.90-39-g20f176b
+geoclue-1.99.4-4-ga8210ba
+geocode-glib-0.99.4-1-g326f208
+GeoIP-1.5.1
+bash: cd: GeoIP-1.5.1.tar.gz: Not a directory
+GeoIP-1.5.1.tar.gz
+gettext-0.18.3
+bash: cd: gettext-0.18.3.tar.gz: Not a directory
+gettext-0.18.3.tar.gz
+gjs-GJS_1_37_4-13-g48603c2
+glade-GLADE_3_15_3-18-ga336162
+glib-2.37.93-3-g54e79d7
+glib-networking-2.37.5
+gnome-bluetooth-GNOMEBT_V_3_9_91-14-g9793921
+gnome-common-3.7.4-12-gf8f5bc9
+gnome-control-center-GNOME_CONTROL_CENTER_3_9_92-5-g516f9a7
+gnome-desktop-3.9.92-1-gb96b8af
+gnome-icon-theme-3.9.5-2-g982e1ea
+gnome-icon-theme-symbolic-3.9.91-1-gd4fb56e
+gnome-menus-3.8.0-20-g68237b9
+gnome-online-accounts-3.9.90-69-g973f11d
+gnome-settings-daemon-GNOME_SETTINGS_DAEMON_3_9_92-5-g53fcbed
+gnome-shell-3.9.92-17-g6ba5af1
+gnome-sound-recorder-3.9.91-5-g1b2f085
+gnome-video-effects-0.4.0-19-g3e58a0e
+gobject-introspection-GOBJECT_INTROSPECTION_1_37_6-8-g3255d56
+gsettings-desktop-schemas-3.9.91-10-gd643016
+gssdp-gssdp-0.14.5-1-gdd25eb8
+gst-plugins-bad-1.1.4-35-gefb27f1
+gst-plugins-base-1.1.90-5-g26526fe
+gst-plugins-good-1.1.4-35-g9f4a8cc
+gstreamer-1.1.90-7-g0ae1551
+gtk+-3.9.16-11-g24751cb
+gtk+-2-2.24.21-1-g13ffc6c
+gtk-doc-GTK_DOC_1_19-28-g9d24fcd
+gtksourceview-3.9.91-11-gb52f755
+gupnp-gupnp-0.20.6-2-gf16a62e
+gupnp-av-gupnp-av-0.12.2-1-g484ea81
+gvfs-1.17.90-7-g9d11443
+harfbuzz-0.9.21
+hicolor-icon-theme-0.12
+bash: cd: hicolor-icon-theme-0.12.tar.gz: Not a directory
+hicolor-icon-theme-0.12.tar.gz
+ibus-1.5.3
+bash: cd: ibus-1.5.3.tar.gz: Not a directory
+ibus-1.5.3.tar.gz
+ibus-anthy-1.5.0
+bash: cd: ibus-anthy-1.5.0.tar.gz: Not a directory
+ibus-anthy-1.5.0.tar.gz
+ibus-hangul-1.4.1
+bash: cd: ibus-hangul-1.4.1.tar.gz: Not a directory
+ibus-hangul-1.4.1.tar.gz
+ibus-pinyin-1.5.0
+bash: cd: ibus-pinyin-1.5.0.tar.gz: Not a directory
+ibus-pinyin-1.5.0.tar.gz
+itstool-1.2.0
+bash: cd: itstool-1.2.0.tar.bz2: Not a directory
+itstool-1.2.0.tar.bz2
+json-glib-0.16.0-30-gce46c06
+libcroco-0.6.8-3-g611f624
+libevdev-libevdev-0.4
+libevdev-0.3
+libgda-LIBGDA_5_1_2-123-g357a268
+libgdata-LIBGDATA_0_14_0-37-g757bb3e
+libgee-0.11.92
+libgsf-LIBGSF_1_14_28-21-g735c5e2
+libgtop-LIBGTOP_2_28_5-13-gb6eb087
+libgusb-gusb_0_1_6-1-g53226a1
+libgweather-3.9.92-7-g215c661
+libhangul-0.1.0
+bash: cd: libhangul-0.1.0.tar.gz: Not a directory
+libhangul-0.1.0.tar.gz
+libmbim-0.0.1-128-g4fe2e05
+libnotify-0.7.6
+libpwquality-1.2.2
+bash: cd: libpwquality-1.2.2.tar.bz2: Not a directory
+libpwquality-1.2.2.tar.bz2
+libqmi-1.4.0-71-geee734f
+libquvi-scripts-0.9-v0.9.20130903
+librest-0.7.90-10-g44a8807
+librsvg-2.39.0-5-g1e22da8
+libsecret-0.16-11-gcbc8e69
+libsoup-LIBSOUP_2_43_92-2-gdb71813
+libtool-2.4.2
+bash: cd: libtool-2.4.2.tar.xz: Not a directory
+libtool-2.4.2.tar.xz
+libwacom-0.7
+bash: cd: libwacom-0.7.tar.bz2: Not a directory
+libwacom-0.7.tar.bz2
+libxkbcommon-xkbcommon-0.3.1-37-gdbf07de
+m4-1.4.11
+bash: cd: m4-1.4.11.tar.bz2: Not a directory
+m4-1.4.11.tar.bz2
+mobile-broadband-provider-info-20120614-41-gc375571
+ModemManager-0.7.990-599-ge446037
+mutter-3.9.92-2-ge285628
+nautilus-3.9.92-2-g478678d
+nautilus-sendto-NAUTILUS_SENDTO_3_8_0-49-g93b5750
+NetworkManager-0.9.8.4-1-g5e129f1
+network-manager-applet-0.9.8.4-2-g2bd61f2
+p11-kit-0.19.1
+bash: cd: p11-kit-0.19.1.tar.gz: Not a directory
+p11-kit-0.19.1.tar.gz
+PackageKit-PACKAGEKIT_0_8_11-15-g0ec9349
+pango-1.35.3-3-g05fe0e7
+pkg-config-0.25
+bash: cd: pkg-config-0.25.tar.gz: Not a directory
+pkg-config-0.25.tar.gz
+polkit-0.112-1-g796d8cd
+poppler-0.24.1
+bash: cd: poppler-0.24.1.tar.xz: Not a directory
+poppler-0.24.1.tar.xz
+pulseaudio-v4.0-184-g77aa9b9
+pygobject-3.9.92
+pyzy-0.1.0
+bash: cd: pyzy-0.1.0.tar.gz: Not a directory
+pyzy-0.1.0.tar.gz
+RemoteSystemsTempFiles
+sbc-1.1
+bash: cd: sbc-1.1.tar.xz: Not a directory
+sbc-1.1.tar.xz
+sound-theme-freedesktop-0.8
+bash: cd: sound-theme-freedesktop-0.8.tar.bz2: Not a directory
+sound-theme-freedesktop-0.8.tar.bz2
+bash: cd: source.anjuta: Not a directory
+source.anjuta
+telepathy-glib-telepathy-glib-0.21.1-40-g35f5131
+telepathy-logger-telepathy-logger-0.8.0-8-g3c88392
+totem-pl-parser-V_3_9_92
+tracker-0.16.2-9-g6cccea6
+udisks-2.1.1-2-g80adda7
+upower-UPOWER_0_9_21-42-gee0a71d
+vala-0.21.2-7-gfe76413
+vte-0.34.7-7-g237916c
+wayland-1.2.0-39-g2e3af5e
+webkitgtk-2.1.90.1
+bash: cd: webkitgtk-2.1.90.1.tar.xz: Not a directory
+webkitgtk-2.1.90.1.tar.xz
+webkitgtk-2.1.91
+bash: cd: webkitgtk-2.1.91.tar.xz: Not a directory
+webkitgtk-2.1.91.tar.xz
+webkitgtk-2.1.92
+bash: cd: webkitgtk-2.1.92.tar.xz: Not a directory
+webkitgtk-2.1.92.tar.xz
+xwayland-xorg-server-1.14.99.1-226-g7525799
+yelp-tools-3.9.90
+yelp-xsl-3.9.90-1-g932d607
+zenity-ZENITY_3_9_91-31-geba67ac
