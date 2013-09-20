@@ -1,0 +1,58 @@
+(gdb) bt
+#0  0x00007ff90737387d in poll () at ../sysdeps/unix/syscall-template.S:81
+#1  0x00007ff90e574818 in poll (__timeout=<optimized out>, __nfds=<optimized out>, __fds=<optimized out>)
+    at /usr/include/bits/poll2.h:46
+#2  _dbus_poll (fds=<optimized out>, n_fds=<optimized out>, timeout_milliseconds=<optimized out>) at dbus-sysdeps-unix.c:2528
+#3  0x00007ff90e56ddc0 in socket_do_iteration (transport=0x5a738c0, flags=6, timeout_milliseconds=<optimized out>)
+    at dbus-transport-socket.c:1125
+#4  0x00007ff90e56cc8d in _dbus_transport_do_iteration (transport=0x5a738c0, flags=1, flags@entry=6, 
+    timeout_milliseconds=timeout_milliseconds@entry=800) at dbus-transport.c:976
+#5  0x00007ff90e557944 in _dbus_connection_do_iteration_unlocked (connection=connection@entry=0x5a0b240, 
+    pending=pending@entry=0x0, flags=6, flags@entry=7, timeout_milliseconds=timeout_milliseconds@entry=800)
+    at dbus-connection.c:1234
+#6  0x00007ff90e558a3a in _dbus_connection_read_write_dispatch (connection=0x5a0b240, timeout_milliseconds=800, 
+    dispatch=<optimized out>) at dbus-connection.c:3661
+#7  0x00007ff9069e9a04 in dbind_send_and_allow_reentry (bus=0x5a0b240, message=0x6177b70, error=0x7fffc1e607c0) at dbind.c:102
+#8  0x00007ff9069e3fc5 in _atspi_dbus_call_partial_va (obj=0x5b92590, interface=0x7ff9069ef720 "org.a11y.atspi.Accessible", 
+    method=0x7ff9069ee380 "GetInterfaces", error=0x0, type=0x7ff9069ee22b "", args=0x7fffc1e60858) at atspi-misc.c:1191
+#9  0x00007ff9069e3e85 in _atspi_dbus_call_partial (obj=0x5b92590, interface=0x7ff9069ef720 "org.a11y.atspi.Accessible", 
+    method=0x7ff9069ee380 "GetInterfaces", error=0x0, type=0x7ff9069ee22b "") at atspi-misc.c:1159
+#10 0x00007ff9069daaa5 in _atspi_accessible_is_a (accessible=0x5b92590, 
+    interface_name=0x7ff9069ef785 "org.a11y.atspi.Component") at atspi-accessible.c:810
+#11 0x00007ff9069dafcc in atspi_accessible_get_component (obj=0x5b92590) at atspi-accessible.c:1151
+#12 0x00007ff907fc4ecc in ffi_call_unix64 () from /usr/lib64/libffi.so.4
+#13 0x00007ff907fc495a in ffi_call () from /usr/lib64/libffi.so.4
+#14 0x00007ff911723a08 in gjs_invoke_c_function (context=0xbfb3b0, function=0x537af00, obj=0x7ff8a6c57c70, js_argc=0, 
+    js_argv=0x7ff8e73fe3f0, js_rval=0x7fffc1e61180) at gi/function.c:894
+#15 0x00007ff911724824 in function_call (context=0xbfb3b0, js_argc=0, vp=0x7ff8e73fe3e0) at gi/function.c:1203
+#16 0x00007ff911211f78 in CallJSNative (args=..., native=<optimized out>, cx=0xbfb3b0)
+    at /home/jhbuild/checkout/gnome/js17-17.0.0/js/src/jscntxtinlines.h:372
+#17 js::InvokeKernel (cx=cx@entry=0xbfb3b0, args=..., construct=construct@entry=js::NO_CONSTRUCT)
+    at /home/jhbuild/checkout/gnome/js17-17.0.0/js/src/jsinterp.cpp:345
+#18 0x00007ff91120bbe1 in js::Interpret (cx=0xbfb3b0, entryFrame=0x7ff8e73fe360, interpMode=js::JSINTERP_NORMAL)
+    at /home/jhbuild/checkout/gnome/js17-17.0.0/js/src/jsinterp.cpp:2414
+#19 0x00007ff9114093c7 in UncachedInlineCall (f=..., initial=initial@entry=js::INITIAL_LOWERED, pret=0x7fffc1e61c58, 
+    unjittable=0x7fffc1e61c60, argc=argc@entry=2)
+    at /home/jhbuild/checkout/gnome/js17-17.0.0/js/src/methodjit/InvokeHelpers.cpp:327
+#20 0x00007ff91140b914 in js::mjit::stubs::UncachedCallHelper (f=..., argc=2, lowered=lowered@entry=true, ucr=<optimized out>)
+---Type <return> to continue, or q <return> to quit---
+    at /home/jhbuild/checkout/gnome/js17-17.0.0/js/src/methodjit/InvokeHelpers.cpp:410
+#21 0x00007ff91140bee2 in UncachedLoweredCall (argc=<optimized out>, f=...)
+    at /home/jhbuild/checkout/gnome/js17-17.0.0/js/src/methodjit/InvokeHelpers.cpp:375
+#22 js::mjit::stubs::CompileFunction (f=..., argc=<optimized out>)
+    at /home/jhbuild/checkout/gnome/js17-17.0.0/js/src/methodjit/InvokeHelpers.cpp:239
+#23 0x00007ff8e603dec3 in ?? ()
+#24 0x00007ff800000002 in ?? ()
+#25 0x000000000000010c in ?? ()
+#26 0x00007fffc1e61f50 in ?? ()
+#27 0x0000000000000000 in ?? ()
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 7864] will be detached.
+
+Quit anyway? (y or n) y
+Detaching from program: /opt/gnome/bin/gnome-shell, process 7864
+sh-4.2$ exit
+
+Script done on Thu 19 Sep 2013 08:53:52 PM CD
