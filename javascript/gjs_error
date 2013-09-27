@@ -1,6 +1,0 @@
-gjs /home/dev/gnome/source/gnome-shell/js/ui/magnifier.js
-
-(gjs:22694): Gjs-WARNING **: JS ERROR: Error: Requiring St, version none: Typelib file for namespace 'St' (any version) not found
-@/home/dev/gnome/source/gnome-shell/js/ui/magnifier.js:6
-
-JS_EvaluateScript() failed
