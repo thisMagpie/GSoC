@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Gsoc : Scrap Book" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Gsoc</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/thisMagpie/GSoC">View on GitHub</a>
+
+          <h1 id="project_title">Gsoc</h1>
+          <h2 id="project_tagline">Scrap Book</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/thisMagpie/GSoC/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/thisMagpie/GSoC/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="-implement-caret-and-focus-tracking-for-gnome-shell-" class="anchor" href="#-implement-caret-and-focus-tracking-for-gnome-shell-"><span class="octicon octicon-link"></span></a> Implement Caret and Focus Tracking for GNOME Shell </h1>
+
+<p>&lt;&gt;</p>
+
+<h3>
+<a name="blog-posts" class="anchor" href="#blog-posts"><span class="octicon octicon-link"></span></a>Blog Posts</h3>
+
+<ul>
+<li>
+<a href="http://thismagpie.blogspot.co.uk/2013/06/pyatspi2-script-to-demonstrate-keypress.html?view=sidebar">pyatspi2 script to demonstrate keypress listeners </a>[1]</li>
+<li>[[ <a href="http://thismagpie.blogspot.co.uk/2013/06/pyatspi2-script-to-demonstrate-text.html?view=sidebar">http://thismagpie.blogspot.co.uk/2013/06/pyatspi2-script-to-demonstrate-text.html?view=sidebar</a> | pyatspi2 script to demonstrate the text interface.]]</li>
+<li>[[ <a href="http://thismagpie.blogspot.co.uk/2013/08/developing-gnome-shell-under-jhbuild.html">http://thismagpie.blogspot.co.uk/2013/08/developing-gnome-shell-under-jhbuild.html</a> | developing GNOME Shell under jhbuild ]]</li>
+<li>[[ <a href="http://thismagpie.blogspot.co.uk/2013/06/gsoc-updates-for-planet-gnome.html?view=sidebar">http://thismagpie.blogspot.co.uk/2013/06/gsoc-updates-for-planet-gnome.html?view=sidebar</a> | GSoC Updates for Planet GNOME: Investigating and Solving the 'Freeze Problem' ]]</li>
+<li>[[ <a href="http://thismagpie.blogspot.co.uk/2013/07/gsoc-updates-for-planet-gnome.html?view=sidebar">http://thismagpie.blogspot.co.uk/2013/07/gsoc-updates-for-planet-gnome.html?view=sidebar</a> | GSoC Updates for Planet GNOME: Integrating the focus and caret tracker into the magnifier for GNOME Shell]]</li>
+<li>[[ <a href="http://thismagpie.blogspot.co.uk/2013/07/gsoc-updates-for-planet-gnome-going-to.html?view=sidebar">http://thismagpie.blogspot.co.uk/2013/07/gsoc-updates-for-planet-gnome-going-to.html?view=sidebar</a> | GSoC Updates for Planet GNOME: Going to GUADEC]]</li>
+<li>[[ <a href="http://thismagpie.blogspot.co.uk/2013/08/gsoc-updates-for-planet-gnome-good.html?view=sidebar">http://thismagpie.blogspot.co.uk/2013/08/gsoc-updates-for-planet-gnome-good.html?view=sidebar</a> | GSoC Updates for Planet GNOME: Good Times at GUADEC]]</li>
+<li>[[ <a href="http://thismagpie.blogspot.co.uk/2013/09/gsoc-updates-accepted-commitnow.html?view=sidebar">http://thismagpie.blogspot.co.uk/2013/09/gsoc-updates-accepted-commitnow.html?view=sidebar</a> | GSoC Updates: accepted-commit_now... ]]</li>
+<li>[[ <a href="http://thismagpie.blogspot.co.uk/2013/09/gsoc-updates-focus-and-caret-tracking.html?view=sidebar">http://thismagpie.blogspot.co.uk/2013/09/gsoc-updates-focus-and-caret-tracking.html?view=sidebar</a> | GSoC Updates: Focus and Caret Tracking Has Landed.]]</li>
+</ul><p>== A11y Meetings ==</p>
+
+<ul>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A5_September">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A5_September</a> | 5/09/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A29_August">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A29_August</a> | 29/08/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A22_August">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A22_August</a> | 22/08/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A15_August">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A15_August</a> | 15/08/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A25">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A25</a> July | 25/07/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A29_July">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A29_July</a> | 18/07/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A22_July">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A22_July</a> | 11/07/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A4">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A4</a> July | 4/07/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A27_June">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A27_June</a> | 27/06/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A20_June">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A20_June</a> | 20/06/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A13_June">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A13_June</a> | 13/06/2013 ]] </li>
+<li>[[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A6_June">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC#A6_June</a> | 06/06/2013 ]] </li>
+</ul><p>== Abstract ==</p>
+
+<p>To implement a caret and focus tracking device within GNOME Shell and allow the magnifier to use this device to display current keyboard focus. This work would contribute a focus and caret tracking "device" within GNOME Shell to the benefit of the GNOME community. The work also allows the magnifier to use this device in order to display current keyboard focus which enable users with low vision to use GNOME more easily.</p>
+
+<p>== Introduction ==</p>
+
+<p>The magnifier was originally authored by Joseph Scheuhammer who developed magnification that was able to track the mouse. The magnifier has a set of auxillary tools, such as 'crosshairs' which make it easier for users with low vision to find the mouse position so that they can navigate the desktop and 'contrast' which make the images on desktop widgets sharper. An details of GNOME Shell magnification can be found on the dedicated [[<a href="https://wiki.gnome.org/GnomeShell/Magnification">https://wiki.gnome.org/GnomeShell/Magnification</a> | magnification wiki page ]].</p>
+
+<p>The magnifier has needed focus tracking to make navigating the desktop easier for users and caret tracking to aid users in reading and writing documents and web pages.</p>
+
+<p>== Setting up the Development Environment ==</p>
+
+<p>JHBuild can be a learning curve, so mentors advised an early start.   Switching from Ubuntu to Fedora made it possible to install the development libraries needed for running GNOME Shell  (and its dependencies) under JHBuild.</p>
+
+<p>A script was used to install jhbuild and during the installation process a couple of python files were generated in the [[/home/magpie.]] directory, these files are called .jbuildrc and .jhbuildrc-custom.</p>
+
+<p>The .jhbuildrc-custom file has allowed modifications to be made to the default configuration of JHBuild. There is useful [[<a href="http://docs.python.org/2/library/index.html%7C">http://docs.python.org/2/library/index.html|</a> python documentation ]] available, which helps to understand these configuration files. See the [[ <a href="http://thismagpie.blogspot.co.uk/2013/08/developing-gnome-shell-under-jhbuild.html">http://thismagpie.blogspot.co.uk/2013/08/developing-gnome-shell-under-jhbuild.html</a> | developing GNOME Shell under jhbuild ]] blog post  for further information.</p>
+
+<ul>
+<li>Mentor, Juanjo Marin was supportive throughout this work.</li>
+</ul><p>== Making Pyatspi Examples and familiarisation with ATSPI  ==</p>
+
+<p>One example demonstrates use of the text interface (and caret tracking), another uses a listener client which listens for particular keypress events. The events trigger a print out the hierarchy in an active (accessible) window and an extra script to print the names of accessible applications running and count how many there are altogether.</p>
+
+<p>Although they are written in python and not javascript. The examples can still demonstrate the principles needed for the focus and caret tracking implementation in GNOME Shell because they depend on interfaces from the atspi API that is required for the javascript tracking code. [[<a href="https://people.gnome.org/%7Eparente/pyatspi/doc/%7Cpytspi%5D">https://people.gnome.org/~parente/pyatspi/doc/|pytspi]</a>] python library. Link to [[<a href="https://bugzilla.gnome.org/show_bug.cgi?id=701063">https://bugzilla.gnome.org/show_bug.cgi?id=701063</a> | relevant bug]].</p>
+
+<ul>
+<li>Mentor, Joanmarie Diggs was supportive throughout this work.</li>
+</ul><p>== Solving the Freeze Problem: The Creation an Accessible FocusCaretTracker ==</p>
+
+<p>It was necessary to solve the freeze problem because it would have been next to impossible to do much with GNOME Shell freezing up. So once a file called focusCaretTracker.js, a debugging method was used to find out where the issues lay.</p>
+
+<p>The details of this can be found on the [[ <a href="http://thismagpie.blogspot.co.uk/2013/06/gsoc-updates-for-planet-gnome.html">http://thismagpie.blogspot.co.uk/2013/06/gsoc-updates-for-planet-gnome.html</a>  | blog post ]] about it.</p>
+
+<ul>
+<li>Mentors, Joseph Scheuhammer and Mike Gorse were supportive throughout this work.</li>
+</ul><p>== Integrating the focus caret tracker to work with the GNOME Shell Magnifier ==</p>
+
+<p>The tracking has been integrated into the magnifier and tested using the strategies advised by mentors Joseph Scheuhammer and Alejandro Piñeiro Iglesias. It has been revised serveral times and the latest version is currently under review. Here is an outline of the work</p>
+
+<p>=== Code ===</p>
+
+<p>The files involved a magnifier.js and focusCaretTracker.js. Makefile.am needs to be updated to include focusCaretTracker.js since it is new to GNOME Shell.</p>
+
+<p>{{{
+Diffstat
+-rw-r--r--  js/Makefile.am                   1</p>
+
+<p>-rw-r--r--  js/ui/focusCaretTracker.js   68</p>
+
+<p>-rw-r--r--  js/ui/magnifier.js           155 }}}</p>
+
+<p>==== focusCaretTracker.js ====</p>
+
+<p>The first thing to notice is that Atspi is imported. This this is a GNOME Shell javascript first (or at least, it will be when it does get pushed to master). Because nothing else in GNOME Shell uses the Atspi API yet there have been various associated teething problem with it's use, which will be outlined during the discussion on this work.</p>
+
+<p>{{{
+const Atspi = imports.gi.Atspi;
+const Lang = imports.lang;
+const Signals = imports.signals; }}}</p>
+
+<p>For convenience two constants are created to hold the values of an Atspi signal 'object:state-changed', and to hold part of the value of two other signals, 'object:state-changed:focused' and 'object:state-changed:selected':
+{{{
+const CARETMOVED        = 'object:text-caret-moved';
+const STATECHANGED      = 'object:state-changed'; }}}</p>
+
+<p>The following code instansiates the FocusCaretTracker namespace and initialises an Atspi listener instance which will listen for atspi emitted events from a private function called _onChanged.</p>
+
+<p>At the moment the Atspi itself is also initialised inside _init because it is not yet certain whether the best approach is to have the tracker be a singleton or not. The decision depends on a few factors. Mainly:</p>
+
+<ol>
+<li>Whether multiple registration of Atspi event listeners is problematic.</li>
+<li>Whether Atspi is too expensive to initialise in GNOME Shell's main.c</li>
+<li>Which is better in the long run.</li>
+</ol><p>The plan is to test Atspi in GNOME Shell to see how expensive it is but if it is very expensive, sooner or later that would need to be solved anyway, in any case.</p>
+
+<p>{{{
+const FocusCaretTracker = new Lang.Class({
+    Name: 'FocusCaretTracker',</p>
+
+<pre><code>_init: function() {
+    Atspi.init();
+    this._atspiListener = Atspi.EventListener.new(Lang.bind(this, this._onChanged));
+}, }}}
+</code></pre>
+
+<p>{{{
+    _onChanged: function(event) {
+        let update = null;</p>
+
+<pre><code>    if (event.type.indexOf(STATECHANGED) == 0)
+        update = 'focus-changed';
+    else if (event.type == CARETMOVED)
+        update = 'caret-moved';
+    this.emit(update, event);
+}, }}}
+</code></pre>
+
+<p>Next methods to register the Atspi listener with connected clients (like the magnifier for example). Select events have been included in the logic for focus events only because otherwise objects will lose focus the moment they are selected.</p>
+
+<p>{{{
+    registerFocusListener: function() {
+        return this._atspiListener.register(STATECHANGED + ':focused') &amp;&amp;
+               this._atspiListener.register(STATECHANGED + ':selected');
+    },</p>
+
+<pre><code>registerCaretListener: function() {
+    return this._atspiListener.register(CARETMOVED);
+}, }}}
+</code></pre>
+
+<p>Methods are also needed to deregister the Atspi listener with connected clients (like the magnifier for example). Select events have been included in the logic for focus events only because otherwise objects will lose focus the moment they are selected. </p>
+
+<p>{{{
+    deregisterFocusListener: function() {
+        return this._atspiListener.deregister(STATECHANGED + ':focused') &amp;&amp;
+               this._atspiListener.deregister(STATECHANGED + ':selected');
+    },</p>
+
+<pre><code>deregisterCaretListener: function() {
+    return this._atspiListener.deregister(CARETMOVED);
+}
+</code></pre>
+
+<p>}); }}}</p>
+
+<p>In order to access the private methods from gjs' signals.js a call to the following method is made in focusCaretTracker.js</p>
+
+<p>{{{
++Signals.addSignalMethods(FocusCaretTracker.prototype); }}}</p>
+
+<p>==== magnifier.js ====</p>
+
+<p>Firstly it is necessary to import the gobject introspected Atspi library and also the focusCaretTracker too. This was done in the following way:</p>
+
+<p>{{{
+ const Atspi = imports.gi.Atspi;
+const FocusCaretTracker = imports.ui.focusCaretTracker; }}}</p>
+
+<p>Keys for the GSettings focus-tracking and caret-tracking modes were added to enable preferences to be set for the kind of tracking a user wants for their magnification experience.</p>
+
+<p>{{{
+const FOCUS_TRACKING_KEY = 'focus-tracking';
+const CARET_TRACKING_KEY = 'caret-tracking'; }}}</p>
+
+<p>Most of the work was done in the zoomRegions class, which belongs to the magnifier namespace but preferences for the focus and caret tracking keys were set in the magnifier by calling two members of the magnifier's zoomRegions called setFocusTrackingMode and setCaretTrackingMode:</p>
+
+<p>{{{
+    zoomRegion.setMouseTrackingMode(aPref);
+    aPref = this._settings.get_enum(FOCUS_TRACKING_KEY);
+    if (aPref)
+        zoomRegion.setFocusTrackingMode(aPref);
+ }}}</p>
+
+<p>Because 'this' is not captured in closures the style guide reccommends wrapping closures in Lang.bind so this was done when using the connect methods from signals.js in gjs to connect to the settings and update the tracking modes: </p>
+
+<p>{{{
+    this._settings.connect('changed::' + FOCUS_TRACKING_KEY, Lang.bind(this, this._updateFocusTrackingMode));
+    this._settings.connect('changed::' + CARET_TRACKING_KEY, Lang.bind(this, this._updateCaretTrackingMode)); }}}</p>
+
+<p>The update focus and caret tracking mode update functions were private members of the magnifier namespace. Note that there is only 1 zoomRegion for the magnifier at the moment so this is why _zoomRegions[0] is hard coded in the way that it is:</p>
+
+<p>{{{
+    _updateFocusTrackingMode: function() {
+    // Applies only to the first zoom region.
+        if (this._zoomRegions.length) {
+             this._zoomRegions[0].setFocusTrackingMode(
+             this._settings.get_enum(FOCUS_TRACKING_KEY)
+             );
+        }
+    }, }}}</p>
+
+<p>As was done in focusCaretTracker.js the addSignalMethods function from signals.js in gjs needed to be called in order to access the private methods from that namespace (like 'connect'):</p>
+
+<p>{{{
+Signals.addSignalMethods(Magnifier.prototype); }}}</p>
+
+<p>Inside the magnifier 'helper class', zoomRegions focusCaretTracker was instantiated and initialised as a private functions in the zoomRegions _init constructor as were the following private methods:
+{{{
+    this._focusCaretTracker = new FocusCaretTracker.FocusCaretTracker();
+    this._focusTrackingMode = GDesktopEnums.MagnifierFocusTrackingMode.NONE;
+    this._caretTrackingMode = GDesktopEnums.MagnifierCaretTrackingMode.NONE;
+    this._xFocus = 0;
+    this._yFocus = 0;
+    this._xCaret = 0;
+    this._yCaret = 0; }}}</p>
+
+<p>A connection to the FocusCaretTracker namespace is also made in init and the update functions for caret and focus are wrapped in Lang.bind as the style guide recommends for such closures:</p>
+
+<p>{{{
+    this._focusCaretTracker.connect('caret-moved', Lang.bind(this, this._updateCaret));
+    this._focusCaretTracker.connect('focus-changed', Lang.bind(this, this._updateFocus)); }}}</p>
+
+<p>Here, _updateFocus and _updateCaret are private members of the zoomRegions 'helper class' they update the x and y position of the caret or focus and the instances of these coordinates are available to other methods in zoomRegions so when this._centerFromFocusPosition() is called it can access the values obtained here by using the 'this' keyword.</p>
+
+<p>The _updateFocus function uses the component interface to get the x and y coordinates of the focused widget:</p>
+
+<p>{{{
+    _updateFocus: function(caller, event) {
+        let component = event.source.get_component_iface();
+        if (!component || event.detail1 != 1)
+            return;
+        let extents = component.get_extents(Atspi.CoordType.SCREEN);
+        [this._xFocus, this._yFocus] = [extents.x, extents.y]
+        this._centerFromFocusPosition();
+    }, }}}</p>
+
+<p>The _updateCaret function uses the text interface to get the x and y coordinates of the caret:</p>
+
+<p>{{{</p>
+
+<pre><code>_updateCaret: function(caller, event) {
+    let text = event.source.get_text_iface();
+    if (!text)
+        return;
+    let extents = text.get_character_extents(text.get_caret_offset(), 0);
+    [this._xCaret, this._yCaret] = [extents.x, extents.y];
+    this._centerFromCaretPosition();
+</code></pre>
+
+<p>}, }}}</p>
+
+<p>The focus and caret tracking modes (from gsettings-desktop-schemas) are handled in 'setter' functions for them. If the user uses GSettings to set focus or caret tracking to 'none' this will deregister the listener for that key. This essentially means that setting the focus-tracking or caret-tracking key to the mode, 'none' will disable that tracking and switching the mode back to 'centered', 'proportional' or 'push' will register the appropriate listener, thus enabling tracking once more. </p>
+
+<p>{{{
+    setFocusTrackingMode: function(mode) {
+        this._focusTrackingMode = mode;
+        if (this._focusTrackingMode == GDesktopEnums.MagnifierFocusTrackingMode.NONE)
+            this._focusCaretTracker.deregisterFocusListener();
+        else
+            this._focusCaretTracker.registerFocusListener();
+        }, }}}</p>
+
+<p>In order for the tracking modes to be meaningful they need to have influence on how the magnifier zoom regions move with respect to the coordinates the zoom region is 'given'. This is done with a set of functions starting with '_centerFromPoint' which the functions _centerFromFocus/CaretPosition will use to readjust the xFocus/Caret yFocus/Caret coordinates before passing to a scrollContentsTo function:</p>
+
+<p>{{{
+    _centerFromFocusPosition: function() {
+        let xFocus = this._xFocus;
+        let yFocus = this._yFocus;</p>
+
+<pre><code>    if (this._focusTrackingMode == GDesktopEnums.MagnifierFocusTrackingMode.PROPORTIONAL)
+        [xFocus, yFocus] = this._centerFromPointProportional(xFocus, yFocus);
+    else if (this._focusTrackingMode == GDesktopEnums.MagnifierFocusTrackingMode.PUSH)
+        [xFocus, yFocus] = this._centerFromPointPush(xFocus, yFocus);
+    else if (this._focusTrackingMode == GDesktopEnums.MagnifierFocusTrackingMode.CENTERED)
+        [xFocus, yFocus] = this._centerFromPointCentered(xFocus, yFocus);
+
+    this.scrollContentsTo(xFocus, yFocus);
+}, }}}
+</code></pre>
+
+<p>==  GSettings for Focus and Caret Tracking ==</p>
+
+<p>During GUADEC a patch was written for the {{{ gsettings-desktop-schemas }}} module so that focus and caret tracking could be set independently from the mouse or caret tracking. The method for changing focus or/and caret gsettings from a terminal is outlined below:</p>
+
+<p>{{{$ gsettings list-keys org.gnome.desktop.a11y.magnifier }}}</p>
+
+<p>Specifically check that you have the following GSettings available to you.</p>
+
+<p>{{{ caret-tracking }}}
+{{{ focus-tracking }}}</p>
+
+<p>To find out the possible options for focus tracking, type:</p>
+
+<p>{{{ $ gsettings range org.gnome.desktop.a11y.magnifier focus-tracking }}}</p>
+
+<p>Or To find out the possible options for caret tracking, type:</p>
+
+<p>{{{ $ gsettings range org.gnome.desktop.a11y.magnifier caret-tracking }}}</p>
+
+<p>To change the GSetting for caret tracking to centered, type:</p>
+
+<p>{{{ $ gsettings set org.gnome.desktop.a11y.magnifier caret-tracking centered }}}</p>
+
+<p>{{{ $ gsettings set org.gnome.desktop.a11y.magnifier focus-tracking push }}}</p>
+
+<p>To turn off tracking for the focus or caret set the GSetting to {{{ 'none' }}}. It is possible to turn it back on again by setting the key to a different value afterwards.</p>
+
+<p>The code for these was written in two separate files:</p>
+
+<p>{{{</p>
+
+<p>headers/gdesktop-enums.h                           | 15 +++++++++
+ ....gnome.desktop.a11y.magnifier.gschema.xml.in.in | 38 ++++++++++++++++++++++
+ 2 files changed, 53 insertions(+) }}}</p>
+
+<p>The edit to /headers/gdesktop-enums.h was fairly simple and straightforward because the enum tracking modes for focus and caret tracking were the same as those already in place for the mouse tracking:</p>
+
+<p>{{{
+typedef enum
+{
+  G_DESKTOP_MAGNIFIER_FOCUS_TRACKING_MODE_NONE,
+  G_DESKTOP_MAGNIFIER_FOCUS_TRACKING_MODE_CENTERED,
+  G_DESKTOP_MAGNIFIER_FOCUS_TRACKING_MODE_PROPORTIONAL,
+  G_DESKTOP_MAGNIFIER_FOCUS_TRACKING_MODE_PUSH
+} GDesktopMagnifierFocusTrackingMode;</p>
+
+<p>typedef enum
+{
+  G_DESKTOP_MAGNIFIER_CARET_TRACKING_MODE_NONE,
+  G_DESKTOP_MAGNIFIER_CARET_TRACKING_MODE_CENTERED,
+  G_DESKTOP_MAGNIFIER_CARET_TRACKING_MODE_PROPORTIONAL,
+  G_DESKTOP_MAGNIFIER_CARET_TRACKING_MODE_PUSH
+} GDesktopMagnifierCaretTrackingMode; }}}</p>
+
+<p>The edit to /schemas/org.gnome.desktop.a11y.magnifier.gschema.xml.in.in was fairly simple and straightforward too, because the tracking modes for focus and caret tracking were the same as those already in place for the mouse tracking. All that was done differently to the mousetracking was a little formatting to help documentation look a bit smarter.</p>
+
+<p>{{{
+    'push'
+      &lt;_summary&gt;Focus Tracking Mode&lt;/_summary&gt;
+      &lt;_description&gt;
+        Determines the position of the focused widget within magnified view.</p>
+
+<pre><code>    The values are:
+
+    - none: no focus tracking
+
+    - centered: the focused image is displayed at the center of the zoom region (which also represents the
+      point under the system focus) and the magnified contents are scrolled as the system focus moves
+
+    - proportional: the position of the magnified focus in the zoom region is proportionally the same as the
+      position of the system focus on screen
+
+    - push: when the magnified focus intersects a boundary of the zoom region, the contents are scrolled
+      into view
+&lt;/_description&gt;
+&lt;/key&gt;
+&lt;key name="caret-tracking" enum="org.gnome.desktop.GDesktopMagnifierCaretTrackingMode"&gt;
+  &lt;_default&gt;'centered'&lt;/_default&gt;
+  &lt;_summary&gt;Caret Tracking Mode&lt;/_summary&gt;
+  &lt;_description&gt;
+    Determines the position of the caret within magnified view. The values are:
+
+  - none: no caret tracking
+
+  - centered: the image of the caret is displayed at the center of the zoom region (which also represents
+    the point under the system caret) and the magnified contents are scrolled as the system caret moves
+
+  - proportional: the position of the magnified caret in the zoom region is proportionally the same as the
+    position of the system caret on screen
+
+  - push: when the magnified caret intersects a boundary of the zoom region, the contents are scrolled into
+    view
+  &lt;/_description&gt;
+&lt;/key&gt;
+ &lt;key name="screen-position" enum="org.gnome.desktop.GDesktopMagnifierScreenPosition"&gt;
+   &lt;default&gt;'full-screen'&lt;/default&gt;
+   &lt;_summary&gt;Screen position&lt;/_summary&gt; }}}
+</code></pre>
+
+<p>== Proposed UI ==</p>
+
+<p>[[attachment:mouse.png]]
+ [[attachment:caret.png]]
+ [[attachment:focus.png]]</p>
+
+<p>=== Tools Used ===</p>
+
+<ol>
+<li><p>For improving inconsistencies in javascript style a tool called [[<a href="https://developers.google.com/closure/utilities/docs/linter_howto">https://developers.google.com/closure/utilities/docs/linter_howto</a> ]]</p></li>
+<li><p>For debugging [[ <a href="http://git.gnome.org/browse/gjs">http://git.gnome.org/browse/gjs</a> | gjs ]] can be very useful. Run the command</p></li>
+</ol><p>{{{ $ gjs /path/to/file.js }}} to see problems. Note that the private libraries in GNOME Shell will not be recognised by gjs</p>
+
+<ol>
+<li>For installing [[<a href="http://www.rpm.org/max-rpm/ch-rpm-install.html">http://www.rpm.org/max-rpm/ch-rpm-install.html</a> | rpm ]]</li>
+</ol><p>=== Modules ===</p>
+
+<p>The development environment jhbuild is used to build the GNOME 3.10 modules. Specifically:</p>
+
+<ul>
+<li><p>gnome-shell (magnifier)</p></li>
+<li><p>gnome-control-center ('zoom')</p></li>
+<li><p>gsettings-desktop-schemas</p></li>
+</ul><p>== Keep Updated ==</p>
+
+<ul>
+<li><p>Take an [[<a href="http://feeds.feedburner.com/thismagpie/GNOME">http://feeds.feedburner.com/thismagpie/GNOME</a> | rss feed]] from the GNOME label at [[<a href="http://thismagpie.blogspot.co.uk">http://thismagpie.blogspot.co.uk</a> | my blog]]</p></li>
+<li><p>Each week there is a meeting and you can read the minutes of [[ <a href="https://wiki.gnome.org/Accessibility/Minutes/2013GSoC">https://wiki.gnome.org/Accessibility/Minutes/2013GSoC</a> | GSoC Updates ]]</p></li>
+<li><p>You can watch my [[ <a href="https://github.com/thisMagpie/GSoC">https://github.com/thisMagpie/GSoC</a> | github scratchpad repo ]] or take an rss feed to stay abreast of changes.</p></li>
+</ul><p>== Bugs ==</p>
+
+<ul>
+<li>(./) [[GnomeBug:681276]] Reentrancy problems on gnome-shell</li>
+<li>(./) [[GnomeBug:705652]] Add GSettings for focus and caret tracking in GNOME Shell</li>
+<li>(./) [[GnomeBug:647074]] GNOME Shell Magnifier should track focus and the caret</li>
+<li>(./) [[GnomeBug:707010]] Atspi_event_listener_register_no_data makes using eventlistener on javascript not possible</li>
+</ul><p>=== For general information ===</p>
+
+<ul>
+<li><p>[[<a href="https://projects.gnome.org/accessibility">https://projects.gnome.org/accessibility</a> | Accessibility at GNOME]]</p></li>
+<li><p>[[<a href="https://live.gnome.org/ThreePointNine/Features/FocusCaretTracking%7C">https://live.gnome.org/ThreePointNine/Features/FocusCaretTracking|</a> ThreePointNine/Features/FocusCaretTracking ]]</p></li>
+<li><p>GnomeShell</p></li>
+<li><p>[[<a href="https://wiki.gnome.org/Accessibility/MagnificationFramework">https://wiki.gnome.org/Accessibility/MagnificationFramework</a>  | Accessibility/MagnificationFramework ]] </p></li>
+<li><p>[[<a href="https://wiki.gnome.org/GnomeShell/Gjs_StyleGuide">https://wiki.gnome.org/GnomeShell/Gjs_StyleGuide</a> | GnomeShell/Gjs_StyleGuide ]]</p></li>
+<li><p>[[ <a href="https://wiki.gnome.org/ThreePointThree/Features/ZoomOptionsDialog">https://wiki.gnome.org/ThreePointThree/Features/ZoomOptionsDialog</a> | ThreePointThree/Features/ZoomOptionsDialog]]</p></li>
+<li><p>[[<a href="https://wiki.gnome.org/Orca/SmokeTest">https://wiki.gnome.org/Orca/SmokeTest</a> | Orca SmokeTest]]</p></li>
+<li><p>[[ <a href="https://developer.gnome.org/platform-overview/stable/d-bus.html.en">https://developer.gnome.org/platform-overview/stable/d-bus.html.en</a> | dbus ]]</p></li>
+<li><p>[[<a href="http://www.townx.org/index.php?q=blog/elliot/introduction-sorts-javascript-desktop-application-development-gjs-and-clutter">http://www.townx.org/index.php?q=blog/elliot/introduction-sorts-javascript-desktop-application-development-gjs-and-clutter</a> | useful gjs blog post]]</p></li>
+<li><p>[[<a href="https://wiki.gnome.org/GnomeShell/FAQ#Is_GNOME_Shell_accessible.3F">https://wiki.gnome.org/GnomeShell/FAQ#Is_GNOME_Shell_accessible.3F</a> | GNOME Shell FAQ ]]</p></li>
+</ul><p>== Acknowledgements ==</p>
+
+<p>Thanks to the A11y and GNOME Shell teams for the time they have given to support the work as well as the omnipotent Google who kept me out of trouble this summer, by giving me stuff (including access to one of the funniest mailing lists known to humanity).</p>
+
+<p>I would like to say a special thank my mentor Joseph Scheuhammer and also the following people: Alejandro Piñeiro,  Jasper St. Pierre, Joanmarie Diggs, Javier Jardón, Matthias Clasen, Ryan Lortie, Juanjo Marin, Florian Müllner, Richard Schwarting, Mike Gorse, Kalev Lember, Lafargue Sébastien, Marina Zhurakhinskaya, and I am sure I have missed somebody because a host of others have helped so far (but you know who you are -come and shout at me if I forgot to list you)...</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Gsoc maintained by <a href="https://github.com/thisMagpie">thisMagpie</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
